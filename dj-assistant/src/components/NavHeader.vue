@@ -34,10 +34,14 @@
               </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <router-link :to="{name: 'login'}" class="nav-link">
+              Login
+              </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <router-link :to="{name: 'register'}" class="nav-link">
+              Register
+              </router-link>
           </li>
         </ul>
       </div>
