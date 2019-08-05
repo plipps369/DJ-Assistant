@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DJAssistantAPI", "DJAssistant\DJAssistantAPI.csproj", "{BE576658-5B48-4F72-A092-CB0FBBB98FCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DJAssistantLogic", "DJAssistantLogic\DJAssistantLogic.csproj", "{F5C4F7A3-08EF-4EBA-8AE5-8EB234F6C1E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE576658-5B48-4F72-A092-CB0FBBB98FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE576658-5B48-4F72-A092-CB0FBBB98FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE576658-5B48-4F72-A092-CB0FBBB98FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE576658-5B48-4F72-A092-CB0FBBB98FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C4F7A3-08EF-4EBA-8AE5-8EB234F6C1E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C4F7A3-08EF-4EBA-8AE5-8EB234F6C1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C4F7A3-08EF-4EBA-8AE5-8EB234F6C1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C4F7A3-08EF-4EBA-8AE5-8EB234F6C1E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE5EAAB8-0BBD-42AA-B3FE-9CCCFD73D51A}
+	EndGlobalSection
+EndGlobal
