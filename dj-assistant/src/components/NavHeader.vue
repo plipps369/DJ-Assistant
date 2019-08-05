@@ -3,11 +3,12 @@
     <header>
       <div class="container-fluid">
             <div class="col-lg-12">
-                <h1></h1>
+                <img id="logo" src="@/assets/dj-logo.png" class="img-responsive">
+                <span id="header-text">DJ Bluntz</span>
             </div>
         </div>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">DJ App</a>
       <button
         class="navbar-toggler"
@@ -22,14 +23,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <router-link :to="{name: 'home'}" class="nav-link">
               Home
-              <span class="sr-only">(current)</span>
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <router-link :to="{name: 'about'}" class="nav-link">
+              About
+              </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -56,5 +58,12 @@ nav {
   top: 0;
   width: 100%; 
   z-index: 1000;
+}
+#logo { 
+  height: 5rem;
+}
+#header-text {
+  font-size: 3rem;
+  vertical-align: middle;
 }
 </style>
