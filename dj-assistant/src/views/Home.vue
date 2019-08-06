@@ -2,7 +2,6 @@
   <div class="home">
     <nav-header></nav-header>
     <landing-page> </landing-page>
-    <img alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
 
