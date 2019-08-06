@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 // @ is an alias to /src
 import NavHeader from '@/components/NavHeader.vue'
 import LandingPage from '@/components/LandingPage.vue';
