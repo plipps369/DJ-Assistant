@@ -77,10 +77,10 @@ namespace DJAssistantLogic.DAO
                 }
             }
 
-            if (user == null)
-            {
-                throw new Exception("User does not exist.");
-            }
+            //if (user == null)
+            //{
+            //    throw new Exception("User does not exist.");
+            //}
 
             return user;
         }
