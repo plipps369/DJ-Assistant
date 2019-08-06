@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DJAssistantAPI.Models
 {
+    [Serializable]
     public class DJLoginModel
     {
         public string email { get; set; }

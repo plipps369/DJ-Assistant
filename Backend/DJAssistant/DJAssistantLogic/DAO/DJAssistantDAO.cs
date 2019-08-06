@@ -277,7 +277,30 @@ namespace DJAssistantLogic.DAO
 
         public int AddSongItem(SongItem item)
         {
-            throw new NotImplementedException();
+            const string sql = "INSERT [Song] (" +
+                                    "Title, " +
+                                    "Artist, " +
+                                    "Length, " +
+                                    "Explicit) " +
+                               "VALUES (" +
+                                    "@Title, " +
+                                    "@Artist, " +
+                                    "@Length, " +
+                                    "@Explicit);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@Title", item.Title);
+                cmd.Parameters.AddWithValue("@Artist", item.Artist);
+                cmd.Parameters.AddWithValue("@Length", item.Length);
+                cmd.Parameters.AddWithValue("@Explicit", item.Explicit);
+                item.Id = (int)cmd.ExecuteScalar();
+            }
+
+            return item.Id;
         }
         public bool UpdateSongItem(SongItem item)
         {
@@ -289,7 +312,41 @@ namespace DJAssistantLogic.DAO
         }
         public SongItem GetSongItemById(int songId)
         {
-            throw new NotImplementedException();
+            SongItem item = null;
+            const string sql = "SELECT * From [Song] WHERE Id = @Id;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Id", songId);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    item = GetSongItemFromReader(reader);
+                }
+            }
+
+            //if (user == null)
+            //{
+            //    throw new Exception("User does not exist.");
+            //}
+
+            return item;
+        }
+
+        private SongItem GetSongItemFromReader(SqlDataReader reader)
+        {
+            SongItem item = new SongItem();
+
+            item.Id = Convert.ToInt32(reader["Id"]);
+            item.Title = Convert.ToString(reader["Title"]);
+            item.Artist = Convert.ToString(reader["Artist"]);
+            item.Length = Convert.ToInt32(reader["Length"]);
+            item.Explicit = Convert.ToBoolean(reader["Explicit"]);
+
+            return item;
         }
 
         #endregion
