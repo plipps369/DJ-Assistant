@@ -7,6 +7,13 @@ namespace DJAssistantLogic.DAO
 {
     public class DJAssistantDAO: IDJAssistantDAO
     {
+        private const string _getLastIdSQL = "SELECT CAST(SCOPE_IDENTITY() as int);";
+        private string _connectionString;
+
+        public DJAssistantDAO(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         #region DJ
 

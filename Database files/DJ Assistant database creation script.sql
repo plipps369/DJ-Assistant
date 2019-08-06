@@ -110,3 +110,67 @@ Go
 
 COMMIT TRANSACTION;
 
+
+BEGIN TRANSACTION;
+
+INSERT INTO Song (Title, Artist, Length, Explicit)
+Values
+	('Crab Rave', 'Noisestorm', '161', 'false'),
+	('Mr. Blue Sky', 'Electric Light Orchestra', '303', 'false'),
+	('All The Small Things', 'Blink-182', '167', 'false'),
+	('The Rock Show', 'Blink-182', '171', 'true'),
+	('Who Do You Love', 'The Chainsmokers', '226', 'true'),
+	('Come And Get Your Love', 'Redbone', '205', 'false'),
+	('La de Da de Da de Da de Day oh', 'Bill Wurtz', '190', 'false'),
+	('Dads In Space', 'Stephen Walking', '249', 'false'),
+	('Glide', 'Stephen Walking', '196', 'false'),
+	('Love Shack', 'The B-52''s', '321', 'false'),
+	('Around The World', 'Red Hot Chili Peppers', '238', 'false'),
+	('Around The World', 'Daft Punk', '429', 'false')
+Go
+
+INSERT INTO Genre (name)
+Values
+	('House'),
+	('Rock'),
+	('Pop'),
+	('Indie'),
+	('New Wave'),
+	('Funk'),
+	('Jazz'),
+	('Classical'),
+	('Punk'),
+	('Metal'),
+	('Country'),
+	('Latin'),
+	('R&B'),
+	('Dance'),
+	('Soul'),
+	('Christian'),
+	('K-Pop'),
+	('Reggae'),
+	('Blues'),
+	('Kids'),
+	('Hip-Hop')
+Go
+
+SET IDENTITY_INSERT Song_Genre ON 
+Go
+
+INSERT INTO Song_Genre(Song_id, Genre_id)
+Values
+	('1', '1'),
+	('2', '2'),
+	('3', '2'),
+	('4', '2'),
+	('5', '3'),
+	('6', '3'),
+	('7', '4'),
+	('8', '1'),
+	('9', '1'),
+	('10', '5'),
+	('11', '2'),
+	('12', '1')
+Go
+
+COMMIT TRANSACTION;

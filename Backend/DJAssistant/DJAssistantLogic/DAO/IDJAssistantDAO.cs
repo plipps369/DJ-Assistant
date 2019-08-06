@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DJAssistantLogic.DAO
 {
-    interface IDJAssistantDAO
+    public interface IDJAssistantDAO
     {
         #region DJ
 
