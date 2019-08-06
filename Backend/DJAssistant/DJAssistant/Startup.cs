@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DJAssistantAPI.Providers.Security;
-using DJAssistantAPI.Providers.Security;
 using DJAssistantLogic.DAO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -88,10 +88,6 @@ namespace DJAssistant
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseCors("CorsPolicy");
-
-            // Enables the middleware to check the incoming request headers.
-            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();

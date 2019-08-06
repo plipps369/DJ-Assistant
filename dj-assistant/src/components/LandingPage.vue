@@ -1,0 +1,68 @@
+<template>
+<div class="landing-page">
+    
+    <aside class="djAbout">
+    <div>
+    <h1>About DJ App </h1>
+        <p class="aboutTheDjApp">Lorem ipsum dolor sit amet, mel mucius consetetur ut, 
+            ad novum possit sea. Usu ex voluptatibus reprehendunt, mazim prodesset nec no. 
+            Et tempor utroque constituam his, in mel erant ludus. Vidit percipit nam ea, 
+            cum minim cotidieque ex, mei alterum nominavi postulant no. Ea vis nostro 
+            apeirian evertitur, cu nibh brute nulla mea, quem putant similique eos ut. </p>
+    </div>
+    </aside>
+    <aside class="buttons">
+        <div class="loginButton">
+          <router-link to="/Login" tag="button" class="btn btn-lg btn-primary">Log In</router-link>
+        </div>
+        <div class="registerButton">
+          <router-link to="/Register" tag="button" class="btn btn-lg btn-primary">Register</router-link>
+        </div>
+    </aside>
+</div>
+</template>
+
+<script>
+export default {
+    name: 'landing-page'
+}
+</script>
+
+<style>
+.djAbout {
+  background: #fff;
+  font-family: "Roboto Condensed", sans-serif;
+  border-radius: 70px;
+  float: left;
+  border: 5px solid rgb(0, 110, 255);
+  padding: 25px;
+  max-width: 30%;
+  margin: 150px;
+}
+
+
+.buttons  {
+   float: right;
+   padding: 15px;
+   width: 55%;
+   margin-left: -50%;
+   margin-top: 15em;
+   margin-right: 8em;
+   }
+
+.registerButton {
+    padding: 20px;
+}
+
+
+.registerBackground {
+    background-image: url(/assets/Soundwave.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+</style>
