@@ -1,12 +1,16 @@
-// import axios from 'axios';
-// const API_URL = 'http://192.168.51.43:50260';
+import axios from 'axios';
+const API_URL = 'http://192.168.51.43:50260';
 
-// export class APIService{
-//     constructor(){
-//     }
+export class APIService{
+    constructor(){
+    }
     
-//     getPlayers() {
-//         const url = `${API_URL}/api/players`;
-//         return axios.get(url).then(response => response.data);
-//     }
-// }
+    getParties(DJid) {
+        const url = `${API_URL}/api/parties/${DJid}`;
+        return axios.get(url).then(response => response.data);
+    }
+    getParty(id) {
+        const url = `${API_URL}/api/party/${id}`;
+        return axios.get(url).then(response => response.data);
+    }
+}

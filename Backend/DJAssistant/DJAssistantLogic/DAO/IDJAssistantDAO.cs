@@ -19,7 +19,7 @@ namespace DJAssistantLogic.DAO
 
         #region Genre
 
-        int AddGenrItem(GenreItem item);
+        int AddGenreItem(GenreItem item);
         bool UpdateGenreItem(GenreItem item);
         bool DeleteGenreItem(int genreId);
         GenreItem GetGenreItemById(int genreId);
