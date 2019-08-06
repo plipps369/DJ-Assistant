@@ -113,15 +113,21 @@ export default {
 <style>
 #register{
   margin-top:15vh;
-  
+  background-image: url(/assets/Soundwave.jpg);
+  position: relative;
+  z-index: 1;
 }
 .form-register{
+  
   margin-right: 25vw;
   margin-left: 25vw;
   margin-top: -450px;
 }
-
-.registerBackground {
+.form-control{
+  position: relative;
+  z-index: 1000;
+}
+/* .registerBackground {
     background-image: url(/assets/Soundwave.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -129,5 +135,6 @@ export default {
     background-size: cover;
     height: 100%;
     
-}
+    
+} */
 </style>

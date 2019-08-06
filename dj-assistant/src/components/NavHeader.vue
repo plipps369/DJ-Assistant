@@ -10,7 +10,7 @@
     </header> -->
 
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
-      <img id="logo" src="@/assets/dj-logo-blue.png" class="img-responsive" />
+      <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
        <b-navbar-brand href="#">DJ App</b-navbar-brand>
 
 
@@ -100,6 +100,7 @@ export default {
 
 #logo {
   height: 3rem;
+  margin-right: 1.5rem;
 }
 #header-text {
   font-size: 4rem;
