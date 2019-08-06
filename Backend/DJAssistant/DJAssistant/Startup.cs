@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using DJAssistantAPI.Providers.Security;
+using DJAssistantAPI.Providers.Security;
+using DJAssistantLogic.DAO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace DJAssistant
@@ -30,6 +37,31 @@ namespace DJAssistant
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+            // Enables automatic authentication token.
+            // The token is expected to be included as a bearer authentication token.
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    // The rules for token validation
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,                 // issuer not required
+                        ValidateAudience = false,               // audience not required
+                        ValidateLifetime = true,                // token must not have expired
+                        ValidateIssuerSigningKey = true,        // token signature must match so as not to be tampered with
+                        NameClaimType = System.Security.Claims.ClaimTypes.NameIdentifier,   // allows us to use sub for username
+                        RoleClaimType = "rol",                  // allows us to put the role in rol
+                        IssuerSigningKey = new SymmetricSecurityKey(    // each token is signed with a private key so as to ensure its validity
+                            Encoding.UTF8.GetBytes(Configuration["JwtSecret"]))
+                    };
+                });
+
+            // Dependency Injection configuration
+            services.AddSingleton<ITokenGenerator>(tk => new JwtGenerator(Configuration["JwtSecret"]));
+            services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
+            services.AddTransient<IDJAssistantDAO>(m => new DJAssistantDAO(Configuration.GetConnectionString("Default")));
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -56,6 +88,10 @@ namespace DJAssistant
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors("CorsPolicy");
+
+            // Enables the middleware to check the incoming request headers.
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();
