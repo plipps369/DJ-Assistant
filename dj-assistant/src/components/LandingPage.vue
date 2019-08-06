@@ -13,10 +13,10 @@
     </aside>
     <aside class="buttons">
         <div class="loginButton">
-          <router-link to="/Login" tag="button" class="btn btn-lg btn-primary">Log In</router-link>
+          <router-link to="/login" tag="button" class="btn btn-lg btn-primary">Log In</router-link>
         </div>
         <div class="registerButton">
-          <router-link to="/Register" tag="button" class="btn btn-lg btn-primary">Register</router-link>
+          <router-link to="/register" tag="button" class="btn btn-lg btn-primary">Register</router-link>
         </div>
     </aside>
 </div>
