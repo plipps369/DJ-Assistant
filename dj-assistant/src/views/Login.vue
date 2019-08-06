@@ -9,13 +9,13 @@
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="email" class="sr-only">Email</label>
       <input
-        type="text"
-        id="username"
+        type="email"
+        id="email"
         class="form-control"
-        placeholder="Username"
-        v-model="user.username"
+        placeholder="Email"
+        v-model="user.email"
         required
         autofocus
       />
@@ -29,7 +29,8 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <br>
+      <button type="Submit" class="btn btn-outline-warning">Sign in</button>
     </form>
   </div>
 </template>
@@ -46,7 +47,7 @@ export default {
   data() {
     return {
       user: {
-        username: '',
+        email: '',
         password: '',
       },
       invalidCredentials: false,
@@ -85,5 +86,11 @@ export default {
 </script>
 
 <style>
-
+#login{
+  margin-top:15vh;
+}
+.form-signin{
+  margin-right: 25vw;
+  margin-left: 25vw;
+}
 </style>
