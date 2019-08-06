@@ -1,7 +1,8 @@
 <template>
   <div id="register" class="text-center">
+     <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
     <nav-header></nav-header>
-    <form class="form-register" @submit.prevent="register">
+      <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div
         class="alert alert-danger"
@@ -57,6 +58,7 @@
       <br>
       <button type="Submit" class="btn btn-outline-warning">Submit</button>
     </form>
+
   </div>
 </template>
 
@@ -116,5 +118,16 @@ export default {
 .form-register{
   margin-right: 25vw;
   margin-left: 25vw;
+  margin-top: -450px;
+}
+
+.registerBackground {
+    background-image: url(/assets/Soundwave.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    
 }
 </style>

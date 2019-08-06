@@ -1,6 +1,7 @@
 ﻿using DJAssistantLogic.Models.Database;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using System.Data;
 using System.Transactions;
@@ -102,10 +103,28 @@ namespace DJAssistantLogic.DAO
 
         #region Genre
 
-        public int AddGenrItem(GenreItem item)
+        public int AddGenreItem(GenreItem item)
         {
-            throw new NotImplementedException();
+            // Does @Name work here? Syntax in SQL after VALUES is ('thing');
+            const string sql = "INSERT INTO Genre (Name)" +
+                               "VALUES (@Name);";
+            // Connect to the database
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                // Parameretize query
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@Name", item.Name);
+
+
+                // Execute SQL command
+                item.Id = (int)cmd.ExecuteScalar();
+            }
+
+            return item.Id;
         }
+
         public bool UpdateGenreItem(GenreItem item)
         {
             throw new NotImplementedException();
@@ -114,14 +133,66 @@ namespace DJAssistantLogic.DAO
         {
             throw new NotImplementedException();
         }
+ 
+        private GenreItem GetGenreItemFromReader(SqlDataReader reader)
+        {
+            GenreItem item = new GenreItem();
+            item.Id = Convert.ToInt32(reader["id"]);
+            item.Name = Convert.ToString(reader["name"]);
+
+            return item;
+        }
 
         public GenreItem GetGenreItemById(int genreId)
         {
-            throw new NotImplementedException();
+            // Does @Name work here? Syntax in SQL after VALUES is ('thing');
+            const string sql = "SELECT id, Name FROM Genre " +
+                               "WHERE id = (@genreID);";
+            GenreItem result = null;
+            // Connect to the database
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                // Parameretize query
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@genreId", genreId);
+                var reader = cmd.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    result = GetGenreItemFromReader(reader);
+                }
+            }
+
+            return result;
         }
+
+
+
         public GenreItem GetGenreItemByName(string name)
         {
-            throw new NotImplementedException();
+            // Does @Name work here? Syntax in SQL after VALUES is ('thing');
+            const string sql = "SELECT id, Name FROM Genre " +
+                               "WHERE name = (@name);";
+            GenreItem result = null;
+            // Connect to the database
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                // Parameretize query
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", name);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result = GetGenreItemFromReader(reader);
+                }
+            }
+
+            return result;
         }
 
         #endregion
