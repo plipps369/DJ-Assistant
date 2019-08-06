@@ -57,7 +57,7 @@ namespace DJAssistantAPI.Controllers
             var passwordHash = passwordHasher.ComputeHash(model.Password);
 
             // Create a user object
-            var dJ = new DJItem { Hash = passwordHash.Password, Salt = passwordHash.Salt, DisplayName = model.DisplayName };
+            var dJ = new DJItem { Email = model.Email, Hash = passwordHash.Password, Salt = passwordHash.Salt, DisplayName = model.DisplayName };
 
             // Save the user
             _db.AddDJItem(dJ);

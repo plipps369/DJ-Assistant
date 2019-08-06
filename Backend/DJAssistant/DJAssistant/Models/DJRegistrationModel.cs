@@ -4,6 +4,7 @@ using System.Text;
 
 namespace DJAssistantAPI.Models
 {
+    [Serializable]
     public class DJRegistrationModel
     {
         public string Email { get; set; }

@@ -60,7 +60,7 @@ namespace DJAssistant
             // Dependency Injection configuration
             services.AddSingleton<ITokenGenerator>(tk => new JwtGenerator(Configuration["JwtSecret"]));
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
-            services.AddTransient<IDJAssistantDAO>(m => new DJAssistantDAO(Configuration.GetConnectionString("Default")));
+            services.AddTransient<IDJAssistantDAO>(m => new DJAssistantDAO(Configuration.GetConnectionString("DefaultConnection")));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -1,4 +1,5 @@
 using DJAssistantAPI.Providers.Security;
+using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Transactions;
@@ -12,9 +13,11 @@ namespace IntegrationTest
        
         private DJItem _dj;
 
-        private PasswordHasher _hasher = new PasswordHasher();
-
         private string  _password = "a";
+
+        private ITokenGenerator _tokenGenerator;
+        private IPasswordHasher _passwordHasher;
+        private IDJAssistantDAO _db;
 
         [TestInitialize]
         public void Initialize()
