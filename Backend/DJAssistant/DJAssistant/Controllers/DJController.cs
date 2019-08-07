@@ -63,7 +63,7 @@ namespace DJAssistantAPI.Controllers
             _db.AddDJItem(dJ);
 
             // Generate a token
-            var token = tokenGenerator.GenerateToken(dJ.DisplayName, "DJ");
+            var token = tokenGenerator.GenerateToken(dJ.Email, "DJ");
 
             // Return the token
             return Ok(token);

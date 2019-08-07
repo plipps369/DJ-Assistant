@@ -24,7 +24,7 @@ namespace IntegrationTest
         {
             // Initialize a new transaction scope. This automatically begins the transaction.
             _tran = new TransactionScope();
-            _hasher = new PasswordHasher();
+            //_hasher = new PasswordHasher();
             // Test add user
             _dj = new DJItem();
             _dj.DisplayName = "DJ DJ DJ";

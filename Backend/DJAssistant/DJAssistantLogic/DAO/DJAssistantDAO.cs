@@ -167,9 +167,7 @@ namespace DJAssistantLogic.DAO
 
             return result;
         }
-
-
-
+        
         public GenreItem GetGenreItemByName(string name)
         {
             // Does @Name work here? Syntax in SQL after VALUES is ('thing');
@@ -195,13 +193,55 @@ namespace DJAssistantLogic.DAO
             return result;
         }
 
+        public List<GenreItem> GetGenreItems()
+        {
+            List<GenreItem> genres = new List<GenreItem>();
+
+            const string sql = "Select * From [Genre];";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    genres.Add(GetGenreItemFromReader(reader));
+                }
+            }
+
+            return genres;
+        }
+
         #endregion
 
         #region Party
 
         public int AddPartyItem(PartyItem item)
         {
-            throw new NotImplementedException();
+            const string sql = "INSERT [Party] (" +
+                                     "DJ_id, " +
+                                     "name, " +
+                                     "Description) " +
+                                "VALUES (" +
+                                     "@DJid, " +
+                                     "@name, " +
+                                     "@Description);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@DJid", item.DJId);
+                cmd.Parameters.AddWithValue("@name", item.Name);
+                cmd.Parameters.AddWithValue("@Description", item.Description);
+             
+                item.Id = (int)cmd.ExecuteScalar();
+            }
+
+            return item.Id;
         }
         public bool UpdatePartyItem(PartyItem item)
         {
@@ -215,9 +255,38 @@ namespace DJAssistantLogic.DAO
         {
             throw new NotImplementedException();
         }
-        public List<PartyItem> GetUserItemsByDJId(int DJId)
+        public List<PartyItem> GetPartyItemsByDJId(int DJId)
         {
-            throw new NotImplementedException();
+            List<PartyItem> parties = new List<PartyItem>();
+
+            const string sql = "Select * From [Party] Where DJ_id = @DJId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                var reader = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("@DJid", DJId);
+                while (reader.Read())
+                {
+                    parties.Add(GetPartyItemFromReader(reader));
+                }
+            }
+
+            return parties;
+        }
+
+        private PartyItem GetPartyItemFromReader(SqlDataReader reader)
+        {
+            PartyItem item = new PartyItem();
+
+            item.Id = Convert.ToInt32(reader["Id"]);
+            item.DJId = Convert.ToInt32(reader["DJ_id"]);
+            item.Description = Convert.ToString(reader["Description"]);
+            item.Name = Convert.ToString(reader["Name"]);
+           
+
+            return item;
         }
 
         #endregion
@@ -262,9 +331,25 @@ namespace DJAssistantLogic.DAO
 
         #region SongGenre
 
-        public int AddSongGenreItem(SongGenreItem item)
+        public void AddSongGenreItem(SongGenreItem item)
         {
-            throw new NotImplementedException();
+            const string sql = "INSERT [Song_Genre] (" +
+                                    "Genre_Id, " +
+                                    "Song_Id) " +
+                               "VALUES (" +
+                                    "@GenreId, " +
+                                    "@SongId);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@GenreId", item.GenreId);
+                cmd.ExecuteScalar();
+            }
+
+            
         }
         public bool DeleteSongGenreItem(SongGenreItem item)
         {

@@ -33,7 +33,7 @@ namespace DJAssistantLogic.DAO
         bool UpdatePartyItem(PartyItem item);
         bool DeletePartyItem(int partyId);
         PartyItem GetPartyItemById(int partyId);
-        List<PartyItem> GetUserItemsByDJId(int DJId);
+        List<PartyItem> GetPartyItemsByDJId(int DJId);
 
         #endregion
 
@@ -56,8 +56,9 @@ namespace DJAssistantLogic.DAO
 
         #region SongGenre
 
-        int AddSongGenreItem(SongGenreItem item);
+        void AddSongGenreItem(SongGenreItem item);
         bool DeleteSongGenreItem(SongGenreItem item);
+        List<GenreItem> GetGenreItems();
 
         #endregion
 
