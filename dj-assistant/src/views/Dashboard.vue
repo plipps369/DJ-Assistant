@@ -5,6 +5,7 @@
       <div class="row">
         <div class="col-lg-8">
       <h1>THIS IS THE DASHBOARD YA'LL</h1>
+      
       <ul>
         <li v-for="party in parties" :key="party.id">{{party.name}}</li>
       </ul>

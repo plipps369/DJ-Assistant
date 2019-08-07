@@ -35,6 +35,7 @@
 
 <script>
 import NavHeader from "@/components/NavHeader.vue";
+import auth from '../auth';
 
 export default {
   name: "create-party",
@@ -51,12 +52,13 @@ export default {
     };
   },
   methods: {
-    newParty() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party/NewParty`, {
+    async newParty() {
+      const temp = auth.getToken();
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+            Authorization: "Bearer " + auth.getToken(),
+           "Content-Type": "application/json"
         },
         body: JSON.stringify(this.party)
       })
