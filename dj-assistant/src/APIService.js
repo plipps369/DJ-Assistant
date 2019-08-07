@@ -1,12 +1,12 @@
 import axios from 'axios';
-const API_URL = 'http://192.168.51.43:50260';
+const API_URL = 'https://localhost:44313';
 
 export class APIService{
     constructor(){
     }
     
-    getParties(DJid) {
-        const url = `${API_URL}/api/parties/${DJid}`;
+    getParties() {
+        const url = `${API_URL}/api/party`;
         return axios.get(url).then(response => response.data);
     }
     getParty(id) {

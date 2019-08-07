@@ -6,6 +6,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Dashboard from './views/Dashboard.vue'
 import AddSong from './views/AddSong.vue'
+import CreateParty from './views/CreateParty.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,14 @@ const router = new Router({
       path: '/add-song',
       name: 'add-song',
       component: AddSong,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/create-party',
+      name: 'create-party',
+      component: CreateParty,
       meta: {
         requiresAuth: false
       }

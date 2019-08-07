@@ -6,11 +6,12 @@
         <div class="col-lg-8">
       <h1>THIS IS THE DASHBOARD YA'LL</h1>
       <ul>
-        <!-- <li v-for="party in parties" :key="party.id">{{party.name}}</li> -->
+        <li v-for="party in parties" :key="party.id">{{party.name}}</li>
       </ul>
       </div>
       <aside class="col-lg-4">
         <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
+        <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
       </aside>
       </div>
     </div>
@@ -33,9 +34,9 @@ export default {
     NavHeader
   },
   methods: {
-    getPartiesByDJid(DJid) {
+    created() {
       apiService
-        .getParties(DJid)
+        .getParties()
         .then(json => {
           this.parties = json;
         })

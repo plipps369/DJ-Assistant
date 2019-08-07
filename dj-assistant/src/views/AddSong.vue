@@ -51,7 +51,7 @@
 import NavHeader from "@/components/NavHeader.vue";
 
 export default {
-  name: "song",
+  name: "add-song",
   components: {
     NavHeader
   },
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     addSong() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/addSong`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/song/NewSong`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -84,15 +84,7 @@ export default {
             this.addSongErrors = true;
           }
         })
-        .then((token) => {
-          if (token != undefined) {
-            if (token.includes('"')) {
-              token = token.replace(/"/g, '');
-            }
-            auth.saveToken(token);
-            this.$router.push('/');
-          }
-        })
+      
         .catch((err) => console.error(err));
     },
   },

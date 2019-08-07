@@ -21,9 +21,9 @@ namespace DJAssistantAPI.Controllers
             _db = db;
         }
 
-        [HttpPost("Newparty")]
+        [HttpPost("NewParty")]
         [Authorize]
-        public IActionResult NewSong(PartyModel model)
+        public IActionResult NewParty(PartyModel model)
         {
             PartyItem item = new PartyItem();
             string email = User.Identity.Name;
