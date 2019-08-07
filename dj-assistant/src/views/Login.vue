@@ -1,14 +1,21 @@
 <template>
   <div id="login" class="text-center">
     <nav-header></nav-header>
+
+    <img class="loginBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
+    
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+
+      <div class="allInputFields" style="position: relative;">
+      <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Please Sign In</strong></h1>
+     
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
+      <div class="loginText">
       <label for="email" class="sr-only">Email</label>
       <input
         type="email"
@@ -19,6 +26,8 @@
         required
         autofocus
       />
+      </div>
+      <div class="loginText">
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -28,8 +37,13 @@
         v-model="user.password"
         required
       />
+      </div>
+      </div>
+
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      
       <br>
+    
       <button type="Submit" class="btn btn-outline-warning">Sign in</button>
     </form>
   </div>
@@ -88,9 +102,22 @@ export default {
 <style>
 #login{
   margin-top:15vh;
+  position: relative;
+  z-index: 1;
 }
 .form-signin{
   margin-right: 25vw;
   margin-left: 25vw;
+  margin-top: -500px;
+}
+
+.loginText{
+   margin: 20px;
+   text-align: center;
+   position: relative;
+}
+.form-control{
+  position: relative;
+  z-index: 1000;
 }
 </style>

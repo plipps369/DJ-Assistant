@@ -1,65 +1,80 @@
 <template>
   <div id="register" class="text-center">
-     <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
     <nav-header></nav-header>
+  
+       <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
       <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="registrationErrors"
-      >There were problems registering this user.</div>
-      <label for="email" class="sr-only">Email</label>
-      <input
-        type="email"
-        id="email"
-        class="form-control"
-        placeholder="Email"
-        v-model="user.email"
-        required
-        autofocus
-      />
-      <label for="confirmEmail" class="sr-only">Confirm Email</label>
-      <input
-        type="email"
-        id="confirmEmail"
-        class="form-control"
-        placeholder="Confirm Email"
-        v-model="user.confirmEmail"
-        required
-      />
-      <label for="displayName" class="sr-only">Display Name</label>
-      <input
-        type="text"
-        id="displayName"
-        class="form-control"
-        placeholder="Display Name"
-        v-model="user.displayName"
-        required
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
+       
+        <div class="allInputFields" style="position: relative;">
+          <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Create Account</strong></h1>
+            <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="registrationErrors"
+            >There were problems registering this user.</div>
+            <div class="inputText">
+            <label for="email" class="sr-only">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="Email"
+              v-model="user.email"
+              required
+              autofocus
+            />
+            </div>
+            <div class="inputText">
+            <label for="confirmEmail" class="sr-only">Confirm Email</label>
+            <input
+              type="email"
+              id="confirmEmail"
+              class="form-control"
+              placeholder="Confirm Email"
+              v-model="user.confirmEmail"
+              required
+            />
+            </div>
+            <div class="inputText">
+            <label for="displayName" class="sr-only">Display Name</label>
+            <input
+              type="text"
+              id="displayName"
+              class="form-control"
+              placeholder="Display Name"
+              v-model="user.displayName"
+              required
+            />
+            </div>
+            <div class="inputText">
+            <label for="password" class="sr-only">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="user.password"
+              required
+            />
+            </div>
+            <div class="inputText">
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              placeholder="Confirm Password"
+              v-model="user.confirmPassword"
+              required
+            />
+      </div>
+      </div>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <br>
       <button type="Submit" class="btn btn-outline-warning">Submit</button>
+      
     </form>
-
-  </div>
+</div>
+ 
 </template>
 
 <script>
@@ -113,28 +128,25 @@ export default {
 <style>
 #register{
   margin-top:15vh;
-  background-image: url(/assets/Soundwave.jpg);
   position: relative;
   z-index: 1;
 }
+
 .form-register{
-  
   margin-right: 25vw;
   margin-left: 25vw;
-  margin-top: -450px;
+  margin-top: -500px;
 }
+
 .form-control{
   position: relative;
   z-index: 1000;
 }
-/* .registerBackground {
-    background-image: url(/assets/Soundwave.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100%;
-    
-    
-} */
+
+.inputText {
+   margin: 20px;
+   text-align: center;
+}
+  
+
 </style>

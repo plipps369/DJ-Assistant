@@ -65,4 +65,8 @@ export default {
     height: auto;
 }
 
+.landing-page {
+  height: 100%;
+  
+}
 </style>
