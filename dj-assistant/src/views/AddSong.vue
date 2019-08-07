@@ -27,7 +27,7 @@
         v-model="song.artist"
         required
       />
-      <label for="length" class="sr-only">Length</label>
+      <label for="length" >Length</label>
       <input
         type="text"
         id="length"
@@ -35,7 +35,7 @@
         placeholder="Length"
         v-model="song.length"
       />
-      <label for="radio" class="sr-only">Explicit?</label>
+      <label for="radio">Explicit?</label>
       <input type="radio" id="true" value="true" v-model="song.explicit" />
       <label for="true">Yes</label>
       

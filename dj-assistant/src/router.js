@@ -38,7 +38,7 @@ const router = new Router({
       name: 'dashboard',
       component: Dashboard,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -46,7 +46,7 @@ const router = new Router({
       name: 'add-song',
       component: AddSong,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -54,7 +54,7 @@ const router = new Router({
       name: 'create-party',
       component: CreateParty,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {

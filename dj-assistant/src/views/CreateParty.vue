@@ -18,13 +18,13 @@
         required
         autofocus
       />
-      <label for="desc" class="sr-only">Description</label>
+      <label for="description" class="sr-only">Description</label>
       <input
         type="text"
-        id="desc"
+        id="description"
         class="form-control"
         placeholder="Description"
-        v-model="party.desc"
+        v-model="party.description"
       />
 
       <br />
@@ -45,7 +45,7 @@ export default {
     return {
       party: {
         name: "",
-        desc: ""
+        description: ""
       },
       newPartyErrors: false
     };
@@ -76,6 +76,6 @@ export default {
 
 <style>
 #create-main {
-  margin-top: 90vh;
+  margin-top: 120vh;
 }
 </style>
