@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Dashboard from './views/Dashboard.vue'
+import AddSong from './views/AddSong.vue'
 
 Vue.use(Router)
 
@@ -24,7 +25,7 @@ const router = new Router({
       path: '/about',
       name: 'about',
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -36,7 +37,15 @@ const router = new Router({
       name: 'dashboard',
       component: Dashboard,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/add-song',
+      name: 'add-song',
+      component: AddSong,
+      meta: {
+        requiresAuth: false
       }
     },
     {
