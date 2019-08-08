@@ -18,13 +18,13 @@
         required
         autofocus
       />
-      <label for="desc" class="sr-only">Description</label>
+      <label for="description" class="sr-only">Description</label>
       <input
         type="text"
-        id="desc"
+        id="description"
         class="form-control"
         placeholder="Description"
-        v-model="party.desc"
+        v-model="party.description"
       />
 
       <br />
@@ -35,6 +35,7 @@
 
 <script>
 import NavHeader from "@/components/NavHeader.vue";
+import auth from '../auth';
 
 export default {
   name: "create-party",
@@ -45,18 +46,19 @@ export default {
     return {
       party: {
         name: "",
-        desc: ""
+        description: ""
       },
       newPartyErrors: false
     };
   },
   methods: {
-    newParty() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party/NewParty`, {
+    async newParty() {
+      const temp = auth.getToken();
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+            Authorization: "Bearer " + auth.getToken(),
+           "Content-Type": "application/json"
         },
         body: JSON.stringify(this.party)
       })
@@ -76,6 +78,6 @@ export default {
 
 <style>
 #create-main {
-  margin-top: 90vh;
+  margin-top: 120vh;
 }
 </style>
