@@ -1,21 +1,32 @@
 <template>
-  <div>
+  <div id="dashboard" class="text-center">
     <nav-header></nav-header>
+
+      <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
     <div id="dash-main" class="container">
       <div class="row">
-        <div class="col-lg-8">
-      <h1>THIS IS THE DASHBOARD YA'LL</h1>
+       
+      <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>THIS IS THE DASHBOARD YA'LL</strong></h1>
+      <h2>Party List </h2>
       <ul>
+        
         <li v-for="party in parties" :key="party.id">{{party.name}}</li>
       </ul>
       </div>
-      <aside class="col-lg-4">
+      
+        <aside class="buttons">
+        <div class="addSong">
         <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
+        </div>
+        <div class="createParty">
         <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
+      </div>
+     
       </aside>
       </div>
-    </div>
-  </div>
+      </div>
+    
+
 </template>
 
 <script>
@@ -50,7 +61,34 @@ export default {
 
 <style>
 #dash-main {
-  margin-top: 15vh;
-
+  margin-top: 100px;
 }
+
+.buttons  {
+   float: right;
+   padding: 15px;
+   width: 55%;
+   margin-left: -50%;
+   margin-top: 15em;
+   margin-right: 8em;
+   }
+
+.createParty {
+    padding: 20px;
+}
+
+.dashboardPage {
+  height: 100%;
+}
+
+.registerBackground {
+    background-image: url(/assets/Soundwave.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
 </style>

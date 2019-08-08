@@ -1,9 +1,9 @@
 <template>
   <div id="login" class="text-center">
     <nav-header></nav-header>
-
-    <img class="loginBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
-    
+<div>
+    <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
+    </div>
     <form class="form-signin" @submit.prevent="login">
 
       <div class="allInputFields" style="position: relative;">
@@ -108,7 +108,7 @@ export default {
 .form-signin{
   margin-right: 25vw;
   margin-left: 25vw;
-  margin-top: -500px;
+  margin-top: -400px;
 }
 
 .loginText{

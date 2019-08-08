@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="navHeader">
     <!-- <header>
       <div class="container-fluid">
         <div class="col-lg-12">
@@ -101,11 +101,17 @@ export default {
 #logo {
   height: 3rem;
   margin-right: 1.5rem;
+ 
 }
 #header-text {
+ 
   font-size: 4rem;
   vertical-align: middle;
   color: #007bff;
   font-family: "Saira Stencil One", cursive;
+}
+
+.navHeader {
+   padding-bottom: 100px;
 }
 </style>
