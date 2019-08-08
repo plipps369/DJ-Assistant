@@ -66,24 +66,7 @@ export default {
   },
   data() {
     return {
-      genres: [
-        {
-          name: "Rock",
-          id: 1
-        },
-        {
-          name: "Pop",
-          id: 2
-        },
-        {
-          name: "Country",
-          id: 3
-        },
-        {
-          name: "Rap",
-          id: 4
-        }
-        ],
+      genres: [],
       song: {
         title: "",
         artist: "",
@@ -115,6 +98,19 @@ export default {
 
         .catch(err => console.error(err));
     }
+  },
+  created() {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/api/genre`, {
+      method: "GET",
+      headers: {
+        // A Header with our authentication token.
+        Authorization: "Bearer " + auth.getToken()
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.genres = json;
+      });
   }
 };
 </script>
