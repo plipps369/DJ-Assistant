@@ -26,7 +26,7 @@ const router = new Router({
       path: '/about',
       name: 'about',
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -38,7 +38,7 @@ const router = new Router({
       name: 'dashboard',
       component: Dashboard,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -46,7 +46,7 @@ const router = new Router({
       name: 'add-song',
       component: AddSong,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -54,7 +54,7 @@ const router = new Router({
       name: 'create-party',
       component: CreateParty,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -73,8 +73,12 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    { 
+      path: '*', 
+      redirect: '/' 
+    }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication

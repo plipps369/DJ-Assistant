@@ -27,7 +27,7 @@
         v-model="song.artist"
         required
       />
-      <label for="length" >Length</label>
+      <label for="length">Length</label>
       <input
         type="text"
         id="length"
@@ -36,11 +36,19 @@
         v-model="song.length"
       />
       <label for="radio">Explicit?</label>
-      <input type="radio" id="true" value="true" v-model="song.explicit" />
-      <label for="true">Yes</label>
-      
-      <input type="radio" id="false" value="false" v-model="song.explicit" />
-      <label for="false">No</label>
+      <br>
+      <input class="form-check-input" type="radio" id="true" value="true" v-model="song.explicit" />
+      <label class="form-check-label" for="true">Yes</label>
+      <br>
+      <input class="form-check-input" type="radio" id="false" value="false" v-model="song.explicit" />
+      <label class="form-check-label" for="false">No</label>
+      <br>
+      <br>
+      <span>Genre(s) - Hold ctrl to make multiple selections</span>
+      <br>
+      <select class="form-control" v-model="song.genres" multiple>Genre(s)
+        <option v-for="object in genres" :key="object" :value="object.id">{{object.name}}</option>
+      </select>
       <br>
       <button type="Submit" class="btn btn-outline-warning">Submit Song</button>
     </form>
@@ -50,6 +58,7 @@
 <script>
 import NavHeader from "@/components/NavHeader.vue";
 
+
 export default {
   name: "add-song",
   components: {
@@ -57,42 +66,61 @@ export default {
   },
   data() {
     return {
+      genres: [
+        {
+          name: "Rock",
+          id: 1
+        },
+        {
+          name: "Pop",
+          id: 2
+        },
+        {
+          name: "Country",
+          id: 3
+        },
+        {
+          name: "Rap",
+          id: 4
+        }
+        ],
       song: {
         title: "",
         artist: "",
         length: 0,
         explicit: false,
-        genresId: []
+        genres: []
       },
       addSongErrors: false
     };
   },
+
   methods: {
     addSong() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/song/NewSong`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.song),
+        body: JSON.stringify(this.song)
       })
-        .then((response) => {
+        .then(response => {
           if (response.ok) {
             return response.text();
           } else {
             this.addSongErrors = true;
           }
         })
-      
-        .catch((err) => console.error(err));
-    },
-  },
+
+        .catch(err => console.error(err));
+    }
+  }
 };
 </script>
 
 <style>
 #add-main {
-  margin-top: 90vh;
+  margin-top: 80vh;
 }
 </style>

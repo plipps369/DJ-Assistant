@@ -34,7 +34,9 @@
 </template>
 
 <script>
+import { APIService } from "@/APIService";
 import NavHeader from "@/components/NavHeader.vue";
+const apiService = new APIService();
 import auth from '../auth';
 
 export default {
@@ -52,28 +54,22 @@ export default {
     };
   },
   methods: {
-    async newParty() {
-      const temp = auth.getToken();
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
-        method: "POST",
-        headers: {
-            Authorization: "Bearer " + auth.getToken(),
-           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.party)
-      })
-        .then(response => {
-          if (response.ok) {
-            return response.text();
-          } else {
-            this.newPartyErrors = true;
-          }
-        })
+//     newParty() {
+      
+//       })
+//         .then(response => {
+//           if (response.ok) {
+//             return response.text();
+//           } else {
+//             this.newPartyErrors = true;
+//           }
+//         })
 
-        .catch(err => console.error(err));
-    }
-  }
-};
+//         .catch(err => console.error(err));
+//     }
+//   }
+ }
+}
 </script>
 
 <style>

@@ -1,15 +1,8 @@
 <template>
   <div id="login" class="text-center">
     <nav-header></nav-header>
-<<<<<<< HEAD
-<div>
-    <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
-    </div>
-    <form class="form-signin" @submit.prevent="login">
-=======
 
     <img class="loginBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image" />
->>>>>>> a9409a07e7596ee40be5125a4b43891261ff4cba
 
     <form class="form-signin" @submit.prevent="login">
       <div class="allInputFields" style="position: relative;">
@@ -90,6 +83,10 @@ export default {
       try {
         let token = await apiService.login(this.user);
         auth.saveToken(token);
+        this.$router.push({
+              path: "/dashboard",
+              
+            });
       } catch (error) {
         this.error = error;
         this.invalidCredentials = true

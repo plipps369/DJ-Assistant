@@ -22,7 +22,7 @@ namespace DJAssistantAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult NewParty([FromBody] PartyModel model)
         {
             PartyItem item = new PartyItem();
@@ -36,13 +36,14 @@ namespace DJAssistantAPI.Controllers
             return Ok();
         }
 
-        // GET api/values
-        //[HttpGet]
-        //[Authorize]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    List<PartyItem> parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
-        //    return Ok(parties);
-        //}
+        //GET api/values
+       [HttpGet]
+       //[Authorize]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+
+            List<PartyItem> parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
+            return Ok(parties);
+        }
     }
 }
