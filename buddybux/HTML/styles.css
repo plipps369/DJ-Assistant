@@ -1,0 +1,91 @@
+.navbar-default {
+    background-color: blue;
+    color: black;
+}
+a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+
+  
+#login {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-self: center;
+    width: 400px;
+    border: solid 2px;
+    padding-top: 10px;
+}
+
+.userInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    padding: unset;
+    
+}
+#textBox{
+    width: 100px;
+    padding: unset;
+}
+#box1{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+#submitButton{
+    align-self: center;
+    margin: 10px;
+    width: 150px;
+}
+
+#loginRow{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+#input1{
+    width: 200px;
+    align-self: flex-end;
+}
+
+#Title{
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold; 
+
+}
+
+#upload{
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+#file{
+    padding-right: 0px;
+}
+
+#flexBox{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly
+}
+
+#product {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-self: center;
+    width: 300px;
+    border: solid 2px;
+    padding-top: 10px;
+    text: center;
+}
