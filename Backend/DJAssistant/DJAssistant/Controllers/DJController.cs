@@ -88,7 +88,7 @@ namespace DJAssistantAPI.Controllers
             if (dJ != null && passwordHasher.VerifyHashMatch(dJ.Hash, model.password, dJ.Salt))
             {
                 // Create an authentication token
-                var token = tokenGenerator.GenerateToken(dJ.DisplayName, "DJ"
+                var token = tokenGenerator.GenerateToken(dJ.Email, "DJ"
                     );
 
                 // Switch to 200 OK

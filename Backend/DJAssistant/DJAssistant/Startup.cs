@@ -33,15 +33,26 @@ namespace DJAssistant
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy",
                 builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-            });
+            
 
             // Enables automatic authentication token.
             // The token is expected to be included as a bearer authentication token.
@@ -68,7 +79,21 @@ namespace DJAssistant
             services.AddTransient<IDJAssistantDAO>(m => new DJAssistantDAO(Configuration.GetConnectionString("DefaultConnection")));
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (context) =>
+                {
+                    // Get all of the errors in a list
+                    var errors = context.ModelState.Values.SelectMany(x => x.Errors.Select(e => e.ErrorMessage)).ToList();
+                    // Create a result object
+                    var result = new
+                    {
+                        Message = "Validation errors",
+                        Errors = errors
+                    };
+                    return new BadRequestObjectResult(result);
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,8 +119,12 @@ namespace DJAssistant
             });
 
             app.UseCors("CorsPolicy");
-            app.UseHttpsRedirection();
+
+            app.UseAuthentication();
             app.UseMvc();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
         }
     }
 }

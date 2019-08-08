@@ -34,10 +34,10 @@
 </template>
 
 <script>
-import { APIService } from "@/APIService";
+//import { APIService } from "@/APIService";
 import NavHeader from "@/components/NavHeader.vue";
-const apiService = new APIService();
-import auth from '../auth';
+//const apiService = new APIService();
+import auth from "../auth";
 
 export default {
   name: "create-party",
@@ -54,22 +54,31 @@ export default {
     };
   },
   methods: {
-//     newParty() {
-      
-//       })
-//         .then(response => {
-//           if (response.ok) {
-//             return response.text();
-//           } else {
-//             this.newPartyErrors = true;
-//           }
-//         })
+    newParty() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
+        method: "POST",
+        headers: {
+           Authorization: "Bearer " + auth.getToken(),
+           "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.party)
+      })
+        .then(response => {
+          if (response.ok) {
+            this.$router.push({
+              path: "/dashboard",
+              });
+            return response.text();
+            
+          } else {
+            this.newPartyErrors = true;
+          }
+        })
 
-//         .catch(err => console.error(err));
-//     }
-//   }
- }
-}
+        .catch(err => console.error(err));
+    }
+  }
+};
 </script>
 
 <style>

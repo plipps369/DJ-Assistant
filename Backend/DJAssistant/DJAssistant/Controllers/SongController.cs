@@ -6,6 +6,7 @@ using System.Transactions;
 using DJAssistantAPI.Models;
 using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models.Database;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

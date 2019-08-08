@@ -57,7 +57,7 @@
 
 <script>
 import NavHeader from "@/components/NavHeader.vue";
-
+import auth from "../auth";
 
 export default {
   name: "add-song",
@@ -100,8 +100,8 @@ export default {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/song/NewSong`, {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+          Authorization: "Bearer " + auth.getToken(),
+           "Content-Type": "application/json"
         },
         body: JSON.stringify(this.song)
       })

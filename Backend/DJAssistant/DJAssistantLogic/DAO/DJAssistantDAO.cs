@@ -265,8 +265,9 @@ namespace DJAssistantLogic.DAO
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                var reader = cmd.ExecuteReader();
                 cmd.Parameters.AddWithValue("@DJid", DJId);
+                var reader = cmd.ExecuteReader();
+                
                 while (reader.Read())
                 {
                     parties.Add(GetPartyItemFromReader(reader));

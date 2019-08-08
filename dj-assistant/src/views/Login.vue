@@ -2,79 +2,71 @@
   <div id="login" class="text-center">
     <nav-header></nav-header>
 
-    <img class="loginBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image" />
-
+    
+    
     <form class="form-signin" @submit.prevent="login">
-      <div class="allInputFields" style="position: relative;">
-        <h1
-          class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
-          data-wow-delay="0.3s"
-        >
-          <strong>Please Sign In</strong>
-        </h1>
 
-        <div
-          class="alert alert-danger"
-          role="alert"
-          v-if="invalidCredentials"
-        >Invalid username and password!</div>
-        <div
-          class="alert alert-success"
-          role="alert"
-          v-if="this.$route.query.registration"
-        >Thank you for registering, please sign in.</div>
-        <div class="loginText">
-          <label for="email" class="sr-only">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            placeholder="Email"
-            v-model="user.email"
-            required
-            autofocus
-          />
-        </div>
-        <div class="loginText">
-          <label for="password" class="sr-only">Password</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-          />
-        </div>
+      <div class="allInputFields" style="position: relative;">
+      <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Please Sign In</strong></h1>
+     
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+        Invalid username and password!
+      </div>
+      <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
+        Thank you for registering, please sign in.
+      </div>
+      <div class="loginText">
+      <label for="email" class="sr-only">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="Email"
+        v-model="user.email"
+        required
+        autofocus
+      />
+      </div>
+      <div class="loginText">
+      <label for="password" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder="Password"
+        v-model="user.password"
+        required
+      />
+      </div>
       </div>
 
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-
-      <br />
-
+      
+      <br>
+    
       <button type="Submit" class="btn btn-outline-warning">Sign in</button>
     </form>
   </div>
 </template>
 
 <script>
-import auth from "../auth";
-import NavHeader from "@/components/NavHeader.vue";
+import auth from '../auth';
 import { APIService } from "@/APIService";
+import NavHeader from "@/components/NavHeader.vue";
 const apiService = new APIService();
 
 export default {
-  name: "login",
+  name: 'login',
   components: {
     NavHeader
   },
   data() {
     return {
       user: {
-        email: "",
-        password: ""
+        email: '',
+        password: '',
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
@@ -97,23 +89,23 @@ export default {
 </script>
 
 <style>
-#login {
-  margin-top: 15vh;
+#login{
+  margin-top:190vh;
   position: relative;
   z-index: 1;
 }
-.form-signin {
+.form-signin{
   margin-right: 25vw;
   margin-left: 25vw;
   margin-top: -400px;
 }
 
-.loginText {
-  margin: 20px;
-  text-align: center;
-  position: relative;
+.loginText{
+   margin: 20px;
+   text-align: center;
+   position: relative;
 }
-.form-control {
+.form-control{
   position: relative;
   z-index: 1000;
 }

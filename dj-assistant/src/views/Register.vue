@@ -1,8 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <nav-header></nav-header>
-  
-       <img class="registerBackground" src="@/assets/Soundwave.jpg" fluid-grow alt="Fluid-grow image"/>
+
       <form class="form-register" @submit.prevent="register">
        
         <div class="allInputFields" style="position: relative;">
@@ -127,7 +126,7 @@ export default {
 
 <style>
 #register{
-  margin-top:15vh;
+  margin-top:100vh;
   position: relative;
   z-index: 1;
 }

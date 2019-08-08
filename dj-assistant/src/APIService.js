@@ -17,9 +17,9 @@ export class APIService {
 
 
 
-    createParty() {
+    createParty(party) {
         const url = `${API_URL}/api/party`;
-        return axios.post(url).then(response => response.data);
+        return axios.post(url, party).then(response => response.data);
     }
     getParties() {
         const url = `${API_URL}/api/party`;

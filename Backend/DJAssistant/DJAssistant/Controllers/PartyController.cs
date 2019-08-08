@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DJAssistantAPI.Models;
 using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models.Database;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace DJAssistantAPI.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult NewParty([FromBody] PartyModel model)
         {
             PartyItem item = new PartyItem();
@@ -37,8 +38,8 @@ namespace DJAssistantAPI.Controllers
         }
 
         //GET api/values
-       [HttpGet]
-       //[Authorize]
+        [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
 
