@@ -6,7 +6,7 @@
 <b-card-group deck>
   <div id="landing-page">
       <div class="djAbout">
-        <b-card bg-variant="dark" text-variant="white" header="About DJ App" class="text-center">
+        <b-card bg-variant="dark" text-variant="white" title="About DJ App" class="text-center">
           <b-card-text>Lorem ipsum dolor sit amet, mel mucius consetetur ut, 
               ad novum possit sea. Usu ex voluptatibus reprehendunt, mazim prodesset nec no. 
               Et tempor utroque constituam his, in mel erant ludus. Vidit percipit nam ea, 
@@ -76,6 +76,9 @@ export default {
     
 }
 
+#landing-page {
+  margin-top: 5%;
+}
 
 body {
    
@@ -88,8 +91,5 @@ body {
     height: auto; 
 }
 
-#app {
-  vuetify: new Vuetify(),
-}
 
 </style>
