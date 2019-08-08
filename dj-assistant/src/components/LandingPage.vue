@@ -58,15 +58,15 @@ export default {
 
 body {
    
-    background-color: purple;
-    background-image: "url('Soundwave.jpg')";
+    background-image: url('~@/assets/Soundwave.jpg') !important;
+  
     
-   /* background-position: center center;
+   background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     width: 100%;
-    height: auto; */
+    height: auto; 
 }
 
 </style>
