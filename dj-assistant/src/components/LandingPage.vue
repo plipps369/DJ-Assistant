@@ -57,11 +57,8 @@ export default {
 
 
 body {
-   
-    background-image: url('~@/assets/Soundwave.jpg') !important;
-  
-    
-   background-position: center center;
+    background-image: url('~@/assets/Soundwave.jpg');
+    background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

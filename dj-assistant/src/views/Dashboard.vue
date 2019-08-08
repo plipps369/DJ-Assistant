@@ -2,31 +2,25 @@
   <div id="dashboard" class="text-center">
     <nav-header></nav-header>
 
-      
     <div id="dash-main" class="container">
-      <div class="row">
-       
-      <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>THIS IS THE DASHBOARD YA'LL</strong></h1>
-      <h2>Party List </h2>
-      <ul>
-        
-        <li v-for="party in parties" :key="party.id">{{party.name}}</li>
-      </ul>
-      </div>
+      <h1 id="display-name" data-wow-delay="0.3s"><strong>Display Name</strong></h1>
+    </div>
+
+        <h2 id="party-list">Party List </h2>
+          <ul>
+            <li v-for="party in parties" :key="party.id">{{party.name}}</li>
+          </ul>
       
-        <aside class="buttons">
-        <div class="addSong">
+    <div class="buttons">
+      <div class="addSong">
         <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
-        </div>
-        <div class="createParty">
+      </div>
+
+      <div class="createParty">
         <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
-      </div>
-     
-      </aside>
-      </div>
-      </div>
-      
-    
+      </div>     
+    </div>
+  </div>      
 
 </template>
 
@@ -65,31 +59,45 @@ export default {
   margin-top: 100px;
 }
 
-.buttons  {
-   float: right;
-   padding: 15px;
-   width: 55%;
-   margin-left: -50%;
-   margin-top: 15em;
-   margin-right: 8em;
-   }
-
-.createParty {
-    padding: 20px;
-}
-
-.dashboardPage {
-  height: 100%;
-}
-
 .registerBackground {
-    background-image: url('/assets/Soundwave.jpg');
+    background-image: url('~@/assets/dashboard.png') !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     width: 100%;
     height: auto;
+}
+
+#dash-main {
+  grid-area: dash-main;
+  display: flex;
+  flex-direction: row;
+  flex-flow: center;
+  justify-content: center;
+}
+
+.party-list {
+  display: block;
+  grid-area: party-list;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "dash-main dash-main"
+  "party-list buttons"
+  "party-list buttons";
+}
+
+.buttons {
+  grid-area: buttons;
+  float: right;
+} 
+
+.createParty {
+  padding: 20px;
 }
 
 </style>
