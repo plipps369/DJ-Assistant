@@ -47,7 +47,7 @@
       <button type="Submit" id="myButton" class="btn btn-outline-warning">SIGN IN</button>
 
 
-      <router-link :to="{ name: 'register' }" id="registerPrompt">Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" id="registerPrompt"> Need an account?</router-link>
     </form>
   </div>
 </template>
@@ -93,7 +93,7 @@ export default {
 
 <style>
 #login{
-  margin-top:190vh;
+  margin-top:15vh;
   position: relative;
   z-index: 1;
 }
@@ -161,7 +161,7 @@ color: white;
 }
 
 #registerPrompt {
-	-moz-box-shadow:inset 0px 1px 0px 0px #8a8087;
+-moz-box-shadow:inset 0px 1px 0px 0px #8a8087;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #8a8087;
 	box-shadow:inset 0px 1px 0px 0px #8a8087;
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9e8090), color-stop(1, #241b20));
@@ -180,11 +180,11 @@ color: white;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Trebuchet MS;
-	font-size:15px;
+	font-size:12px;
 	font-weight:bold;
-	padding:15px 26px;
+	padding:21px 26px;
 	text-decoration:none;
-	text-shadow:0px 3px 45px #140e11;
+	text-shadow:0px 3px 45px #030002;
 }
 #registerPrompt {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241b20), color-stop(1, #9e8090));

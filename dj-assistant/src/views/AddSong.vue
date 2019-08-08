@@ -2,12 +2,13 @@
   <div id="add-main" class="text-center">
     <nav-header></nav-header>
     <form class="form-register" @submit.prevent="addSong">
-      <h1 class="h3 mb-3 font-weight-normal">New Song</h1>
+      <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Add A New Song</strong></h1>
       <div
         class="alert alert-danger"
         role="alert"
         v-if="addSongErrors"
       >There were problems adding this song</div>
+      <div class="inputText">
       <label for="title" class="sr-only">Title</label>
       <input
         type="text"
@@ -18,6 +19,8 @@
         required
         autofocus
       />
+      </div>
+      <div class="inputText">
       <label for="artist" class="sr-only">Artist</label>
       <input
         type="text"
@@ -27,7 +30,9 @@
         v-model="song.artist"
         required
       />
-      <label for="length">Length</label>
+       </div>
+      <div class="inputText">
+      <label for="length" >Length</label>
       <input
         type="text"
         id="length"
@@ -35,6 +40,8 @@
         placeholder="Length"
         v-model="song.length"
       />
+       </div>
+      
       <label for="radio">Explicit?</label>
       <br>
       <input class="form-check-input" type="radio" id="true" value="true" v-model="song.explicit" />

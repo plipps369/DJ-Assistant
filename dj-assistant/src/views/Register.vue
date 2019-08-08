@@ -126,7 +126,7 @@ export default {
 
 <style>
 #register{
-  margin-top:100vh;
+  margin-top:67vh;
   position: relative;
   z-index: 1;
 }
