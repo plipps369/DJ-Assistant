@@ -365,6 +365,7 @@ namespace DJAssistantLogic.DAO
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@GenreId", item.GenreId);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
                 cmd.ExecuteScalar();
             }
 

@@ -53,7 +53,7 @@
       <br>
       <span>Genre(s) - Hold ctrl to make multiple selections</span>
       <br>
-      <select class="form-control" v-model="song.genres" multiple>Genre(s)
+      <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
         <option v-for="object in genres" :key="object" :value="object.id">{{object.name}}</option>
       </select>
       <br>
@@ -79,7 +79,7 @@ export default {
         artist: "",
         length: 0,
         explicit: false,
-        genres: []
+        GenresId: []
       },
       addSongErrors: false
     };
