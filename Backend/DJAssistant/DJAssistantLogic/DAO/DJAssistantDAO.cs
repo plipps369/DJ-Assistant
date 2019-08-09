@@ -253,8 +253,30 @@ namespace DJAssistantLogic.DAO
         }
         public PartyItem GetPartyItemById(int partyId)
         {
-            throw new NotImplementedException();
+            PartyItem party = null;
+            const string sql = "SELECT * From [party] WHERE id = @partyId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", partyId);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    party = GetPartyItemFromReader(reader);
+                }
+            }
+
+            //if (user == null)
+            //{
+            //    throw new Exception("User does not exist.");
+            //}
+
+            return party;
         }
+
         public List<PartyItem> GetPartyItemsByDJId(int DJId)
         {
             List<PartyItem> parties = new List<PartyItem>();

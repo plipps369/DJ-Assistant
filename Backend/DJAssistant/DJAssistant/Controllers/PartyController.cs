@@ -46,5 +46,13 @@ namespace DJAssistantAPI.Controllers
             List<PartyItem> parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
             return Ok(parties);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<string> GetPartyById(int id)
+        {
+            PartyItem party = _db.GetPartyItemById(id);
+
+            return Ok(party);
+        }
     }
 }
