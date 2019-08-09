@@ -10,9 +10,7 @@
 
       <div id="party-list">
         <h2>Party List</h2>
-        <ul>
-          <li v-for="party in parties" :key="party.id">{{party.name}}</li>
-        </ul>
+        <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-warning">{{party.name}}</router-link>
       </div>
 
       <div class="buttons">

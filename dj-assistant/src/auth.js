@@ -49,5 +49,9 @@ export default {
   },
   logout() {
     localStorage.removeItem('Authorization');
+    this.$router.push({
+      path: "/login",
+      query: { logout: "success" }
+    });
   },
 };

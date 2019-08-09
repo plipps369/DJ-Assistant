@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DJAssistantAPI.Controllers
@@ -21,6 +22,7 @@ namespace DJAssistantAPI.Controllers
 
         // GET api/values
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
             List<GenreItem> genres = _db.GetGenreItems();

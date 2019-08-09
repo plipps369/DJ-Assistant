@@ -43,7 +43,7 @@
               <em>User</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item v-on:click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -89,9 +89,21 @@
   </div>
 </template>
 
+
+
 <script>
+
+import auth from "../auth";
+
+
 export default {
-  name: "nav-header"
+  name: "nav-header",
+  methods: {
+    logout() {
+      auth.logout();
+    }
+  }
+ 
 };
 </script>
 
