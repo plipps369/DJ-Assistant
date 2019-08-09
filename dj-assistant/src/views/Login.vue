@@ -15,6 +15,9 @@
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
+      <div class="alert alert-success" role="alert" v-if="this.$route.query.logout">
+        Thank you for registering, please sign in.
+      </div>
       <div class="loginText">
       <label for="email" class="sr-only">Email</label>
       <input

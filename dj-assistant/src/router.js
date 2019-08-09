@@ -7,6 +7,7 @@ import Register from './views/Register.vue'
 import Dashboard from './views/Dashboard.vue'
 import AddSong from './views/AddSong.vue'
 import CreateParty from './views/CreateParty.vue'
+import Party from './views/Party.vue'
 
 Vue.use(Router)
 
@@ -34,9 +35,17 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/dashboard',
+      path: '/dashboard/',
       name: 'dashboard',
       component: Dashboard,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/party/:id',
+      name: 'party',
+      component: Party,
       meta: {
         requiresAuth: false
       }
