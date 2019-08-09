@@ -42,15 +42,19 @@ namespace DJAssistantAPI.Controllers
                 songDJ.SongId = item.Id;
                 songDJ.DJId = _db.GetDJItemByEmail(User.Identity.Name).Id;
                 _db.AddSongDJItem(songDJ);
-                _db.AddSongDJItem(songDJ);
+
                 // Add genre linked to song id
-                foreach(int x in model.GenresId)
+                if (model.GenresId != null)
                 {
-                    SongGenreItem songGenre = new SongGenreItem();
-                    songGenre.GenreId = x;
-                    songGenre.SongId = item.Id;
-                    _db.AddSongGenreItem(songGenre);
+                    foreach (int x in model.GenresId)
+                    {
+                        SongGenreItem songGenre = new SongGenreItem();
+                        songGenre.GenreId = x;
+                        songGenre.SongId = item.Id;
+                        _db.AddSongGenreItem(songGenre);
+                    }
                 }
+                scope.Complete();
             }
             return Ok();
         }

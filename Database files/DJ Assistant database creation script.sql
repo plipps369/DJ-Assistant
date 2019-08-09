@@ -56,16 +56,16 @@ Go
 GO
 
 Create Table Song_Genre (
-	Song_id integer identity NOT NULL,
+	Song_id integer NOT NULL,
 	Genre_id integer  NOT NULL,
-	CONSTRAINT pk_Song_Genre_Song_id PRIMARY KEY (Song_id),
+	CONSTRAINT pk_Song_Genre_Song_id PRIMARY KEY (Song_id, Genre_id),
 );
 Go
 
 Create Table Song_DJ (
-	Song_id integer identity NOT NULL,
+	Song_id integer NOT NULL,
 	DJ_id integer NOT NULL,
-	CONSTRAINT pk_Library_DJ_id PRIMARY KEY (DJ_id),
+	CONSTRAINT pk_Library_DJ_id PRIMARY KEY (DJ_id, Song_id),
 );
 Go
 
@@ -75,7 +75,7 @@ Create Table Party_Song (
 	Party_id integer  NOT NULL,
 	Play_Order integer NOT NULL,
 	Played bit NOT NULL,
-	CONSTRAINT pk_Party_Song_Song_id PRIMARY KEY (Song_id),
+	CONSTRAINT pk_Party_Song_Song_id PRIMARY KEY (id),
 );
 Go
 

@@ -49,7 +49,7 @@ namespace DJAssistantLogic.DAO
 
         #region SongDJ
 
-        int AddSongDJItem(SongDJItem item);
+        void AddSongDJItem(SongDJItem item);
         bool DeleteSongDJItem(SongDJItem item);
 
         #endregion

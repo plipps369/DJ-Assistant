@@ -319,9 +319,27 @@ namespace DJAssistantLogic.DAO
 
         #region SongDJ
 
-        public int AddSongDJItem(SongDJItem item)
+        public void AddSongDJItem(SongDJItem item)
         {
-            throw new NotImplementedException();
+            const string sql = "INSERT [Song_DJ] (" +
+                                    "Song_id, " +
+                                    "DJ_id) " +
+                               "VALUES (" +
+                                    "@SongId, " +
+                                    "@DJId);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@DJId", item.DJId);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                
+                cmd.ExecuteScalar();
+            }
+
+            return;
         }
         public bool DeleteSongDJItem(SongDJItem item)
         {
