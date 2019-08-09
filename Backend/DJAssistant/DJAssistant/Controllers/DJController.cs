@@ -7,6 +7,7 @@ using DJAssistantAPI.Providers.Security;
 using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models;
 using DJAssistantLogic.Models.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DJAssistantAPI.Controllers
@@ -97,6 +98,12 @@ namespace DJAssistantAPI.Controllers
 
             return result;
         }
-    }
 
+        [HttpGet]
+        [Authorize]
+        public IActionResult CurrentDJ(DJLoginModel model)
+        {
+            return Ok(_db.GetDJItemByEmail(User.Identity.Name));
+        }
+    }
 }
