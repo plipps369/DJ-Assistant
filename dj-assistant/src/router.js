@@ -35,7 +35,7 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/dashboard',
+      path: '/dashboard/',
       name: 'dashboard',
       component: Dashboard,
       meta: {
