@@ -41,14 +41,17 @@
         v-model="song.length"
       />
        </div>
-      
-      <label for="radio">Explicit?</label>
-      <br>
-      <input class="form-check-input" type="radio" id="true" value="true" v-model="song.explicit" />
-      <label class="form-check-label" for="true">Yes</label>
-      <br>
-      <input class="form-check-input" type="radio" id="false" value="false" v-model="song.explicit" />
-      <label class="form-check-label" for="false">No</label>
+      <div class="radioButtons">
+        <label for="radio">Explicit?</label>
+          <div id="trueButton">
+            <input class="form-radio inline-block" type="radio" id="true" value="true"  v-model="song.explicit" />
+            <label class="form-check-label inline-block" for="true">Yes</label>
+          </div>
+          <div id="falseButton">
+            <input class="form-radio inline-block" type="radio" id="false" value="false" v-model="song.explicit" />
+            <label class="form-check-label inline-block" for="false">No</label>
+          </div>
+      </div>
       <br>
       <br>
       <span>Genre(s) - Hold ctrl to make multiple selections</span>
@@ -124,6 +127,68 @@ export default {
 
 <style>
 #add-main {
-  margin-top: 80vh;
+  margin-top: 70vh;
+}
+
+.form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: #666;
+     top: 10px;
+     height: 30px;
+     width: 30px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;     
+     margin-right: 7px;
+     outline: none;
+     
+    
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+     background-color: #f1f1f1;
+}
+label
+{
+     font: 15px/1.7 'Open Sans', sans-serif;
+     color: #333;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     cursor: pointer;
+     
+} 
+
+.radioButtons {
+ 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.trueButton {
+  margin-right: 80px;
+}
+
+label {
+  padding-top: 20px;
 }
 </style>
