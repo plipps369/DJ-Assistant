@@ -76,7 +76,6 @@ export default {
         auth.saveToken(token);
         this.$router.push({
               path: "/dashboard",
-              
             });
       } catch (error) {
         this.error = error;
@@ -89,7 +88,7 @@ export default {
 
 <style>
 #login{
-  margin-top:15vh;
+  margin-top:50px;
   position: relative;
   z-index: 1;
 }

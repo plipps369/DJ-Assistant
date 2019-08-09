@@ -131,7 +131,7 @@ export default {
 
 <style>
 #register{
-  margin-top:67vh;
+  margin-top: 500px;
   position: relative;
   z-index: 1;
 }
@@ -148,7 +148,8 @@ export default {
 }
 
 .inputText {
-   margin: 20px;
+   margin-top: 20px;
+   margin-bottom: 20px;
    text-align: center;
 }
   

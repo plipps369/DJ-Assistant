@@ -31,7 +31,7 @@
         required
       />
        </div>
-      <div class="inputText">
+      <!--<div class="inputText">
       <label for="length" >Length</label>
       <input
         type="text"
@@ -40,7 +40,7 @@
         placeholder="Length"
         v-model="song.length"
       />
-       </div>
+       </div>-->
       <div class="radioButtons">
         <label for="radio">Explicit?</label>
           <div id="trueButton">
@@ -53,14 +53,21 @@
           </div>
       </div>
       <br>
-      <br>
-      <span>Genre(s) - Hold ctrl to make multiple selections</span>
-      <br>
-      <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
+   
+
+       <b-card header-bg-variant="dark" text-variant="black">
+          <b-card-text>
+            Genre(s) - Hold ctrl to make multiple selections
+          </b-card-text>
+            <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
         <option v-for="object in genres" :key="object" :value="object.id">{{object.name}}</option>
       </select>
+      </b-card>
       <br>
-      <button type="Submit" class="btn btn-outline-warning">Submit Song</button>
+      <button type="Submit" class="btn btn-outline-warning" id="songSubmit">Submit Song</button>
+      <router-link to="/dashboard">
+      <button type="Cancel" class="btn btn-outline-warning" id="cancelRequest">Cancel Add</button>
+      </router-link>
     </form>
   </div>
 </template>
@@ -108,6 +115,7 @@ export default {
 
         .catch(err => console.error(err));
     }
+  
   },
   created() {
     fetch(`${process.env.VUE_APP_REMOTE_API}/api/genre`, {
@@ -127,7 +135,7 @@ export default {
 
 <style>
 #add-main {
-  margin-top: 70vh;
+  margin-top: 465px;
 }
 
 .form-radio
@@ -178,10 +186,15 @@ label
 } 
 
 .radioButtons {
- 
+ border: 1px solid #b0c5da;
+ background: white;
+ border-radius: 5px;
+ padding-bottom: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  justify-self: center;
+ 
 }
 
 .trueButton {
@@ -191,4 +204,96 @@ label
 label {
   padding-top: 20px;
 }
+
+form {
+  align-content: center;
+}
+
+#songSubmit {
+  -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff4c49), color-stop(1, #ef027d));
+	background:-moz-linear-gradient(top, #ff5bb0 5%, #ff4c49 100%);
+	background:-webkit-linear-gradient(top, #ff5bb0 5%, #ff4c49 100%);
+	background:-o-linear-gradient(top, #ff5bb0 5%, #ff4c49 100%);
+	background:-ms-linear-gradient(top, #ff5bb0 5%, #ff4c49 100%);
+	background:linear-gradient(to bottom, #ff5bb0 5%, #ff4c49 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d',GradientType=0);
+	background-color: #ff4c49;
+	-moz-border-radius:27px;
+	-webkit-border-radius:27px;
+	border-radius:27px;
+	border:1px solid #ee1eb5;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:22px;
+	font-weight:bold;
+	padding:9px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #c70067;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  
+}
+#songSubmit:hover {
+	background-color:#ff4c49;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff4c49), color-stop(1, #ff5bb0));
+	background:-moz-linear-gradient(top, #ff4c49 5%, #ff5bb0 100%);
+	background:-webkit-linear-gradient(top, #ff4c49 5%, #ff5bb0 100%);
+	background:-o-linear-gradient(top, #ff4c49 5%, #ff5bb0 100%);
+	background:-ms-linear-gradient(top, #ff4c49 5%, #ff5bb0 100%);
+	background:linear-gradient(to bottom, #ff4c49 5%, #ff5bb0 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4c49', endColorstr='#ff5bb0',GradientType=0);
+	background-color:#ff4c49;
+}
+#songSubmit:active {
+	
+	top:1px;
+}
+
+#cancelRequest {
+	-moz-box-shadow:inset 0px 1px 0px 0px #8a8087;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #8a8087;
+	box-shadow:inset 0px 1px 0px 0px #8a8087;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9e8090), color-stop(1, #241b20));
+	background:-moz-linear-gradient(top, #9e8090 5%, #241b20 100%);
+	background:-webkit-linear-gradient(top, #9e8090 5%, #241b20 100%);
+	background:-o-linear-gradient(top, #9e8090 5%, #241b20 100%);
+	background:-ms-linear-gradient(top, #9e8090 5%, #241b20 100%);
+	background:linear-gradient(to bottom, #9e8090 5%, #241b20 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e8090', endColorstr='#241b20',GradientType=0);
+	background-color:#9e8090;
+	-moz-border-radius:25px;
+	-webkit-border-radius:25px;
+	border-radius:25px;
+	border:1px solid #12010d;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:12px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+	text-shadow:0px 3px 45px #030002;
+  display: block;
+  width: 100%;
+}
+#cancelRequest:hover {
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241b20), color-stop(1, #9e8090));
+	background:-moz-linear-gradient(top, #241b20 5%, #9e8090 100%);
+	background:-webkit-linear-gradient(top, #241b20 5%, #9e8090 100%);
+	background:-o-linear-gradient(top, #241b20 5%, #9e8090 100%);
+	background:-ms-linear-gradient(top, #241b20 5%, #9e8090 100%);
+	background:linear-gradient(to bottom, #241b20 5%, #9e8090 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#241b20', endColorstr='#9e8090',GradientType=0);
+	background-color:#241b20;
+}
+#cancelRequest:active {
+
+	top:1px;
+}
+
 </style>
