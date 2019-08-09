@@ -4,16 +4,32 @@
     <div id="dashboard">
       <div id="dash-main" class="container">
         <h1 id="display-name" data-wow-delay="0.3s">
-          <strong>Display Name</strong>
+          <strong>DJ Dashboard</strong>
         </h1>
       </div>
 
       <div id="party-list">
-        <h2>Party List</h2>
-        <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-warning">{{party.name}}</router-link>
+        <b-card bg-variant="dark" text-variant="white" title="Party List" class="text-center">
+          <b-card-text>
+              <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-warning">{{party.name}}</router-link>
+          </b-card-text>
+        </b-card>
+
       </div>
 
-      <div class="buttons">
+        <b-card bg-variant="dark" text-variant="white" >
+            <div class="buttons">
+              <div class="addSong">
+                <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
+              </div>
+
+              <div class="createParty">
+                <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
+              </div>
+            </div>
+        </b-card>
+
+      <!-- <div class="buttons">
         <div class="addSong">
           <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
         </div>
@@ -21,7 +37,7 @@
         <div class="createParty">
           <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -83,14 +99,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
+  align-items: center;
   grid-area: party-list;
 }
 
 #dashboard {
   display: grid;
+  /* grid-gap: ; */
+
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "dash-main dash-main"
+    "party-list buttons"
     "party-list buttons"
     "party-list buttons";
 }
@@ -98,7 +118,7 @@ export default {
 .buttons {
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
+  justify-content: space-around;
   grid-area: buttons;
 }
 
