@@ -342,7 +342,30 @@ namespace DJAssistantLogic.DAO
 
         public int AddPartySongItem(PartySongItem item)
         {
-            throw new NotImplementedException();
+            const string sql = "INSERT [Party_Song] (" +
+                                   "SongId, " +
+                                   "PartyId, " +
+                                   "Hash, " +
+                                   "Play_Order) " +
+                              "VALUES (" +
+                                   "@SongId, " +
+                                   "@PartyId, " +
+                                   "@Play_Order, " +
+                                   "@Played);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                cmd.Parameters.AddWithValue("@PartyId", item.PartyId);
+                cmd.Parameters.AddWithValue("@Play_Order", item.PlayOrder);
+                cmd.Parameters.AddWithValue("@Played", item.Played);
+                item.Id = (int)cmd.ExecuteScalar();
+            }
+
+            return item.Id;
         }
         public bool UpdatePartySongItem(PartySongItem item)
         {
