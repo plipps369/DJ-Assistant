@@ -57,6 +57,18 @@ namespace DJAssistantAPI.Controllers
                 scope.Complete();
             }
             return Ok();
+
+        }
+
+        [HttpPost("AddSong")]
+        [Authorize]
+        public IActionResult AddSongToParty(PartySongModel model)
+        {
+            PartySongItem songPartyItem = new PartySongItem();
+            songPartyItem.PartyId = model.PartyId;
+            songPartyItem.SongId = model.SongId;
+            _db.AddPartySongItem(songPartyItem);
+            return Ok();
         }
     }
 }

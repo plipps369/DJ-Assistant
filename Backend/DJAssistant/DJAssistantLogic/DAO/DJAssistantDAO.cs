@@ -299,6 +299,30 @@ namespace DJAssistantLogic.DAO
             return parties;
         }
 
+        public PartyItem GetPartyByName(string name)
+        {
+            PartyItem party = null;
+
+            const string sql = "Select * From [Party] Where Name = @Name;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Name", name);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    party = GetPartyItemFromReader(reader);
+                }
+            }
+
+
+            return party;
+
+        }
+
         private PartyItem GetPartyItemFromReader(SqlDataReader reader)
         {
             PartyItem item = new PartyItem();

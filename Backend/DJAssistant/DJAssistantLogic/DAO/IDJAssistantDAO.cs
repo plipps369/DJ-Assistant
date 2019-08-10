@@ -33,6 +33,7 @@ namespace DJAssistantLogic.DAO
         bool UpdatePartyItem(PartyItem item);
         bool DeletePartyItem(int partyId);
         PartyItem GetPartyItemById(int partyId);
+        PartyItem GetPartyByName(string name);
         List<PartyItem> GetPartyItemsByDJId(int DJId);
 
         #endregion
