@@ -544,7 +544,16 @@ namespace DJAssistantLogic.DAO
         {
             List<SongItem> songs = new List<SongItem>();
 
-            const string sql = "";
+            throw new Exception("not done yet");
+            /*
+             * select *
+from [Song] 
+join Song_Genre on Song.id = Song_Genre.Song_id
+join Song_DJ on Song.Explicit = Song_DJ.Song_id
+where Song.id in (select Genre_id from Party_Genre where Party_Genre.Party_Id = 1)
+      and Song_DJ.DJ_id = (select DJ_id from Party where Party.id = 1)
+             */
+            const string sql = "Select Song.Id";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
