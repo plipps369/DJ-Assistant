@@ -381,7 +381,37 @@ namespace DJAssistantLogic.DAO
         }
         public List<PartySongItem> GetPartySongItemByPartyId(int partyId)
         {
-            throw new NotImplementedException();
+            List<PartySongItem> partySongs = new List<PartySongItem>();
+
+            const string sql = "Select * From [Party_Song]] Where Party_Id = @partyId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@partyId", partyId);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    partySongs.Add(GetParySongItemFromReader(reader));
+                }
+            }
+
+            return partySongs;
+        }
+
+        private PartySongItem GetParySongItemFromReader(SqlDataReader reader)
+        {
+            PartySongItem item = new PartySongItem();
+
+            item.Id = Convert.ToInt32(reader["Id"]);
+            item.SongId = Convert.ToInt32(reader["Song_id"]);
+            item.PartyId = Convert.ToInt32(reader["Party_id"]);
+            item.PlayOrder = Convert.ToInt32(reader["Play_Order"]);
+            item.Played = Convert.ToBoolean(reader["Played"]);
+
+            return item;
         }
 
         #endregion
