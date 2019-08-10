@@ -540,6 +540,28 @@ namespace DJAssistantLogic.DAO
             return item;
         }
 
+        public List<SongItem> GetSongsByPartyId(int partyID)
+        {
+            List<SongItem> songs = new List<SongItem>();
+
+            const string sql = "";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@DJid", partyID);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    songs.Add(GetSongItemFromReader(reader));
+                }
+            }
+
+            return songs;
+        }
+
         private SongItem GetSongItemFromReader(SqlDataReader reader)
         {
             SongItem item = new SongItem();
