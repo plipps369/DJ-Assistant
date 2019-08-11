@@ -10,5 +10,6 @@ namespace DJAssistantAPI.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int[] GenresId { get; set; }
     }
 }

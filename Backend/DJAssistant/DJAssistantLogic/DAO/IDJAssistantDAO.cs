@@ -64,6 +64,10 @@ namespace DJAssistantLogic.DAO
 
         #endregion
 
+        #region PartyGenre
+        void AddPartyGenreItem(PartyGenreItem partyGenre);
+        #endregion
+
         #region Song
 
         int AddSongItem(SongItem item);

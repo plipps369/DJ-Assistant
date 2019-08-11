@@ -249,7 +249,23 @@ namespace DJAssistantLogic.DAO
         }
         public bool DeletePartyItem(int partyId)
         {
-            throw new NotImplementedException();
+            bool isSuccessful = false;
+
+            const string sql = "DELETE FROM [Party] WHERE Id = @Id;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Id", partyId);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    isSuccessful = true;
+                }
+            }
+
+            return isSuccessful;
         }
         public PartyItem GetPartyItemById(int partyId)
         {
@@ -369,7 +385,30 @@ namespace DJAssistantLogic.DAO
         }
         public bool UpdatePartySongItem(PartySongItem item)
         {
-            throw new NotImplementedException();
+            bool isSuccessful = false;
+
+            const string sql = "UPDATE [Party_Song] SET Song_id = @SongId, " +
+                                                 "Party_id = @PartyId, " +
+                                                 "Play_order = @PlayOrder, " +
+                                                 "Played = @Played" +
+                                                 "WHERE Id = @Id;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                cmd.Parameters.AddWithValue("@PartyId", item.PartyId);
+                cmd.Parameters.AddWithValue("@Play_order", item.PlayOrder);
+                cmd.Parameters.AddWithValue("@Id", item.Id);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    isSuccessful = true;
+                }
+            }
+
+            return isSuccessful;
         }
         public bool DeletePartySongItem(int partySongId)
         {
@@ -458,7 +497,24 @@ namespace DJAssistantLogic.DAO
         }
         public bool DeleteSongDJItem(SongDJItem item)
         {
-            throw new NotImplementedException();
+            bool isSuccessful = false;
+
+            const string sql = "DELETE FROM [Song_DJ] WHERE Song_id = @SongId and DJ_id = @DJId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                cmd.Parameters.AddWithValue("@DJid", item.DJId);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    isSuccessful = true;
+                }
+            }
+
+            return isSuccessful;
         }
 
         #endregion
@@ -488,9 +544,48 @@ namespace DJAssistantLogic.DAO
         }
         public bool DeleteSongGenreItem(SongGenreItem item)
         {
-            throw new NotImplementedException();
+            bool isSuccessful = false;
+
+            const string sql = "DELETE FROM [Song_Genre] WHERE Song_id = @SongId and Genre_id = @GenreId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                cmd.Parameters.AddWithValue("@GenreId", item.GenreId);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    isSuccessful = true;
+                }
+            }
+
+            return isSuccessful;
         }
 
+        #endregion
+
+        #region PartyGenre
+        public void AddPartyGenreItem(PartyGenreItem partyGenre)
+        {
+            const string sql = "INSERT [Party_Genre] (" +
+                                   "Genre_Id, " +
+                                   "Party_Id) " +
+                              "VALUES (" +
+                                   "@GenreId, " +
+                                   "@PartyId);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@GenreId", partyGenre.GenreId);
+                cmd.Parameters.AddWithValue("@PartyId", partyGenre.PartyId);
+                cmd.ExecuteScalar();
+            }
+        }
         #endregion
 
         #region Song

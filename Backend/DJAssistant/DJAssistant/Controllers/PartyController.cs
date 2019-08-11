@@ -34,6 +34,18 @@ namespace DJAssistantAPI.Controllers
             item.Name = model.Name;
             item.Id = _db.AddPartyItem(item);
 
+            // Add genre linked to song id
+            if (model.GenresId != null)
+            {
+                foreach (int x in model.GenresId)
+                {
+                    PartyGenreItem partyGenre = new PartyGenreItem();
+                    partyGenre.GenreId = x;
+                    partyGenre.PartyId = item.Id;
+                    _db.AddPartyGenreItem(partyGenre);
+                }
+            }
+
             return Ok();
         }
 
