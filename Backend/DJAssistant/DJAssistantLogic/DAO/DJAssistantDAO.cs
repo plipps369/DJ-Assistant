@@ -667,7 +667,7 @@ where Song.id in (select Genre_id from Party_Genre where Party_Genre.Party_Id = 
             const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
                                "from [Song] " +
                                "join Song_Genre on Song.id = Song_Genre.Song_id " +
-                               "join Song_DJ on Song.Explicit = Song_DJ.Song_id " +
+                               "join Song_DJ on Song.Id = Song_DJ.Song_id " +
                                "where Song.id in (select Genre_id " +
                                                  "from Party_Genre" +
                                                  "where Party_Genre.Party_Id = @partyId) " +

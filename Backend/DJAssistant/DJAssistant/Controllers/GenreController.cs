@@ -22,7 +22,7 @@ namespace DJAssistantAPI.Controllers
 
         // GET api/values
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
             List<GenreItem> genres = _db.GetGenreItems();
