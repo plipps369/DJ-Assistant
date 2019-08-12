@@ -68,7 +68,7 @@
 </div> -->
 <div class="form-group">
              <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
-        <option v-for="object in genres" :key="object" :value="object.id">{{object.name}}</option>
+        <option v-for="object in genres" :key="object.id" :value="object.id">{{object.name}}</option>
       </select> 
 </div>
       </b-card>
@@ -94,6 +94,7 @@ export default {
   },
   data() {
     return {
+      user: {},
       genres: [],
       song: {
         title: "",
@@ -125,10 +126,8 @@ export default {
         })
 
         .catch(err => console.error(err));
-    }
-  
-  },
-  created() {
+    },
+  getGenres() {
     fetch(`${process.env.VUE_APP_REMOTE_API}/api/genre`, {
       method: "GET",
       headers: {
@@ -140,6 +139,12 @@ export default {
       .then(json => {
         this.genres = json;
       });
+  }
+  
+  },
+  created() {
+    this.getGenres();
+    
   }
 };
 </script>

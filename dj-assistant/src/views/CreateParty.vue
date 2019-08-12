@@ -30,6 +30,11 @@
         v-model="party.description"
       />
   </div>
+  <div class="form-group">
+             <select class="form-control" v-model="party.GenresId" multiple>Genre(s)
+        <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+      </select> 
+</div>
       <br />
             <button type="Submit" class="btn btn-outline-warning" id="partySubmit">Create Party</button>
 <router-link to="/dashboard">
@@ -52,9 +57,11 @@ export default {
   },
   data() {
     return {
+      genres: [],
       party: {
         name: "",
-        description: ""
+        description: "",
+        GenresId: []
       },
       newPartyErrors: false
     };
@@ -82,7 +89,23 @@ export default {
         })
 
         .catch(err => console.error(err));
-    }
+    },
+    getGenres() {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/api/genre`, {
+      method: "GET",
+      headers: {
+        // A Header with our authentication token.
+        Authorization: "Bearer " + auth.getToken()
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.genres = json;
+      });
+  }
+  },
+  created() {
+    this.getGenres();
   }
 };
 </script>
