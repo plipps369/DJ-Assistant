@@ -29,32 +29,39 @@ namespace DJAssistantAPI.Controllers
         {
             string email = User.Identity.Name;
             // start transaction
-            using (TransactionScope scope = new TransactionScope())
+            try
             {
-                // Add song
-                SongItem item = new SongItem();
-                item.Artist = model.Artist;
-                item.Explicit = model.Explicit;
-                item.Length = model.Length;
-                item.Title = model.Title;
-                item.Id = _db.AddSongItem(item);
-                SongDJItem songDJ = new SongDJItem();
-                songDJ.SongId = item.Id;
-                songDJ.DJId = _db.GetDJItemByEmail(User.Identity.Name).Id;
-                _db.AddSongDJItem(songDJ);
-
-                // Add genre linked to song id
-                if (model.GenresId != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (int x in model.GenresId)
+                    // Add song
+                    SongItem item = new SongItem();
+                    item.Artist = model.Artist;
+                    item.Explicit = model.Explicit;
+                    item.Length = model.Length;
+                    item.Title = model.Title;
+                    item.Id = _db.AddSongItem(item);
+                    SongDJItem songDJ = new SongDJItem();
+                    songDJ.SongId = item.Id;
+                    songDJ.DJId = _db.GetDJItemByEmail(User.Identity.Name).Id;
+                    _db.AddSongDJItem(songDJ);
+
+                    // Add genre linked to song id
+                    if (model.GenresId != null)
                     {
-                        SongGenreItem songGenre = new SongGenreItem();
-                        songGenre.GenreId = x;
-                        songGenre.SongId = item.Id;
-                        _db.AddSongGenreItem(songGenre);
+                        foreach (int x in model.GenresId)
+                        {
+                            SongGenreItem songGenre = new SongGenreItem();
+                            songGenre.GenreId = x;
+                            songGenre.SongId = item.Id;
+                            _db.AddSongGenreItem(songGenre);
+                        }
                     }
+                    scope.Complete();
                 }
-                scope.Complete();
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Add song failed." });
             }
             return Ok();
 
@@ -64,10 +71,17 @@ namespace DJAssistantAPI.Controllers
         [Authorize]
         public IActionResult AddSongToParty(PartySongModel model)
         {
-            PartySongItem songPartyItem = new PartySongItem();
-            songPartyItem.PartyId = model.PartyId;
-            songPartyItem.SongId = model.SongId;
-            _db.AddPartySongItem(songPartyItem);
+            try
+            {
+                PartySongItem songPartyItem = new PartySongItem();
+                songPartyItem.PartyId = model.PartyId;
+                songPartyItem.SongId = model.SongId;
+                _db.AddPartySongItem(songPartyItem);
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Add song to party failed" });
+            }
             return Ok();
         }
     }
