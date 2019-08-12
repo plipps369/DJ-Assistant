@@ -71,7 +71,13 @@ namespace IntegrationTest
         {
             GenreItem genre = new GenreItem();
             genre.Name = "Pauls party";
-            _db.AddGenreItem(genre);
+            genre.Id = _db.AddGenreItem(genre);
+            SongGenreItem songGenre = new SongGenreItem();
+            songGenre.GenreId = genre.Id;
+            songGenre.SongId = _song.Id;
+
+            _db.AddSongGenreItem(songGenre);
+
         }
 
         /// <summary>
