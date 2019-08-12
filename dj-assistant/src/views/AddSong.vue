@@ -57,11 +57,20 @@
 
        <b-card header-bg-variant="dark" text-variant="black">
           <b-card-text>
-            Genre(s) - Hold ctrl to make multiple selections
+            Genre(s) - hold ctrl to make multiple selections
           </b-card-text>
-            <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
+          <!-- <div class="form-group">
+  <label class="typo__label">Simple select / dropdown</label>
+  <multiselect class="form-control" v-model="song.GenresId" :options="genres" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Pick some" label="name" track-by="name" :preselect-first="false">
+    <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="song.GenresId.length &amp;&amp; !isOpen">{{ song.GenresId.length }} options selected</span></template>
+  </multiselect>
+  <pre class="language-json"><code>{{ value  }}</code></pre>
+</div> -->
+<div class="form-group">
+             <select class="form-control" v-model="song.GenresId" multiple>Genre(s)
         <option v-for="object in genres" :key="object" :value="object.id">{{object.name}}</option>
-      </select>
+      </select> 
+</div>
       </b-card>
       <br>
       <button type="Submit" class="btn btn-outline-warning" id="songSubmit">Submit Song</button>
@@ -75,11 +84,13 @@
 <script>
 import NavHeader from "@/components/NavHeader.vue";
 import auth from "../auth";
+//import Multiselect from 'vue-multiselect';
 
 export default {
   name: "add-song",
   components: {
-    NavHeader
+    NavHeader,
+    //Multiselect 
   },
   data() {
     return {
