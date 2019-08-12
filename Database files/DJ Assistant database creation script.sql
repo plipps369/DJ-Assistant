@@ -82,7 +82,7 @@ Go
 Create Table Party_Genre (
 	Party_id integer NOT NULL,
 	Genre_id integer NOT NULL,
-	CONSTRAINT pk_Library_DJ_id PRIMARY KEY (Party_id, Genre_id),
+	CONSTRAINT pk_Party_Genre PRIMARY KEY (Party_id, Genre_id),
 );
 Go
 
