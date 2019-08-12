@@ -119,7 +119,10 @@ export default {
       })
         .then(response => {
           if (response.ok) {
-            return response.text();
+            // return response.text();
+            this.$router.push({
+              path: "/dashboard",
+            });
           } else {
             this.addSongErrors = true;
           }
