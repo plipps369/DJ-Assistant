@@ -2,42 +2,31 @@
   <div>
     <nav-header></nav-header>
     <div id="dashboard">
-      <div id="dash-main" class="container">
-        <h1 id="display-name" data-wow-delay="0.3s">
+      <div id="dash-main">
+        <h1 id="display-name">
           <strong>DJ Dashboard</strong>
         </h1>
       </div>
 
-      <div id="party-list">
-        <b-card bg-variant="dark" text-variant="white" title="Party List" class="text-center">
-          <b-card-text>
-              <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-warning">{{party.name}}</router-link>
-          </b-card-text>
+      <div>
+        <b-card id="party-list" bg-variant="primary" text-variant="white" title="Party List" class="text-center">
+              <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-block btn-light">{{party.name}}</router-link>
         </b-card>
-
       </div>
 
-        <b-card bg-variant="dark" text-variant="white" >
-            <div class="buttons">
-              <div class="addSong">
-                <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
-              </div>
-
-              <div class="createParty">
-                <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
-              </div>
+      <div>
+        <b-card id="add-song" bg-variant="primary">
+            <div>
+              <router-link to="/add-song" tag="button" class="btn btn-lg btn-block btn-success">Add Song</router-link>
             </div>
         </b-card>
 
-      <!-- <div class="buttons">
-        <div class="addSong">
-          <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
-        </div>
-
-        <div class="createParty">
-          <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
-        </div>
-      </div> -->
+        <b-card id="create-party" bg-variant="primary">
+            <div>
+              <router-link to="/create-party" tag="button" class="btn btn-lg btn-block btn-danger">Create Party</router-link>
+            </div>
+        </b-card>
+      </div>
     </div>
   </div>
 </template>
@@ -87,26 +76,8 @@ export default {
   height: auto;
 }
 
-#dash-main {
-  grid-area: dash-main;
-  display: flex;
-  flex-direction: row;
-  flex-flow: center;
-  justify-content: center;
-}
-
-.party-list {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: center;
-  grid-area: party-list;
-}
-
 #dashboard {
   display: grid;
-  /* grid-gap: ; */
-
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "dash-main dash-main"
@@ -115,14 +86,39 @@ export default {
     "party-list buttons";
 }
 
-.buttons {
+#dash-main {
+  grid-area: dash-main;
+  display: flex;
+  flex-direction: row;
+  flex-flow: center;
+  justify-content: center;
+}
+
+#party-list {
+  margin: 3vh;
+}
+
+#party-list > div {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  grid-area: buttons;
+  align-items: center;
+  grid-area: party-list;
 }
 
-/* .createParty {
-  padding: 20px;
-} */
+#party-list > div > button {
+  margin: 3vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+#add-song {
+  padding: 7vh;
+  margin: 3vh;
+}
+
+#create-party {
+  padding: 7vh;
+  margin: 3vh;
+}
 </style>
