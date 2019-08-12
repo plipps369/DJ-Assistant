@@ -79,6 +79,13 @@ Create Table Party_Song (
 );
 Go
 
+Create Table Party_Genre (
+	Party_id integer NOT NULL,
+	Genre_id integer NOT NULL,
+	CONSTRAINT pk_Party_Genre PRIMARY KEY (Party_id, Genre_id),
+);
+Go
+
 ALTER TABLE Party
 ADD FOREIGN KEY(DJ_id)
 REFERENCES DJ(id);
@@ -106,6 +113,15 @@ REFERENCES Song(id);
 ALTER TABLE Song_Genre
 ADD FOREIGN KEY(Genre_id)
 REFERENCES Genre(id);
+Go
+
+ALTER TABLE Party_Genre
+ADD FOREIGN KEY(Genre_id)
+REFERENCES Genre(id);
+Go
+ALTER TABLE Party_Genre
+ADD FOREIGN KEY(Party_id)
+REFERENCES Party(id);
 Go
 
 COMMIT TRANSACTION;
