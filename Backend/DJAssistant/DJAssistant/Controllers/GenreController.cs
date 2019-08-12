@@ -25,7 +25,17 @@ namespace DJAssistantAPI.Controllers
         //[Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
-            List<GenreItem> genres = _db.GetGenreItems();
+
+            List<GenreItem> genres = null;
+            try
+            {
+                genres = _db.GetGenreItems();
+            }
+            catch
+            {
+                return NotFound();
+            }
+
             return Ok(genres);
         }
     }

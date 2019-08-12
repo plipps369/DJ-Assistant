@@ -23,21 +23,39 @@ namespace DJAssistantAPI.Controllers
         [HttpGet("{partyName}")]
         public ActionResult<string> GetSongListForPartyByName(string partyName)
         {
-            List<SongItem> songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
-
+            List<SongItem> songs = null;
+            try
+            {
+                songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Get songs failed." } );
+            }
             return Ok(songs);
         }
 
         [HttpPost]
-        public ActionResult<string> RequestSongByPartyNameAndSongId(SongRequestModel songModel)
+        public IActionResult RequestSongByPartyNameAndSongId(SongRequestModel songModel)
         {
-            PartySongItem partySong = new PartySongItem();
-            PartyItem party = _db.GetPartyByName(songModel.PartyName);
-            partySong.PartyId = party.Id;
-            partySong.Played = false;
-            partySong.SongId = songModel.SongId;
-            partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id);
-            return Ok();
+            IActionResult result = Unauthorized();
+
+            try
+            {
+                PartySongItem partySong = new PartySongItem();
+                PartyItem party = _db.GetPartyByName(songModel.PartyName);
+                partySong.PartyId = party.Id;
+                partySong.Played = false;
+                partySong.SongId = songModel.SongId;
+                partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id);
+                result =  Ok();
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Add product failed." });
+            }
+
+            return result;
         }
     }
 }

@@ -4,30 +4,35 @@
     <div id="dashboard">
       <div id="dash-main" class="container">
         <h1 id="display-name" data-wow-delay="0.3s">
-          <strong>DJ Dashboard</strong>
+          <strong>{{user.displayName}}</strong>
         </h1>
       </div>
 
       <div id="party-list">
         <b-card bg-variant="dark" text-variant="white" title="Party List" class="text-center">
           <b-card-text>
-              <router-link v-for="party in parties" :key="party.id" :to="{ name: 'party', params: { id: party.id } }" tag="button" class="btn btn-lg btn-warning">{{party.name}}</router-link>
+            <router-link
+              v-for="party in parties"
+              :key="party.id"
+              :to="{ name: 'party', params: { id: party.id } }"
+              tag="button"
+              class="btn btn-lg btn-warning"
+            >{{party.name}}</router-link>
           </b-card-text>
         </b-card>
-
       </div>
 
-        <b-card bg-variant="dark" text-variant="white" >
-            <div class="buttons">
-              <div class="addSong">
-                <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
-              </div>
+      <b-card bg-variant="dark" text-variant="white">
+        <div class="buttons">
+          <div class="addSong">
+            <router-link to="/add-song" tag="button" class="btn btn-lg btn-warning">Add Song</router-link>
+          </div>
 
-              <div class="createParty">
-                <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
-              </div>
-            </div>
-        </b-card>
+          <div class="createParty">
+            <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
+          </div>
+        </div>
+      </b-card>
 
       <!-- <div class="buttons">
         <div class="addSong">
@@ -37,7 +42,7 @@
         <div class="createParty">
           <router-link to="/create-party" tag="button" class="btn btn-lg btn-warning">Create Party</router-link>
         </div>
-      </div> -->
+      </div>-->
     </div>
   </div>
 </template>
@@ -52,31 +57,49 @@ export default {
   name: "dashboard",
   data() {
     return {
+      user: {},
       parties: []
     };
   },
   components: {
     NavHeader
   },
-  methods: {},
+  methods: {
+    getUser() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/DJ`, {
+        method: "GET",
+        headers: {
+          // A Header with our authentication token.
+          Authorization: "Bearer " + auth.getToken()
+        }
+      })
+        .then(response => response.json())
+        .then(json => {
+          this.user = json;
+        });
+    },
+    getParties() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
+        method: "GET",
+        headers: {
+          // A Header with our authentication token.
+          Authorization: "Bearer " + auth.getToken()
+        }
+      })
+        .then(response => response.json())
+        .then(json => {
+          this.parties = json;
+        });
+    }
+  },
   created() {
-    fetch(`${process.env.VUE_APP_REMOTE_API}/api/party`, {
-      method: "GET",
-      headers: {
-        // A Header with our authentication token.
-        Authorization: "Bearer " + auth.getToken()
-      }
-    })
-      .then(response => response.json())
-      .then(json => {
-        this.parties = json;
-      });
+    this.getUser();
+    this.getParties();
   }
 };
 </script>
 
 <style>
-
 .registerBackground {
   background-image: url("~@/assets/dashboard.png") !important;
   background-position: center center;

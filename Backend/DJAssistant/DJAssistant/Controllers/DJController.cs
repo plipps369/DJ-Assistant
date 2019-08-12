@@ -101,7 +101,7 @@ namespace DJAssistantAPI.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult CurrentDJ(DJLoginModel model)
+        public IActionResult CurrentDJ()
         {
             return Ok(_db.GetDJItemByEmail(User.Identity.Name));
         }

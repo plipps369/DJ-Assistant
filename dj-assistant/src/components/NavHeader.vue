@@ -22,7 +22,7 @@
             <router-link :to="{name: 'home'}" class="nav-link">Home</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link :to="{name: 'about'}" class="nav-link">About</router-link>
+            <router-link :to="{name: 'guest'}" class="nav-link">Guest</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link :to="{name: 'dashboard'}" class="nav-link">Dashboard</router-link>
@@ -40,10 +40,10 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template slot="button-content">
-              <em>User</em>
+              <em>{{user.displayName}}</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item v-on:click="logout">Sign Out</b-dropdown-item>
+            
+            <b-dropdown-item  v-on:click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -98,10 +98,31 @@ import auth from "../auth";
 
 export default {
   name: "nav-header",
+  data() {
+    return {
+      user: {},
+     };
+  },
   methods: {
     logout() {
       auth.logout();
-    }
+    },
+    getUser() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/DJ`, {
+        method: "GET",
+        headers: {
+          // A Header with our authentication token.
+          Authorization: "Bearer " + auth.getToken()
+        }
+      })
+        .then(response => response.json())
+        .then(json => {
+          this.user = json;
+        });
+    },
+  },
+  created(){
+    this.getUser();
   }
  
 };
