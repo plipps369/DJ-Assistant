@@ -22,7 +22,7 @@
             <router-link :to="{name: 'home'}" class="nav-link">Home</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link :to="{name: 'about'}" class="nav-link">About</router-link>
+            <router-link :to="{name: 'guest'}" class="nav-link">Guest</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link :to="{name: 'dashboard'}" class="nav-link">Dashboard</router-link>

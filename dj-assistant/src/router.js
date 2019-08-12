@@ -8,6 +8,7 @@ import Dashboard from './views/Dashboard.vue'
 import AddSong from './views/AddSong.vue'
 import CreateParty from './views/CreateParty.vue'
 import Party from './views/Party.vue'
+import Guest from './views/Guest.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,14 @@ const router = new Router({
       path: '/party/:id',
       name: 'party',
       component: Party,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/guest/',
+      name: 'guest',
+      component: Guest,
       meta: {
         requiresAuth: false
       }
