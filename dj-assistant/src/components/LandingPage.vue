@@ -6,28 +6,28 @@
 <b-card-group deck>
   <div id="landing-page">
       <div class="djAbout">
-        <b-card bg-variant="dark" text-variant="white" title="About DJ App" class="text-center">
+       
           <b-card-text>Lorem ipsum dolor sit amet, mel mucius consetetur ut, 
               ad novum possit sea. Usu ex voluptatibus reprehendunt, mazim prodesset nec no. 
               Et tempor utroque constituam his, in mel erant ludus. Vidit percipit nam ea, 
               cum minim cotidieque ex, mei alterum nominavi postulant no. Ea vis nostro 
               apeirian evertitur, cu nibh brute nulla mea, quem putant similique eos ut. 
           </b-card-text>
-        </b-card>
+      
       </div>
 
       <div class="loginAndRegister">
-        <b-card bg-variant="dark" text-variant="white" title="Card Title">
-          <b-card-text>
+        
+          
             With supporting text below as a natural lead-in to additional content.
-          </b-card-text>
+         
         <div class="loginButton">
           <router-link to="/login" tag="button" class="btn btn-lg btn-primary" id="newLogIn">Log In</router-link>
         </div>
         <div class="registerButton">
           <router-link to="/register" tag="button" class="btn btn-lg btn-primary" id="newRegister">Register</router-link>
         </div>
-        </b-card>
+       
       </div>
       </div>
 </b-card-group>
@@ -46,24 +46,29 @@ export default {
 .djAbout {
   
   font-family: "Roboto Condensed", sans-serif;
-  border-radius: 70px;
+  border-radius: 10px;
   float: left;
   padding: 25px;
-  max-width: 30%;
-  margin-left: 20%;
-  max-height: 40%;
-
+  max-width: 28%;
+  margin-left: 17%;
+  margin-right: 10%;
+  margin-top: 7%;
+   max-height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.3);
+  color: white;
 }
 
 .loginAndRegister {
   font-family: "Roboto Condensed", sans-serif;
-  border-radius: 70px;
+  border-radius: 10px;
   float: right;
   padding: 25px;
-  max-width: 30%;
-  margin-right: 20%;
-  max-height: 40%;
-
+  max-width: 28%;
+  margin-top: 10%;
+  margin-right: 17%;
+  max-height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.3);
+  color: white;
 }
 
 .buttons  {
@@ -72,7 +77,7 @@ export default {
    }
 
 .registerButton {
-    padding-top: 20px;
+    padding: 20px;
     
 }
 
@@ -87,7 +92,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 100%;
+    width: auto;
     height: auto; 
 }
 
