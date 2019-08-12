@@ -20,10 +20,7 @@
         <b-navbar-nav>
           <b-nav-item>
             <router-link :to="{name: 'home'}" class="nav-link">Home</router-link>
-          </b-nav-item>
-          <b-nav-item>
-            <router-link :to="{name: 'guest'}" class="nav-link">Guest</router-link>
-          </b-nav-item>
+            </b-nav-item>
           <b-nav-item>
             <router-link :to="{name: 'dashboard'}" class="nav-link">Dashboard</router-link>
           </b-nav-item>
@@ -32,6 +29,9 @@
           </b-nav-item>
           <b-nav-item>
             <router-link :to="{name: 'register'}" class="nav-link">Register</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link :to="{name: 'guest'}" class="nav-link">Guest</router-link>
           </b-nav-item>
         </b-navbar-nav>
 

@@ -2,8 +2,8 @@
     <div>
         <div>
             <nav-header></nav-header>
-        <h1>{{party.name}}</h1>
-        <p>{{party.description}}</p>
+            <h1>Songlist</h1>
+            <p v-for="song in songs" :key="song.id">{{song.title}} by: {{song.artist}}</p>
         </div>
     </div>
 </template>
@@ -12,13 +12,13 @@
 //import { APIService } from "@/APIService";
 import NavHeader from "@/components/NavHeader.vue";
 //const apiService = new APIService();
-import auth from "../auth";
+//import auth from "../auth";
 
 export default {
-  name: "guestParty",
+  name: "party",
   data() {
     return {
-      party: {}
+      songs: []
     };
   },
   components: {
@@ -26,17 +26,17 @@ export default {
   },
   methods: {},
   created() {
-      const id = this.$route.params.id
-    fetch(`${process.env.VUE_APP_REMOTE_API}/api/party/${id}`, {
+      const partyName = this.$route.params.partyName
+    fetch(`${process.env.VUE_APP_REMOTE_API}/api/guest/${partyName}`, {
       method: "GET",
       headers: {
-        // A Header with our authentication token.
-        Authorization: "Bearer " + auth.getToken()
+        Accept: "application/json",
+          "Content-Type": "application/json"
       }
     })
       .then(response => response.json())
       .then(json => {
-        this.party = json;
+        this.songs = json;
       });
   }
 };

@@ -9,6 +9,7 @@ import AddSong from './views/AddSong.vue'
 import CreateParty from './views/CreateParty.vue'
 import Party from './views/Party.vue'
 import Guest from './views/Guest.vue'
+import GuestParty from './views/GuestParty.vue'
 
 Vue.use(Router)
 
@@ -24,17 +25,7 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: '/about',
-      name: 'about',
-      meta: {
-        requiresAuth: false
-      },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
+    
     {
       path: '/dashboard/',
       name: 'dashboard',
@@ -47,6 +38,14 @@ const router = new Router({
       path: '/party/:id',
       name: 'party',
       component: Party,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/guest-party/:partyName',
+      name: 'guest-party',
+      component: GuestParty,
       meta: {
         requiresAuth: false
       }
