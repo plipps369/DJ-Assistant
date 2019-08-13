@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 .djAbout {
   font-family: "Roboto Condensed", sans-serif;
   border-radius: 10px;
@@ -83,10 +83,10 @@ export default {
 
 #landing-page {
   margin-top: 5%;
+  background-image: url("~@/assets/guest_background.png");
 }
 
 body {
-  background-image: url("~@/assets/Soundwave.jpg") !important;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
