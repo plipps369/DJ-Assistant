@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Data;
 using System.Transactions;
-using System.Data.SqlClient;
+
 
 namespace DJAssistantLogic.DAO
 {
@@ -359,10 +359,10 @@ namespace DJAssistantLogic.DAO
         public int AddPartySongItem(PartySongItem item)
         {
             const string sql = "INSERT [Party_Song] (" +
-                                   "SongId, " +
-                                   "PartyId, " +
-                                   "Hash, " +
-                                   "Play_Order) " +
+                                   "Song_Id, " +
+                                   "Party_Id, " +
+                                   "Play_Order, " +
+                                   "Played) " +
                               "VALUES (" +
                                    "@SongId, " +
                                    "@PartyId, " +
@@ -422,7 +422,7 @@ namespace DJAssistantLogic.DAO
         {
             List<PartySongItem> partySongs = new List<PartySongItem>();
 
-            const string sql = "Select * From [Party_Song]] Where Party_Id = @partyId;";
+            const string sql = "Select * From [Party_Song] Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -455,7 +455,7 @@ namespace DJAssistantLogic.DAO
         public int GetTotalSongsRequestedByPartyId(int partyId)
         {
             int num = 0;
-            const string sql = "Select count(Party_Song.Id) as total From [Party_Song]] Where Party_Id = @partyId;";
+            const string sql = "Select count(Party_Song.Id) as total From [Party_Song] Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -467,6 +467,73 @@ namespace DJAssistantLogic.DAO
                 num = Convert.ToInt32(reader["total"]);
             }
             return num;
+        }
+
+        public List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName)
+        {
+            List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
+
+            const string sql = "Select top 5 * " +
+                               "From [Party_Song] " +
+                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Where Party.Party_Name = @partyName and Played = false " +
+                               "Order by play_order asc;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@partyName", partyName);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    partySongs.Add(GetPartySongItemWithDetailsFromReader(reader));
+                }
+            }
+
+            return partySongs;
+        }
+
+        public List<PartySongItemWithDetails> GetPartySongsPlayedByPartyName(string partyName)
+        {
+            List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
+
+            const string sql = "Select top 5 * " +
+                               "From [Party_Song] " +
+                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Where Party.Name = @partyName and Played = true " +
+                               "Order by play_order desc;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@partyName", partyName);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    partySongs.Add(GetPartySongItemWithDetailsFromReader(reader));
+                }
+            }
+
+            return partySongs;
+        }
+
+        private PartySongItemWithDetails GetPartySongItemWithDetailsFromReader(SqlDataReader reader)
+        {
+            PartySongItemWithDetails item = new PartySongItemWithDetails();
+
+            item.Id = Convert.ToInt32(reader["Id"]);
+            item.SongId = Convert.ToInt32(reader["Song_id"]);
+            item.PartyId = Convert.ToInt32(reader["Party_id"]);
+            item.PlayOrder = Convert.ToInt32(reader["Play_Order"]);
+            item.Played = Convert.ToBoolean(reader["Played"]);
+            item.Artist = Convert.ToString(reader["Artist"]);
+            item.Title = Convert.ToString(reader["Title"]);
+
+            return item;
         }
 
         #endregion

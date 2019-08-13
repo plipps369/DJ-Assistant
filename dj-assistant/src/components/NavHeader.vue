@@ -11,7 +11,9 @@
 
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
       <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
-       <b-navbar-brand href="#">DJ App</b-navbar-brand>
+       <b-navbar-brand>
+         <router-link :to="{name: 'home'}" class="nav-link">DJ App</router-link>
+         </b-navbar-brand>
 
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -40,7 +42,7 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template slot="button-content">
-              <em>{{user.displayName}}</em>
+              <em>user</em>
             </template>
             
             <b-dropdown-item  v-on:click="logout">Sign Out</b-dropdown-item>
@@ -122,7 +124,7 @@ export default {
     },
   },
   created(){
-    this.getUser();
+    //this.getUser();
   }
  
 };
