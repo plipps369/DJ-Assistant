@@ -24,14 +24,14 @@ namespace DJAssistantAPI.Controllers
         public ActionResult<string> GetSongListForPartyByName(string partyName)
         {
             List<SongItem> songs = null;
-            try
-            {
+            //try
+            //{
                 songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
-            }
-            catch
-            {
-                return BadRequest(new { Message = "Get songs failed." } );
-            }
+            //}
+            //catch
+            //{
+            //    return BadRequest(new { Message = "Get songs failed." });
+            //}
             return Ok(songs);
         }
 
@@ -47,12 +47,13 @@ namespace DJAssistantAPI.Controllers
                 partySong.PartyId = party.Id;
                 partySong.Played = false;
                 partySong.SongId = songModel.SongId;
-                partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id);
+                partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id) + 1;
+                partySong.Id = _db.AddPartySongItem(partySong);
                 result =  Ok();
             }
             catch
             {
-                result = BadRequest(new { Message = "Add product failed." });
+                result = BadRequest(new { Message = "Request failed." });
             }
 
             return result;

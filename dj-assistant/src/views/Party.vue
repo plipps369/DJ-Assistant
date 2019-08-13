@@ -15,7 +15,7 @@ import NavHeader from "@/components/NavHeader.vue";
 import auth from "../auth";
 
 export default {
-  name: "dashboard",
+  name: "guestParty",
   data() {
     return {
       party: {}

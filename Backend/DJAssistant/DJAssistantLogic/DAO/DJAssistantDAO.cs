@@ -668,8 +668,8 @@ where Song.id in (select Genre_id from Party_Genre where Party_Genre.Party_Id = 
                                "from [Song] " +
                                "join Song_Genre on Song.id = Song_Genre.Song_id " +
                                "join Song_DJ on Song.Id = Song_DJ.Song_id " +
-                               "where Song.id in (select Genre_id " +
-                                                 "from Party_Genre" +
+                               "where Song_Genre.Genre_id in (select Genre_id " +
+                                                 "from Party_Genre " +
                                                  "where Party_Genre.Party_Id = @partyId) " +
                                      "and Song_DJ.DJ_id = (select DJ_id from Party where Party.id = @partyId);";
 
