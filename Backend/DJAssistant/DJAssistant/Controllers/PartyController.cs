@@ -105,7 +105,7 @@ namespace DJAssistantAPI.Controllers
         }
 
         [HttpGet("PartySongs/{partyId}")]
-        [Authorize]
+        //[Authorize]
         public ActionResult<IEnumerable<string>> GetPartySongs(int partyId)
         {
             List<PartySongItem> partySongItems = _db.GetPartySongItemByPartyId(partyId);
