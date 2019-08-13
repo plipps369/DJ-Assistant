@@ -111,5 +111,24 @@ namespace DJAssistantAPI.Controllers
             List<PartySongItemWithDetails> partySongItems = _db.GetPartySongItemWithDetailsByPartyId(partyId);
             return Ok(partySongItems);
         }
+
+       [HttpPost("MarkedAsPlayed/{partySongId}")]
+       [Authorize]
+        public IActionResult MarkedSongAsPlayedByParytSongId(int partySongId)
+        {
+            PartySongItem partySong = _db.GetPartySongItemById(partySongId);
+
+            if(partySong.Played == true)
+            {
+                return BadRequest(new { Message = "song was already played" });
+            }
+            else
+            {
+                partySong.Played = true;
+                _db.UpdatePartySongItem(partySong);
+            }
+
+            return Ok();
+        }
     }    
 }
