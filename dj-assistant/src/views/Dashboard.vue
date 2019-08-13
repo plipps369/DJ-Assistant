@@ -114,6 +114,7 @@ export default {
     "party-list buttons"
     "party-list buttons"
     "party-list buttons";
+    
 }
 
 #dash-main {
@@ -122,11 +123,23 @@ export default {
   flex-direction: row;
   flex-flow: center;
   justify-content: center;
+  
 }
 
+#add-song {
+  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+}
+
+
+#create-party {
+  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+}
 #party-list {
   margin: 3vh;
+  background-image: linear-gradient(black,black,rgb(15, 182, 248));
 }
+
+
 
 #party-list > div {
   display: flex;
@@ -140,6 +153,7 @@ export default {
   margin: 3vh;
   margin-left: 5vw;
   margin-right: 5vw;
+  
 }
 
 #add-song {
