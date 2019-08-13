@@ -68,14 +68,14 @@ namespace DJAssistantAPI.Controllers
         [HttpGet("lastFive/{partyName}")]
         public ActionResult<string> GetLastFiveByPartyName(string partyName)
         {
-            List<PartySongItem> partySongItems = _db.GetPartySongsPlayedByPartyName(partyName);
+            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongsPlayedByPartyName(partyName);
             return Ok(partySongItems);
         }
 
         [HttpGet("nextFive/{partyName}")]
         public ActionResult<string> GetNextFiveByName(string partyName)
         {
-            List<PartySongItem> partySongItems = _db.GetPartySongsNotPlayedByPartyName(partyName);
+            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongsNotPlayedByPartyName(partyName);
             return Ok(partySongItems);
         }
     }

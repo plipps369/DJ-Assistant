@@ -469,9 +469,9 @@ namespace DJAssistantLogic.DAO
             return num;
         }
 
-        public List<PartySongItem> GetPartySongsNotPlayedByPartyName(string partyName)
+        public List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName)
         {
-            List<PartySongItem> partySongs = new List<PartySongItem>();
+            List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
@@ -488,16 +488,16 @@ namespace DJAssistantLogic.DAO
 
                 while (reader.Read())
                 {
-                    partySongs.Add(GetParySongItemFromReader(reader));
+                    partySongs.Add(GetPartySongItemWithDetailsFromReader(reader));
                 }
             }
 
             return partySongs;
         }
 
-        public List<PartySongItem> GetPartySongsPlayedByPartyName(string partyName)
+        public List<PartySongItemWithDetails> GetPartySongsPlayedByPartyName(string partyName)
         {
-            List<PartySongItem> partySongs = new List<PartySongItem>();
+            List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
@@ -514,11 +514,26 @@ namespace DJAssistantLogic.DAO
 
                 while (reader.Read())
                 {
-                    partySongs.Add(GetParySongItemFromReader(reader));
+                    partySongs.Add(GetPartySongItemWithDetailsFromReader(reader));
                 }
             }
 
             return partySongs;
+        }
+
+        private PartySongItemWithDetails GetPartySongItemWithDetailsFromReader(SqlDataReader reader)
+        {
+            PartySongItemWithDetails item = new PartySongItemWithDetails();
+
+            item.Id = Convert.ToInt32(reader["Id"]);
+            item.SongId = Convert.ToInt32(reader["Song_id"]);
+            item.PartyId = Convert.ToInt32(reader["Party_id"]);
+            item.PlayOrder = Convert.ToInt32(reader["Play_Order"]);
+            item.Played = Convert.ToBoolean(reader["Played"]);
+            item.Artist = Convert.ToString(reader["Artist"]);
+            item.Title = Convert.ToString(reader["Title"]);
+
+            return item;
         }
 
         #endregion
