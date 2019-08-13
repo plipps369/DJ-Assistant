@@ -11,9 +11,7 @@
 
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
       <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
-       <b-navbar-brand>
-         <router-link :to="{name: 'home'}" class="nav-link">DJ App</router-link>
-         </b-navbar-brand>
+       <b-navbar-brand>DJ App</b-navbar-brand>
 
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

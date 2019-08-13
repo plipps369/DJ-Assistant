@@ -3,6 +3,12 @@
     <div>
       <nav-header></nav-header>
       <h1>{{songRequest.partyName}}</h1>
+      <ul>Next 5 Songs:
+        <li v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
+        </ul>
+        <ul>Last 5 Songs:
+        <li v-for="song in last5Songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
+        </ul>
       <h3>Request a Song</h3>
       <form @submit.prevent="requestSong">
           <div class="form-group">
@@ -28,6 +34,8 @@ export default {
   data() {
     return {
       songs: [],
+      next5Songs: [],
+      last5Songs: [],
       songRequest: {
         songId: null,
         partyName: this.$route.params.partyName
@@ -61,8 +69,7 @@ export default {
 
         .catch(err => console.error(err));
     },
-  },
-  created() {
+    getSongsForRequest() {
     const partyName = this.$route.params.partyName;
     fetch(`${process.env.VUE_APP_REMOTE_API}/api/guest/${partyName}`, {
       method: "GET",
@@ -75,6 +82,40 @@ export default {
       .then(json => {
         this.songs = json;
       });
+    },
+    getNext5Songs() {
+const partyName = this.$route.params.partyName;
+    fetch(`${process.env.VUE_APP_REMOTE_API}/api/guest/nextFive/${partyName}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.next5Songs = json;
+      });
+    },
+    getLast5Songs() {
+const partyName = this.$route.params.partyName;
+    fetch(`${process.env.VUE_APP_REMOTE_API}/api/guest/lastFive/${partyName}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.last5Songs = json;
+      });
+    },
+  },
+  created() {
+    this.getSongsForRequest();
+    this.getNext5Songs();
+    this.getLast5Songs();
   }
 };
 </script>

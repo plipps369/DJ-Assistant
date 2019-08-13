@@ -423,7 +423,7 @@ namespace DJAssistantLogic.DAO
             List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
             const string sql = "Select * From [Party_Song] " +
-                               "Join [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Join [Song] on Party_Song.Song_Id = Song.Id " +
                                "Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -477,8 +477,9 @@ namespace DJAssistantLogic.DAO
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
+                               "Join [Song] on Party_Song.Song_Id = Song.Id " +
                                "Join [Party] on Party_Song.Party_Id = Party.Id " +
-                               "Where Party.Party_Name = @partyName and Played = false " +
+                               "Where Party.Name = @partyName and Played = 0 " +
                                "Order by play_order asc;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -503,8 +504,9 @@ namespace DJAssistantLogic.DAO
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
+                               "Join [Song] on Party_Song.Song_Id = Song.Id " +
                                "Join [Party] on Party_Song.Party_Id = Party.Id " +
-                               "Where Party.Name = @partyName and Played = true " +
+                               "Where Party.Name = @partyName and Played = 1 " +
                                "Order by play_order desc;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
