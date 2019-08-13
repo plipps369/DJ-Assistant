@@ -57,7 +57,7 @@ export default {
   margin-top: 7%;
   max-height: 100%;
   background-color: hsla(0, 0%, 0%, 1);
-    background-image: url("~@/assets/Soundblast.jpg") !important;
+  background-image: linear-gradient(black,black,rgb(15, 182, 248));
   color: white;
 }
 
