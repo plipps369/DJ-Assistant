@@ -46,6 +46,8 @@ namespace DJAssistantLogic.DAO
         PartySongItem GetPartySongItemById(int partySongId);
         List<PartySongItem> GetPartySongItemByPartyId(int partyId);
         int GetTotalSongsRequestedByPartyId(int partyId);
+        List<PartySongItem> GetPartySongsPlayedByPartyName(string partyName);
+        List<PartySongItem> GetPartySongsNotPlayedByPartyName(string partyName);
 
         #endregion
 

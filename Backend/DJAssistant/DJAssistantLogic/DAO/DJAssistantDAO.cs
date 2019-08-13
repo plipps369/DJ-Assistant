@@ -469,20 +469,21 @@ namespace DJAssistantLogic.DAO
             return num;
         }
 
-        public List<PartySongItem> GetPartySongsNotPlayedByPartyId(int partyId)
+        public List<PartySongItem> GetPartySongsNotPlayedByPartyName(string partyName)
         {
             List<PartySongItem> partySongs = new List<PartySongItem>();
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
-                               "Where Party_Id = @partyId and Played = false " +
+                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Where Party.Party_Name = @partyName and Played = false " +
                                "Order by play_order asc;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@partyId", partyId);
+                cmd.Parameters.AddWithValue("@partyName", partyName);
                 var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -494,20 +495,21 @@ namespace DJAssistantLogic.DAO
             return partySongs;
         }
 
-        public List<PartySongItem> GetPartySongsPlayedByPartyId(int partyId)
+        public List<PartySongItem> GetPartySongsPlayedByPartyName(string partyName)
         {
             List<PartySongItem> partySongs = new List<PartySongItem>();
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
-                               "Where Party_Id = @partyId and Played = true " +
+                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Where Party.Name = @partyName and Played = true " +
                                "Order by play_order desc;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@partyId", partyId);
+                cmd.Parameters.AddWithValue("@partyName", partyName);
                 var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
