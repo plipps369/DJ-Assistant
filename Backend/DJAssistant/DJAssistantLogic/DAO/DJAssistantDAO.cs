@@ -197,7 +197,7 @@ namespace DJAssistantLogic.DAO
         {
             List<GenreItem> genres = new List<GenreItem>();
 
-            const string sql = "Select * From [Genre];";
+            const string sql = "Select * From [Genre] order by Name asc;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
