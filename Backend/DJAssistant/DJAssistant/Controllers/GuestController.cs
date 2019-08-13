@@ -26,7 +26,7 @@ namespace DJAssistantAPI.Controllers
             List<SongItem> songs = null;
             //try
             //{
-                songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
+            songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
             //}
             //catch
             //{
@@ -49,14 +49,37 @@ namespace DJAssistantAPI.Controllers
                 partySong.SongId = songModel.SongId;
                 partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id) + 1;
                 partySong.Id = _db.AddPartySongItem(partySong);
+<<<<<<< HEAD
                 result =  Ok();
             //}
             //catch
             //{
             //    result = BadRequest(new { Message = "Request failed." });
             //}
+=======
+                result = Ok();
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Request failed." });
+            }
+>>>>>>> 4389c87ca8f5988edc9d9cd4f263a17155fac308
 
             return result;
+        }
+
+        [HttpGet("lastFive/{partyName}")]
+        public ActionResult<string> GetLastFiveByPartyName(string partyName)
+        {
+            List<PartySongItem> partySongItems = _db.GetPartySongsPlayedByPartyName(partyName);
+            return Ok(partySongItems);
+        }
+
+        [HttpGet("nextFive/{partyName}")]
+        public ActionResult<string> GetNextFiveByName(string partyName)
+        {
+            List<PartySongItem> partySongItems = _db.GetPartySongsNotPlayedByPartyName(partyName);
+            return Ok(partySongItems);
         }
     }
 }
