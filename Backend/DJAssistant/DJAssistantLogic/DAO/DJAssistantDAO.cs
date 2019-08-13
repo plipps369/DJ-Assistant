@@ -359,10 +359,10 @@ namespace DJAssistantLogic.DAO
         public int AddPartySongItem(PartySongItem item)
         {
             const string sql = "INSERT [Party_Song] (" +
-                                   "SongId, " +
-                                   "PartyId, " +
-                                   "Hash, " +
-                                   "Play_Order) " +
+                                   "Song_Id, " +
+                                   "Party_Id, " +
+                                   "Play_Order, " +
+                                   "Played) " +
                               "VALUES (" +
                                    "@SongId, " +
                                    "@PartyId, " +
@@ -455,7 +455,7 @@ namespace DJAssistantLogic.DAO
         public int GetTotalSongsRequestedByPartyId(int partyId)
         {
             int num = 0;
-            const string sql = "Select count(Party_Song.Id) as total From [Party_Song]] Where Party_Id = @partyId;";
+            const string sql = "Select count(Party_Song.Id) as total From [Party_Song] Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {

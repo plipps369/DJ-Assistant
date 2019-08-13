@@ -24,7 +24,7 @@ import NavHeader from "@/components/NavHeader.vue";
 //import auth from "../auth";
 
 export default {
-  name: "party",
+  name: "guest-party",
   data() {
     return {
       songs: [],

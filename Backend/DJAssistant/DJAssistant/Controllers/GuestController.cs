@@ -40,8 +40,8 @@ namespace DJAssistantAPI.Controllers
         {
             IActionResult result = Unauthorized();
 
-            try
-            {
+            //try
+            //{
                 PartySongItem partySong = new PartySongItem();
                 PartyItem party = _db.GetPartyByName(songModel.PartyName);
                 partySong.PartyId = party.Id;
@@ -50,11 +50,11 @@ namespace DJAssistantAPI.Controllers
                 partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id) + 1;
                 partySong.Id = _db.AddPartySongItem(partySong);
                 result =  Ok();
-            }
-            catch
-            {
-                result = BadRequest(new { Message = "Request failed." });
-            }
+            //}
+            //catch
+            //{
+            //    result = BadRequest(new { Message = "Request failed." });
+            //}
 
             return result;
         }
