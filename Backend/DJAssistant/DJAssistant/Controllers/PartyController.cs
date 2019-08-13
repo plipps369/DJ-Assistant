@@ -68,7 +68,7 @@ namespace DJAssistantAPI.Controllers
             List<PartyItem> parties = null;
             try
             {
-               parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
+                parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
             }
             catch
             {
@@ -92,7 +92,7 @@ namespace DJAssistantAPI.Controllers
 
             }
 
-            if(party == null)
+            if (party == null)
             {
                 result = BadRequest(new { Message = "Party not found" });
             }
@@ -105,11 +105,11 @@ namespace DJAssistantAPI.Controllers
         }
 
         [HttpGet("PartySongs/{partyId}")]
-        //[Authorize]
+        [Authorize]
         public ActionResult<IEnumerable<string>> GetPartySongs(int partyId)
         {
-            List<PartySongItem> partySongItems = _db.GetPartySongItemByPartyId(partyId);
+            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongItemWithDetailsByPartyId(partyId);
             return Ok(partySongItems);
         }
-        }
+    }    
 }

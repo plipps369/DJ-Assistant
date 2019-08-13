@@ -44,7 +44,7 @@ namespace DJAssistantLogic.DAO
         bool UpdatePartySongItem(PartySongItem item);
         bool DeletePartySongItem(int partySongId);
         PartySongItem GetPartySongItemById(int partySongId);
-        List<PartySongItem> GetPartySongItemByPartyId(int partyId);
+        List<PartySongItemWithDetails> GetPartySongItemWithDetailsByPartyId(int partyId);
         int GetTotalSongsRequestedByPartyId(int partyId);
         List<PartySongItemWithDetails> GetPartySongsPlayedByPartyName(string partyName);
         List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName);
