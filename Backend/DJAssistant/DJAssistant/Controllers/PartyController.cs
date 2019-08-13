@@ -108,7 +108,7 @@ namespace DJAssistantAPI.Controllers
         [Authorize]
         public ActionResult<IEnumerable<string>> GetPartySongs(int partyId)
         {
-            List<PartySongItem> partySongItems = _db.GetPartySongItemByPartyId(partyId);
+            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongItemWithDetailsByPartyId(partyId);
             return Ok(partySongItems);
         }
     }    

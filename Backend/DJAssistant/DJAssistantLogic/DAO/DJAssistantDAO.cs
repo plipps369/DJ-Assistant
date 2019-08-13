@@ -418,11 +418,13 @@ namespace DJAssistantLogic.DAO
         {
             throw new NotImplementedException();
         }
-        public List<PartySongItem> GetPartySongItemByPartyId(int partyId)
+        public List<PartySongItemWithDetails> GetPartySongItemWithDetailsByPartyId(int partyId)
         {
-            List<PartySongItem> partySongs = new List<PartySongItem>();
+            List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
-            const string sql = "Select * From [Party_Song] Where Party_Id = @partyId;";
+            const string sql = "Select * From [Party_Song] " +
+                               "Join [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -433,7 +435,7 @@ namespace DJAssistantLogic.DAO
 
                 while (reader.Read())
                 {
-                    partySongs.Add(GetParySongItemFromReader(reader));
+                    partySongs.Add(GetPartySongItemWithDetailsFromReader(reader));
                 }
             }
 
@@ -475,7 +477,7 @@ namespace DJAssistantLogic.DAO
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
-                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Join [Party] on Party_Song.Party_Id = Party.Id " +
                                "Where Party.Party_Name = @partyName and Played = false " +
                                "Order by play_order asc;";
 
@@ -501,7 +503,7 @@ namespace DJAssistantLogic.DAO
 
             const string sql = "Select top 5 * " +
                                "From [Party_Song] " +
-                               "Joing [Party] on Party_Song.Party_Id = Party.Id " +
+                               "Join [Party] on Party_Song.Party_Id = Party.Id " +
                                "Where Party.Name = @partyName and Played = true " +
                                "Order by play_order desc;";
 
