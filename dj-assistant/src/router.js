@@ -10,6 +10,7 @@ import CreateParty from './views/CreateParty.vue'
 import Party from './views/Party.vue'
 import Guest from './views/Guest.vue'
 import GuestParty from './views/GuestParty.vue'
+import Library from './views/Library.vue'
 
 Vue.use(Router)
 
@@ -38,6 +39,14 @@ const router = new Router({
       path: '/party/:id',
       name: 'party',
       component: Party,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/library/',
+      name: 'library',
+      component: Library,
       meta: {
         requiresAuth: false
       }

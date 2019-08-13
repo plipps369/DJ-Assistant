@@ -38,6 +38,11 @@
             <router-link to="/create-party" tag="button" class="btn btn-lg btn-block">Create Party</router-link>
           </div>
         </b-card>
+        <b-card id="create-party" bg-variant="primary">
+          <div>
+            <router-link to="/library" tag="button" class="btn btn-lg btn-block">View Library</router-link>
+          </div>
+        </b-card>
       </div>
     </div>
   </div>
