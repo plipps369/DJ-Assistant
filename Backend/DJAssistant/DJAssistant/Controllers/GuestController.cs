@@ -49,21 +49,18 @@ namespace DJAssistantAPI.Controllers
                 partySong.SongId = songModel.SongId;
                 partySong.PlayOrder = _db.GetTotalSongsRequestedByPartyId(party.Id) + 1;
                 partySong.Id = _db.AddPartySongItem(partySong);
-<<<<<<< HEAD
+
                 result =  Ok();
             //}
             //catch
             //{
             //    result = BadRequest(new { Message = "Request failed." });
             //}
-=======
-                result = Ok();
-            }
-            catch
-            {
-                result = BadRequest(new { Message = "Request failed." });
-            }
->>>>>>> 4389c87ca8f5988edc9d9cd4f263a17155fac308
+
+                
+            
+            
+
 
             return result;
         }
