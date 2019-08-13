@@ -390,7 +390,7 @@ namespace DJAssistantLogic.DAO
             const string sql = "UPDATE [Party_Song] SET Song_id = @SongId, " +
                                                  "Party_id = @PartyId, " +
                                                  "Play_order = @PlayOrder, " +
-                                                 "Played = @Played" +
+                                                 "Played = @Played " +
                                                  "WHERE Id = @Id;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -400,7 +400,8 @@ namespace DJAssistantLogic.DAO
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@SongId", item.SongId);
                 cmd.Parameters.AddWithValue("@PartyId", item.PartyId);
-                cmd.Parameters.AddWithValue("@Play_order", item.PlayOrder);
+                cmd.Parameters.AddWithValue("@PlayOrder", item.PlayOrder);
+                cmd.Parameters.AddWithValue("@Played", item.Played);
                 cmd.Parameters.AddWithValue("@Id", item.Id);
                 if (cmd.ExecuteNonQuery() == 1)
                 {

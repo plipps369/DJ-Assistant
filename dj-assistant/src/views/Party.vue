@@ -5,7 +5,9 @@
         <h1>{{party.name}}</h1>
         <p>{{party.description}}</p>
         <ul>
-          <li v-for="song in songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
+          <div v-for="song in songs" :key="song.id" v-bind:class="{ 'played': song.played == true }">{{song.title}} by {{song.artist}}
+             <button v-on:click="markSongPlayed(song.id)">Mark as Played</button>
+          </div>
         </ul>
         </div>
     </div>
@@ -22,7 +24,8 @@ export default {
   data() {
     return {
       party: {},
-      songs: []
+      songs: [],
+      markErrors: false,
     };
   },
   components: {
@@ -57,6 +60,35 @@ export default {
       .then(json => {
         this.songs = json;
       });
+    },
+    markPlayedLocally(partySongId) {
+      this.songs.forEach(song => {
+        if(song.id == partySongId){
+          song.played = true;
+        }
+      });
+    },
+    markSongPlayed(partySongId) {
+      this.markPlayedLocally(partySongId);
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/party/MarkedAsPlayed/${partySongId}`, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + auth.getToken(),
+           "Content-Type": "application/json"
+        },
+        //body: JSON.stringify(this.partySongId)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+            
+          } else {
+            this.markErrors = true;
+          }
+        })
+
+        .catch(err => console.error(err));
+    
     }
   },
   created() {
@@ -67,5 +99,7 @@ export default {
 </script>
 
 <style>
-
+.played {
+  background-color: black
+}
 </style>
