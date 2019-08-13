@@ -105,5 +105,12 @@ namespace DJAssistantAPI.Controllers
         {
             return Ok(_db.GetDJItemByEmail(User.Identity.Name));
         }
+
+        [HttpGet("AllSongs")]
+        [Authorize]
+        public IActionResult AllSongs()
+        {
+            return Ok(_db.GetSongsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id));
+        }
     }
 }

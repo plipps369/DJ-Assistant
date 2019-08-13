@@ -77,6 +77,7 @@ namespace DJAssistantLogic.DAO
         bool DeleteSongItem(int songId);
         SongItem GetSongItemById(int songId);
         List<SongItem> GetSongsByPartyId(int partyID);
+        List<SongItem> GetSongsByDJId(int dJId);
 
         #endregion
     }

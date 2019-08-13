@@ -749,38 +749,69 @@ namespace DJAssistantLogic.DAO
         {
             List<SongItem> songs = new List<SongItem>();
 
-            //throw new Exception("not done yet");
-            /*
-             * select *
-from [Song] 
-join Song_Genre on Song.id = Song_Genre.Song_id
-join Song_DJ on Song.Explicit = Song_DJ.Song_id
-where Song.id in (select Genre_id from Party_Genre where Party_Genre.Party_Id = 1)
-      and Song_DJ.DJ_id = (select DJ_id from Party where Party.id = 1)
-             */
-            const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
-                               "from [Song] " +
-                               "join Song_Genre on Song.id = Song_Genre.Song_id " +
-                               "join Song_DJ on Song.Id = Song_DJ.Song_id " +
-                               "where Song_Genre.Genre_id in (select Genre_id " +
-                                                 "from Party_Genre " +
-                                                 "where Party_Genre.Party_Id = @partyId) " +
-                                     "and Song_DJ.DJ_id = (select DJ_id from Party where Party.id = @partyId);";
+            if (NumberOfGenresByPartyId(partyID) == 0)
+            {
+                const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
+                                  "from [Song] " +
+                                  "join Song_DJ on Song.Id = Song_DJ.Song_id " +
+                                  "where Song_DJ.DJ_id = (select DJ_id from Party where Party.id = @partyId);";
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@partyId", partyID);
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        songs.Add(GetSongItemFromReader(reader));
+                    }
+                }
+            }
+            else
+            {
+
+                const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
+                                   "from [Song] " +
+                                   "join Song_Genre on Song.id = Song_Genre.Song_id " +
+                                   "join Song_DJ on Song.Id = Song_DJ.Song_id " +
+                                   "where Song_Genre.Genre_id in (select Genre_id " +
+                                                     "from Party_Genre " +
+                                                     "where Party_Genre.Party_Id = @partyId) " +
+                                         "and Song_DJ.DJ_id = (select DJ_id from Party where Party.id = @partyId);";
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@partyId", partyID);
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        songs.Add(GetSongItemFromReader(reader));
+                    }
+                }
+            }
+            return songs;
+        }
+
+        private int NumberOfGenresByPartyId(int partyId)
+        {
+            int num = 0;
+            const string sql = "Select count(Party_Genre.Genre_Id) as total From [Party_Genre] Where Party_Id = @partyId;";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@partyId", partyID);
+                cmd.Parameters.AddWithValue("@partyId", partyId);
                 var reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    songs.Add(GetSongItemFromReader(reader));
-                }
+                reader.Read();
+                num = Convert.ToInt32(reader["total"]);
             }
-
-            return songs;
+            return num;
         }
 
         private SongItem GetSongItemFromReader(SqlDataReader reader)
@@ -794,6 +825,31 @@ where Song.id in (select Genre_id from Party_Genre where Party_Genre.Party_Id = 
             item.Explicit = Convert.ToBoolean(reader["Explicit"]);
 
             return item;
+        }
+
+        public List<SongItem> GetSongsByDJId(int dJId)
+        {
+            List<SongItem> songs = new List<SongItem>();
+
+            const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
+                               "from [Song] " +
+                               "join Song_DJ on Song.Id = Song_DJ.Song_id " +
+                               "where Song_DJ.DJ_Id = @dJId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@dJId", dJId);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    songs.Add(GetSongItemFromReader(reader));
+                }
+            }
+
+            return songs;
         }
 
         #endregion
