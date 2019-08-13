@@ -56,7 +56,8 @@ export default {
   margin-right: 10%;
   margin-top: 7%;
   max-height: 100%;
-  background-color: hsla(0, 0%, 0%, 0.7);
+  background-color: hsla(0, 0%, 0%, 1);
+    background-image: url("~@/assets/Soundblast.jpg") !important;
   color: white;
 }
 
@@ -69,7 +70,8 @@ export default {
   margin-top: 5%;
   margin-right: 17%;
   max-height: 100%;
-  background-color: hsla(0, 0%, 0%, 0.7);
+  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+  /* background-image: url("~@/assets/Soundblast.jpg") !important; */
   color: white;
 }
 
@@ -86,7 +88,7 @@ export default {
 }
 
 body {
-  background-image: url("~@/assets/Soundwave.jpg") !important;
+   background-image: url("~@/assets/Soundblast.jpg") !important;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
