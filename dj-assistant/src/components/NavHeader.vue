@@ -1,13 +1,6 @@
 <template>
   <div class="navHeader">
-    <!-- <header>
-      <div class="container-fluid">
-        <div class="col-lg-12">
-          <img id="logo" src="@/assets/dj-logo-blue.png" class="img-responsive" />
-          <span id="header-text">DJ Jazzy Jeff</span>
-        </div>
-      </div>
-    </header> -->
+    
 
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
       <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
@@ -48,44 +41,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">DJ App</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link :to="{name: 'home'}" class="nav-link">
-              Home
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{name: 'about'}" class="nav-link">
-              About
-              </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{name: 'login'}" class="nav-link">
-              Login
-              </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{name: 'register'}" class="nav-link">
-              Register
-              </router-link>
-          </li>
-        </ul>
-      </div>
-    </nav>-->
+    
   </div>
 </template>
 

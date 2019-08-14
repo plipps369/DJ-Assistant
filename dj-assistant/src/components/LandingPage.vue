@@ -49,8 +49,20 @@
 </template>
 
 <script>
+import auth from '../auth';
+
 export default {
-  name: "landing-page"
+  name: "landing-page",
+  data() {
+    return {
+     
+    }
+  },
+  computed: {
+    user: function () {
+      return auth.getUser();
+    }
+  }
 };
 </script>
 

@@ -8,6 +8,7 @@
         role="alert"
         v-if="newPartyErrors"
       >There were problems creating this party</div>
+      
       <div class="inputText">
       <label for="name" class="sr-only">Name</label>
       <input
@@ -80,6 +81,7 @@ export default {
           if (response.ok) {
             this.$router.push({
               path: "/dashboard",
+              query: { partyCreated: true }
               });
             return response.text();
             

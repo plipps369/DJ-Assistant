@@ -7,7 +7,9 @@
           <strong>{{user.displayName}}</strong>
         </h1>
       </div>
-
+ <div class="alert alert-success" role="alert" v-if="this.$route.query.partyCreated">
+              Party successfully created.
+            </div>
       <div>
         <b-card
           id="party-list"
