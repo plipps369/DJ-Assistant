@@ -32,10 +32,10 @@
         <br />
         <br />
 
-        <div class="loginButton">
+        <div class="loginButton" v-if="!user">
           <router-link to="/login" tag="button" class="btn btn-lg btn-primary" id="newLogIn">Log In</router-link>
         </div>
-        <div class="registerButton">
+        <div class="registerButton" v-if="!user">
           <router-link
             to="/register"
             tag="button"
