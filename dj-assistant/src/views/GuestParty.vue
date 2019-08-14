@@ -27,7 +27,6 @@
 //import { APIService } from "@/APIService";
 import NavHeader from "@/components/NavHeader.vue";
 //const apiService = new APIService();
-//import auth from "../auth";
 
 export default {
   name: "guest-party",

@@ -8,6 +8,9 @@
         role="alert"
         v-if="addSongErrors"
       >There were problems adding this song</div>
+      <div class="alert alert-success" role="alert" v-if="this.$route.query.songAdded">
+            Song added to library successfully.
+            </div>
       <div class="inputText">
       <label for="title" class="sr-only">Title</label>
       <input
@@ -31,16 +34,7 @@
         required
       />
        </div>
-      <!--<div class="inputText">
-      <label for="length" >Length</label>
-      <input
-        type="text"
-        id="length"
-        class="form-control"
-        placeholder="Length"
-        v-model="song.length"
-      />
-       </div>-->
+      
       <div class="radioButtons">
         <label for="radio">Explicit?</label>
           <div id="trueButton">
@@ -119,9 +113,10 @@ export default {
       })
         .then(response => {
           if (response.ok) {
-            // return response.text();
+            
             this.$router.push({
-              path: "/dashboard",
+              path: "/add-song",
+              query: { songAdded: true }
             });
           } else {
             this.addSongErrors = true;
@@ -129,6 +124,11 @@ export default {
         })
 
         .catch(err => console.error(err));
+        this.song.title = "";
+        this.song.artist = "";
+        this.song.length = 0;
+        this.song.explicit = false;
+        this.song.GenresId = [];
     },
   getGenres() {
     fetch(`${process.env.VUE_APP_REMOTE_API}/api/genre`, {
