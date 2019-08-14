@@ -495,6 +495,23 @@ namespace DJAssistantLogic.DAO
             return num;
         }
 
+        public int GetTotalPlayedSongsByPartyId(int partyId)
+        {
+            int num = 0;
+            const string sql = "Select count(Party_Song.Id) as total From [Party_Song] Where Party_Id = @partyId and Played = 1;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@partyId", partyId);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                num = Convert.ToInt32(reader["total"]);
+            }
+            return num;
+        }
+
         public List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName)
         {
             List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();

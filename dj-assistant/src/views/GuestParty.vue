@@ -32,6 +32,7 @@
 <script>
 //import { APIService } from "@/APIService";
 import NavHeader from "@/components/NavHeader.vue";
+import { clearInterval } from 'timers';
 //const apiService = new APIService();
 
 export default {
@@ -41,6 +42,8 @@ export default {
       songs: [],
       next5Songs: [],
       last5Songs: [],
+      timer1: '',
+      timer2: '',
       songRequest: {
         songId: null,
         partyName: this.$route.params.partyName
@@ -121,6 +124,12 @@ const partyName = this.$route.params.partyName;
     this.getSongsForRequest();
     this.getNext5Songs();
     this.getLast5Songs();
+    this.timer1 = setInterval(this.getNext5Songs, 30000);
+    this.timer2 = setInterval(this.getLast5Songs, 30000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer1);
+    clearInterval(this.timer2);
   }
 };
 </script>

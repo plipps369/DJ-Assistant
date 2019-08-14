@@ -160,10 +160,15 @@ export default {
 }
 
 #add-song {
+<<<<<<< HEAD
   background-image: linear-gradient(black, black, rgb(15, 182, 248));
+=======
+  background-image: linear-gradient(pink,white,white);
+>>>>>>> dadd95966d64884370138be24fe1827208905f83
 }
 
 #create-party {
+<<<<<<< HEAD
   background-image: linear-gradient(black, black, rgb(15, 182, 248));
 }
 #library {
@@ -172,6 +177,14 @@ export default {
 #party-list {
   margin: 3vh;
   background-image: linear-gradient(black, black, rgb(15, 182, 248));
+=======
+  background-image: linear-gradient(pink,white,white);
+}
+#party-list {
+  margin: 3vh;
+ background-image: linear-gradient(pink,white,white);
+ color: black !important;
+>>>>>>> dadd95966d64884370138be24fe1827208905f83
 }
 
 #party-list {
