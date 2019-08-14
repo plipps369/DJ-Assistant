@@ -1,8 +1,8 @@
 <template>
     <div class="guestPage">
         <nav-header></nav-header>
-        <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Guest Page</strong></h1>
-        <h3>Please enter your party name:</h3>
+        <h1 id="guestPageTitle" class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Guest Page</strong></h1>
+        <h3 class="h1-reponsive wow fadeInDown" data-wow-delay="0.3s">Please enter your party name:</h3>
         <div class="partyName">
         <input
         type="text"
@@ -93,5 +93,12 @@ export default {
 	
 	top:1px;
 }
+
+h3 {
+   color: white;
+  text-shadow: 4px 4px 5px #ff4c49, 0 0 25px salmon, 0 0 5px pink;
+}
+
+
 
 </style>

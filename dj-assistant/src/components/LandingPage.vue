@@ -2,6 +2,7 @@
   <b-card-group deck>
     <div id="landing-page">
       <div class="djAbout">
+		  <h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
@@ -68,8 +69,8 @@ export default {
   margin-right: 10%;
   margin-top: 7%;
   max-height: 100%;
-  background-color: hsla(0, 0%, 0%, 1);
-  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+  background-color: hsla(0, 0%, 0%, 0);
+  /* background-image: linear-gradient(black,black,rgb(15, 182, 248)); */
   color: white;
 }
 
