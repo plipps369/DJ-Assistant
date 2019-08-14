@@ -3,30 +3,30 @@
     <div>
       <nav-header></nav-header>
       <h1>{{songRequest.partyName}}</h1>
-      <ul>
-        Next 5 Songs:
-        <li v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
-      </ul>
-      <ul>
-        Last 5 Songs:
-        <li v-for="song in last5Songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
-      </ul>
-      <h3>Request a Song</h3>
-      <form @submit.prevent="requestSong">
-        <div class="form-group">
-          <select class="form-control" v-model="songRequest.songId">
-            Song Choices:
-            <option
-              v-for="song in songs"
-              :key="song.id"
-              :value="song.id"
-            >{{song.title}} by: {{song.artist}}</option>
-          </select>
+
+      <div class="song">
+      <h3>Next 5 Songs:</h3>
+        <p v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
         </div>
-        <button type="Submit" class="btn btn-outline-warning" id="songSubmit">Submit Song</button>
+
+        <div class="song">
+        <h3>Last 5 Songs:</h3>
+        <p v-for="song in last5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
+        </div>
+
+        </div>
+      <h3>Request a Song</h3>
+      <form @submit.prevent="requestSong" id="form">
+          <div class="form-group">
+        <select class="form-control" v-model="songRequest.songId">
+          Song Choices:
+          <option v-for="song in songs" :key="song.id" :value="song.id">{{song.title}} by: {{song.artist}}</option>
+        </select>
+        </div>
+        <button type="Submit" class="btn btn-danger btn-lg btn-block" id="songSubmit">Submit Song</button>
       </form>
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -149,4 +149,20 @@ export default {
 </script>
 
 <style>
+
+.song {
+  margin: 20px;
+   text-align: center;
+   position: relative;
+     margin-right: 25vw;
+  margin-left: 25vw;
+  background-color: white;
+}
+#form {
+      margin: 20px;
+   text-align: center;
+   position: relative;
+     margin-right: 25vw;
+  margin-left: 25vw;
+}
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <nav-header></nav-header>
+   
       <form class="form-signin" @submit.prevent="login">
         <div class="allInputFields" style="position: relative;">
           <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Please Sign In</strong></h1>
@@ -13,6 +14,7 @@
             <div class="alert alert-success" role="alert" v-if="this.$route.query.logout">
               You have been successfully logged out.
             </div>
+            
               <div class="loginText">
                 <label for="email" class="sr-only">Email</label>
                   <input
@@ -39,13 +41,14 @@
       </div>
 
     <div class="buttonLinks">
-      <button type="Submit" id="myButton" class="btn btn-outline-warning">SIGN IN</button>
+      <button type="Submit" id="myButton" class="btn btn-success btn-lg btn-block">Sign In</button>
    <br>
   
-      <router-link :to="{ name: 'register' }" id="registerPrompt"> Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" tag="button" class="btn btn-primary btn-lg btn-block" id="registerPrompt"> Need an account?</router-link>
       </div>
     </form>
   </div>
+
 </template>
 
 <script>
@@ -88,14 +91,26 @@ export default {
 
 <style>
 #login{
-  margin-top:50px;
+  margin-top:150px;
   position: relative;
   z-index: 1;
+    font-family: "Calibri", sans-serif;
+  font-size: 22px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+	margin-right: 30%;
+	margin-left: 30%;
+  padding: 3%;
+  float: center;
+    background-image: linear-gradient(red,white,white);
+ 
+  color: black;
 }
 .form-signin{
-  margin-right: 25vw;
-  margin-left: 25vw;
- 
+
 }
 
 div .buttonLinks {
@@ -116,10 +131,10 @@ div .buttonLinks {
 
 h1 {
 color: white;
-  text-shadow: 4px 4px 5px #ff4c49, 0 0 25px salmon, 0 0 5px pink;
+  text-shadow: 4px 2px 4px rgb(2, 170, 234), 0 0 25px rgb(0, 64, 87), 0 0 5px red;
 }
 
-#myButton {
+/* #myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -202,5 +217,5 @@ background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241
 #registerPrompt:active {
 
 	top:1px;
-}
+} */
 </style>

@@ -13,25 +13,16 @@
       <br />
       <div class="cardOfSongs">
         <div class="card" style="width: 28rem;">
-          <ul class="list-group list-group-flush">
-            <div
-              class="list-group-item"
-              id="songDetail"
-              v-for="song in songs"
-              :key="song.id"
-              v-bind:class="{ 'played': song.played == true }"
-            >
-              {{song.title}} by {{song.artist}}
-              <button
-                id="playedButton"
-                v-on:click="markSongPlayed(song.id)"
-              >Played</button>
-            </div>
-          </ul>
+        <ul class="list-group list-group-flush">
+          <div class="list-group-item" id="songDetail" v-for="song in songs" :key="song.id" v-bind:class="{ 'played': song.played == true }">{{song.title}} by {{song.artist}}
+             <button id="playedButton" class="btn btn-danger btn-lg" v-on:click="markSongPlayed(song.id)">Played</button>
+          </div>
+        </ul>
+        </div>
+        </div>
         </div>
       </div>
-    </div>
-  </div>
+   
 </template>
 
 <script>
@@ -149,7 +140,7 @@ export default {
   max-width: 100%;
   float: center;
 }
-
+/* 
 #playedButton {
   float: right;
   -moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
@@ -201,6 +192,8 @@ export default {
   background-color: #ff4c49;
 }
 #playedButton:active {
-  top: 1px;
-}
+	
+	top:1px;
+} */
+
 </style>

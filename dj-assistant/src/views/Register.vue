@@ -68,11 +68,11 @@
       </div>
       </div>
 <div class="registerButtonLinks">
-    <button type="Submit" id="regButton" class="btn btn-outline-warning">REGISTER</button>
+    <button type="Submit" id="regButton" class="btn btn-success btn-lg btn-block">Register</button>
       
    <br>
   
-      <router-link :to="{ name: 'login' }" id="haveAccount">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }" tag="button" class="btn btn-primary btn-lg btn-block" id="haveAccount">Have an account?</router-link>
       <br>
     </div>
       
@@ -159,7 +159,7 @@ padding-left: 4%;
 padding-right: 4%;
 }
 
-#regButton {
+/* #regButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -242,6 +242,6 @@ background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241
 #haveAccount:active {
 
 	top:1px;
-}
+} */
 
 </style>

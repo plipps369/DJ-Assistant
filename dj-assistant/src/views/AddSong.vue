@@ -67,9 +67,9 @@
 </div>
       </b-card>
       <br>
-      <button type="Submit" class="btn btn-outline-warning" id="songSubmit">Submit Song</button>
+      <button type="Submit" class="btn btn-success btn-lg btn-block" id="songSubmit">Submit Song</button>
       <router-link to="/dashboard">
-      <button type="Cancel" class="btn btn-outline-warning" id="cancelRequest">Cancel Add</button>
+      <button type="Cancel" class="btn btn-danger btn-lg btn-block" id="cancelRequest">Cancel Add</button>
       </router-link>
     </form>
   </div>
@@ -228,7 +228,7 @@ form {
   align-content: center;
 }
 
-#songSubmit {
+/* #songSubmit {
   -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -313,6 +313,6 @@ background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241
 #cancelRequest:active {
 
 	top:1px;
-}
+} */
 
 </style>

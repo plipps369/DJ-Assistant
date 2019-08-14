@@ -2,7 +2,7 @@
   <b-card-group deck>
     <div id="landing-page">
       <div class="djAbout">
-        <h3 class="card-title">DJ ASSISTANT</h3>
+        <!-- <h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
@@ -14,7 +14,7 @@
           to make a request!
           <br />
           <br />
-        </b-card-text> -->
+        </b-card-text> --> 
       </div>
 
       <div class="loginAndRegister">
@@ -29,17 +29,16 @@
         an account (or Log In if you already have one). When you're done with that you can create as many parties as you like and add songs to your
         own personal library, DRM free! Make sure to display your party name so your guests can connect and
         make requests! -->
-        <br />
-        <br />
+       
 
         <div class="loginButton" v-if="!user">
-          <router-link to="/login" tag="button" class="btn btn-lg btn-primary" id="newLogIn">Log In</router-link>
+          <router-link to="/login" tag="button" class="btn btn-lg btn-danger" id="newLogIn">Log In</router-link>
         </div>
         <div class="registerButton" v-if="!user">
           <router-link
             to="/register"
             tag="button"
-            class="btn btn-lg btn-primary"
+            class="btn btn-lg btn-danger"
             id="newRegister"
           >Register</router-link>
         </div>
@@ -90,12 +89,12 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-	margin-right: 35%;
-	margin-left: 35%;
+	margin-right: 30%;
+	margin-left: 30%;
   padding: 30px;
   float: center;
   
-  background-image: linear-gradient(pink,white,white);
+  background-image: linear-gradient(red,white,white);
   /* background-image: url("~@/assets/Soundblast.jpg") !important; */
   color: black;
 }
@@ -122,7 +121,7 @@ body {
   height: auto;
 }
 
-#newLogIn {
+/* #newLogIn {
   -moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   box-shadow: inset 0px 1px 0px 0px #fbafe3;
@@ -228,5 +227,5 @@ body {
 }
 #newRegister:active {
   top: 1px;
-}
+} */
 </style>
