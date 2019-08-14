@@ -154,7 +154,7 @@ export default {
 
 <style>
 #add-main {
-  margin-top: 465px;
+  margin-top: 55vh;
 }
 
 .form-radio
@@ -228,6 +228,9 @@ form {
   align-content: center;
 }
 
+#songSubmit {
+  margin-bottom: 4%;
+}
 /* #songSubmit {
   -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;

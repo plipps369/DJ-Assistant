@@ -165,18 +165,18 @@ export default {
 
 <style>
 .song {
-  margin: 20px;
+  margin: 5vw;
   text-align: center;
   position: relative;
-  margin-right: 25vw;
-  margin-left: 25vw;
+  margin-right: 10vw;
+  margin-left: 10vw;
   background-color: white;
 }
 #form {
-  margin: 20px;
+  margin: 5vw;
   text-align: center;
   position: relative;
-  margin-right: 25vw;
-  margin-left: 25vw;
+  margin-right: 10vw;
+  margin-left: 10vw;
 }
 </style>

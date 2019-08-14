@@ -117,6 +117,11 @@ export default {
   margin-top: 550px;
 }
 
+#partySubmit {
+ 
+  margin-bottom: 4%;
+}
+
 /* #partySubmit {
   -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;

@@ -131,7 +131,7 @@ export default {
 
 <style>
 #register{
-  margin-top: 500px;
+  margin-top: 68vh;
   position: relative;
   z-index: 1;
 }
