@@ -134,16 +134,17 @@ export default {
 }
 
 #add-song {
-  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+  background-image: linear-gradient(pink,white,white);
 }
 
 
 #create-party {
-  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+  background-image: linear-gradient(pink,white,white);
 }
 #party-list {
   margin: 3vh;
-  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+ background-image: linear-gradient(pink,white,white);
+ color: black !important;
 }
 
 
