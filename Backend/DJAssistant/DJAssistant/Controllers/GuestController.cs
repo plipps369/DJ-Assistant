@@ -24,14 +24,14 @@ namespace DJAssistantAPI.Controllers
         public ActionResult<string> GetSongListForPartyByName(string partyName)
         {
             List<SongItem> songs = null;
-            //try
-            //{
-            songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
-            //}
-            //catch
-            //{
-            //    return BadRequest(new { Message = "Get songs failed." });
-            //}
+            try
+            {
+                songs = _db.GetSongsByPartyId(_db.GetPartyByName(partyName).Id);
+        }
+            catch
+            {
+                return BadRequest(new { Message = "Get songs failed." });
+            }
             return Ok(songs);
         }
 
