@@ -2,14 +2,15 @@
   <b-card-group deck>
     <div id="landing-page">
       <div class="djAbout">
-		  <h3 class="card-title">DJ ASSISTANT</h3>
+        <h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
           beginning. Now even the most anti-social DJs can spin records from safely behind the speakers where
           they belong.
           <br />
-          <br />For party guests, simply go tap/click the "Guest" link in the navbar above and enter your party name
+          <br />
+          For party guests, simply go tap/click the "Guest" link in the navbar above and enter your party name
           to make a request!
           <br />
           <br />
