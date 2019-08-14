@@ -102,7 +102,7 @@ export default {
       })
         .then(response => {
           if (response.ok) {
-            response.json();
+            return response.json();
           } else {
             this.$router.push({
               path: "/guest/",

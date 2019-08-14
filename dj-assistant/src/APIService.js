@@ -6,7 +6,7 @@ export class APIService {
     }
 
     async login(data) {
-        const url = `${process.env.VUE_APP_REMOTE_API}/api/DJ/login`;
+        const url = `${API_URL}/api/DJ/login`;
         let res = await axios.post(url, data);
         if (res.status === 401) {
             throw "Your username and/or password is invalid";
