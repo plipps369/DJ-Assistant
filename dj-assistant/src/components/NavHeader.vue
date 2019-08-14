@@ -62,6 +62,10 @@ export default {
   methods: {
     logout() {
       auth.logout();
+      this.$router.push({
+        name: "login",
+        query: { logout: true }
+      })
     },
     getUser() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/DJ`, {
