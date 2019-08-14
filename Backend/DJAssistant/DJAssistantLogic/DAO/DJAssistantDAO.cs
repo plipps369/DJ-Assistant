@@ -871,5 +871,122 @@ namespace DJAssistantLogic.DAO
         }
 
         #endregion
+
+        #region Playlist
+
+        public int AddPlayList(PlaylistItem item)
+        {
+        
+            const string sql = "INSERT [Playlist] (" +
+                                   "Dj_id, " +
+                                   "Title) " +
+                              "VALUES (" +
+                                   "@Dj_id, " +
+                                   "@Title);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@Dj_id", item.Dj_id);
+                cmd.Parameters.AddWithValue("@Title", item.Title);
+                
+                item.Id = (int)cmd.ExecuteScalar();
+            }
+
+            return item.Id;
+        }
+
+        public PlaylistItem GetPlaylistItemById(int id)
+        {
+            throw new Exception();
+        }
+
+        public List<PlaylistItem> GetPlaylistItemsByDJId(int dJId)
+        {
+            List<PlaylistItem> playlists = new List<PlaylistItem>();
+
+            const string sql = "select * " +
+                               "from [Playlist] " +
+                               "where Dj_id = @dJId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@dJId", dJId);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    playlists.Add(GetPlaylistFromReader(reader));
+                }
+            }
+
+            return playlists;
+        }
+
+        private PlaylistItem GetPlaylistFromReader(SqlDataReader reader)
+        {
+            PlaylistItem playlist = new PlaylistItem();
+
+            playlist.Id = Convert.ToInt32(reader["Id"]);
+            playlist.Title = Convert.ToString(reader["Title"]);
+            playlist.Dj_id = Convert.ToInt32(reader["Artist"]);
+
+            return playlist;
+        }
+
+        public void AddSongPlayList(SongPlaylistItem item)
+        {
+            
+            const string sql = "INSERT [Song_Playlist] (" +
+                                   "Song_Id, " +
+                                   "Playlist_id) " +
+                              "VALUES (" +
+                                   "@SongId, " +
+                                   "@PlaylistId);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql + _getLastIdSQL, conn);
+                cmd.Parameters.AddWithValue("@SongId", item.SongId);
+                cmd.Parameters.AddWithValue("@PlaylistId", item.PlaylistId);
+                cmd.ExecuteScalar();
+            }
+
+            return;
+        }
+
+        public List<SongItem> GetSongItemsInPlayListByPlaylistId(int id)
+        {
+            List<SongItem> songs = new List<SongItem>();
+
+            const string sql = "select * " +
+                               "from [Song_Playlist] " +
+                               "join Song on Song_Playlist.Song_id = Song.Id" +
+                               "where Song_playlist.Playlist_id = @PlaylistId;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@PlaylistId", id);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    songs.Add(GetSongItemFromReader(reader));
+                }
+            }
+
+            return songs;
+        }
+
+        #endregion
+
     }
 }

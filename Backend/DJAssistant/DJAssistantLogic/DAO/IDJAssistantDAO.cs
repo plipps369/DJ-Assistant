@@ -81,5 +81,20 @@ namespace DJAssistantLogic.DAO
         List<SongItem> GetSongsByDJId(int dJId);
 
         #endregion
+
+        #region Playlist
+
+        int AddPlayList(PlaylistItem playlist);
+
+        PlaylistItem GetPlaylistItemById(int id);
+
+        List<PlaylistItem> GetPlaylistItemsByDJId(int dJId);
+
+        void AddSongPlayList(SongPlaylistItem songPlaylist);
+
+        List<SongItem> GetSongItemsInPlayListByPlaylistId(int id);
+
+        #endregion
+
     }
 }
