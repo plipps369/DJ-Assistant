@@ -27,11 +27,15 @@ import auth from "../auth";
 
 export default {
   name: "guestParty",
+  computed: {
+    
+  },
   data() {
     return {
       party: {},
       songs: [],
       markErrors: false,
+      timer: ''
     };
   },
   components: {
@@ -95,12 +99,17 @@ export default {
 
         .catch(err => console.error(err));
     
-    }
+    },
+    
   },
   created() {
       this.getParty();
       this.getSongs();
-  }
+      this.timer = setInterval(this.getSongs, 30000);
+  },
+  beforeDestroy() {
+  clearInterval(this.timer)
+}
 };
 </script>
 
