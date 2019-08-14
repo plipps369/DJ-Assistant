@@ -140,9 +140,11 @@ export default {
   max-width: 100%;
   float: center;
 }
-/* 
+
 #playedButton {
   float: right;
+}
+  /*
   -moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   box-shadow: inset 0px 1px 0px 0px #fbafe3;
@@ -174,6 +176,8 @@ export default {
   text-shadow: 0px 1px 0px #c70067;
   display: block;
 }
+
+/*
 #playedButton:hover {
   background-color: #ff4c49;
   background: -webkit-gradient(
