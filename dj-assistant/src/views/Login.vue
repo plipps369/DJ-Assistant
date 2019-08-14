@@ -39,10 +39,10 @@
       </div>
 
     <div class="buttonLinks">
-      <button type="Submit" id="myButton" class="btn btn-outline-warning">SIGN IN</button>
+      <button type="Submit" id="myButton" class="btn btn-success btn-lg btn-block">Sign In</button>
    <br>
   
-      <router-link :to="{ name: 'register' }" id="registerPrompt"> Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" tag="button" class="btn btn-primary btn-lg btn-block" id="registerPrompt"> Need an account?</router-link>
       </div>
     </form>
   </div>
@@ -119,7 +119,7 @@ color: white;
   text-shadow: 4px 4px 5px #ff4c49, 0 0 25px salmon, 0 0 5px pink;
 }
 
-#myButton {
+/* #myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -202,5 +202,5 @@ background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241
 #registerPrompt:active {
 
 	top:1px;
-}
+} */
 </style>

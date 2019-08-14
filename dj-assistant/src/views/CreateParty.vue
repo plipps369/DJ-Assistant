@@ -37,9 +37,9 @@
       </select> 
 </div>
       <br />
-            <button type="Submit" class="btn btn-outline-warning" id="partySubmit">Create Party</button>
+            <button type="Submit" class="btn btn-success btn-lg btn-block" id="partySubmit">Create Party</button>
 <router-link to="/dashboard">
-      <button type="Cancel" class="btn btn-outline-warning" id="cancelPartyCreate">Cancel Add</button>
+      <button type="Cancel" class="btn btn-danger btn-lg btn-block" id="cancelPartyCreate">Cancel Add</button>
 </router-link>
     </form>
   </div>
@@ -117,7 +117,7 @@ export default {
   margin-top: 550px;
 }
 
-#partySubmit {
+/* #partySubmit {
   -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -202,5 +202,5 @@ background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #241
 #cancelPartyCreate:active {
 
 	top:1px;
-}
+} */
 </style>

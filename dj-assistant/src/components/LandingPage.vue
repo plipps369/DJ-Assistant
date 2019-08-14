@@ -33,13 +33,13 @@
         <br />
 
         <div class="loginButton" v-if="!user">
-          <router-link to="/login" tag="button" class="btn btn-lg btn-primary" id="newLogIn">Log In</router-link>
+          <router-link to="/login" tag="button" class="btn btn-lg btn-danger" id="newLogIn">Log In</router-link>
         </div>
         <div class="registerButton" v-if="!user">
           <router-link
             to="/register"
             tag="button"
-            class="btn btn-lg btn-primary"
+            class="btn btn-lg btn-danger"
             id="newRegister"
           >Register</router-link>
         </div>
@@ -122,7 +122,7 @@ body {
   height: auto;
 }
 
-#newLogIn {
+/* #newLogIn {
   -moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   box-shadow: inset 0px 1px 0px 0px #fbafe3;
@@ -228,5 +228,5 @@ body {
 }
 #newRegister:active {
   top: 1px;
-}
+} */
 </style>

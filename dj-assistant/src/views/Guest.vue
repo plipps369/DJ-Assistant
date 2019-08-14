@@ -13,8 +13,10 @@
         required
         autofocus
       />
+      <br />
+      <router-link id="findParty" :to="{ name: 'guest-party', params: { partyName: partyName } }" tag="button" class="btn btn-danger btn-lg btn-block">Find Party</router-link>
       </div>
-       <router-link id="findParty" :to="{ name: 'guest-party', params: { partyName: partyName } }" tag="button" class="btn btn-lg btn-warning">Find Party</router-link>
+       
     </div>
 </template>
 
@@ -47,7 +49,7 @@ export default {
   margin-left: 25vw;
 }
 
-#findParty {
+/* #findParty {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
 	box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -92,7 +94,7 @@ export default {
 #findParty:active {
 	
 	top:1px;
-}
+} */
 
 h3 {
    color: white;
