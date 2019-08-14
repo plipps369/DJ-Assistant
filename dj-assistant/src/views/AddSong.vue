@@ -67,9 +67,9 @@
 </div>
       </b-card>
       <br>
-      <button type="Submit" class="btn btn-success btn-lg btn-block" id="songSubmit">Submit Song</button>
+      <button type="Submit" class="btn btn-danger btn-lg btn-block" id="songSubmit">Submit Song</button>
       <router-link to="/dashboard">
-      <button type="Cancel" class="btn btn-danger btn-lg btn-block" id="cancelRequest">Cancel Add</button>
+      <button type="Cancel" class="btn btn-dark btn-lg btn-block" id="cancelRequest">Cancel Add</button>
       </router-link>
     </form>
   </div>

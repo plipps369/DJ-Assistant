@@ -37,9 +37,9 @@
       </select> 
 </div>
       <br />
-            <button type="Submit" class="btn btn-success btn-lg btn-block" id="partySubmit">Create Party</button>
+            <button type="Submit" class="btn btn-danger btn-lg btn-block" id="partySubmit">Create Party</button>
 <router-link to="/dashboard">
-      <button type="Cancel" class="btn btn-danger btn-lg btn-block" id="cancelPartyCreate">Cancel Add</button>
+      <button type="Cancel" class="btn btn-dark btn-lg btn-block" id="cancelPartyCreate">Cancel Add</button>
 </router-link>
     </form>
   </div>

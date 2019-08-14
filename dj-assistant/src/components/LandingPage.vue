@@ -38,7 +38,7 @@
           <router-link
             to="/register"
             tag="button"
-            class="btn btn-lg btn-danger"
+            class="btn btn-lg btn-dark"
             id="newRegister"
           >Register</router-link>
         </div>
@@ -66,20 +66,6 @@ export default {
 </script>
 
 <style>
-/* .djAbout {
-  font-family: "Roboto Condensed", sans-serif;
-  border-radius: 10px;
-  float: left;
-  padding: 25px;
-  max-width: 28%;
-  margin-left: 17%;
-  margin-right: 10%;
-  margin-top: 7%;
-  max-height: 100%;
-  background-color: hsla(0, 0%, 0%, 0);
-  /* background-image: linear-gradient(black,black,rgb(15, 182, 248)); */
-  /* color: white; */ 
-/* } */
 
 .loginAndRegister {
   font-family: "Calibri", sans-serif;
@@ -89,8 +75,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-	margin-right: 30%;
-	margin-left: 30%;
+  margin-right: 10%;
+  margin-left: 10%;
   padding: 30px;
   float: center;
   

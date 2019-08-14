@@ -41,10 +41,10 @@
       </div>
 
     <div class="buttonLinks">
-      <button type="Submit" id="myButton" class="btn btn-success btn-lg btn-block">Sign In</button>
+      <button type="Submit" id="myButton" class="btn btn-danger btn-lg btn-block">Sign In</button>
    <br>
   
-      <router-link :to="{ name: 'register' }" tag="button" class="btn btn-primary btn-lg btn-block" id="registerPrompt"> Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" tag="button" class="btn btn-dark btn-lg btn-block" id="registerPrompt"> Need an account?</router-link>
       </div>
     </form>
   </div>
@@ -94,23 +94,12 @@ export default {
   margin-top:150px;
   position: relative;
   z-index: 1;
-    font-family: "Calibri", sans-serif;
-  font-size: 22px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-	margin-right: 30%;
-	margin-left: 30%;
-  padding: 3%;
-  float: center;
-    background-image: linear-gradient(red,white,white);
- 
-  color: black;
+    
 }
 .form-signin{
-
+  margin-right: 15vw;
+  margin-left: 15vw;
+  margin-top: -7vh;
 }
 
 div .buttonLinks {
