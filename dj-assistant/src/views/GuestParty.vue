@@ -100,7 +100,16 @@ export default {
           "Content-Type": "application/json"
         }
       })
-        .then(response => response.json())
+        .then(response => {
+          if (response.ok) {
+            response.json();
+          } else {
+            this.$router.push({
+              path: "/guest/",
+              query: { partyFailed: true }
+            });
+          }
+        })
         .then(json => {
           this.songs = json;
         });
