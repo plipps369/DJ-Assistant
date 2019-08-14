@@ -116,7 +116,7 @@ export default {
           if (response.ok) {
             this.$router.push({
               path: "/login",
-              query: { registration: "success" }
+              query: { registration: true }
             });
           } else {
             this.registrationErrors = true;

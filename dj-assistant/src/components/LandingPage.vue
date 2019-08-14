@@ -15,7 +15,7 @@
         </b-card-text>
       </div>
 
-      <div class="loginAndRegister">
+      <div class="loginAndRegister" v-if="!user">
         If you're a DJ looking to simplify your request system, hit the register button below to create
         an account (or Log In if you already have one). When you're done with that you can create as many parties as you like and add songs to your
         own personal library, DRM free! Make sure to display your party name so your guests can connect and
@@ -40,8 +40,20 @@
 </template>
 
 <script>
+import auth from '../auth';
+
 export default {
-  name: "landing-page"
+  name: "landing-page",
+  data() {
+    return {
+     
+    }
+  },
+  computed: {
+    user: function () {
+      return auth.getUser();
+    }
+  }
 };
 </script>
 
