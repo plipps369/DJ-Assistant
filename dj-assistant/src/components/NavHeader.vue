@@ -11,7 +11,7 @@
 
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
       <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
-       <b-navbar-brand>DJ App</b-navbar-brand>
+       <h3><b-navbar-brand>DJ ASSISTANT</b-navbar-brand></h3>
 
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

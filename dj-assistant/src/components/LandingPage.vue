@@ -2,7 +2,7 @@
   <b-card-group deck>
     <div id="landing-page">
       <div class="djAbout">
-		  <h3 class="card-title">DJ ASSISTANT</h3>
+		  <!--<h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
@@ -13,14 +13,22 @@
           to make a request!
           <br />
           <br />
-        </b-card-text>
+        </b-card-text> -->
       </div>
 
       <div class="loginAndRegister">
-        If you're a DJ looking to simplify your request system, hit the register button below to create
+		  <h1> Welcome to DJ Assistant </h1>
+		  <p>Do you love being the life of the party but hate talking to people?</p>
+		  <p> OF COURSE YOU DO!</p>
+		  <p> It's 2019 and
+          face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
+          beginning. Now even the most anti-social DJs can spin records from safely behind the speakers where
+          they belong.</p>
+		  
+        <!-- If you're a DJ looking to simplify your request system, hit the register button below to create
         an account (or Log In if you already have one). When you're done with that you can create as many parties as you like and add songs to your
         own personal library, DRM free! Make sure to display your party name so your guests can connect and
-        make requests!
+        make requests! -->
         <br />
         <br />
 
@@ -47,7 +55,7 @@ export default {
 </script>
 
 <style>
-.djAbout {
+/* .djAbout {
   font-family: "Roboto Condensed", sans-serif;
   border-radius: 10px;
   float: left;
@@ -59,21 +67,25 @@ export default {
   max-height: 100%;
   background-color: hsla(0, 0%, 0%, 0);
   /* background-image: linear-gradient(black,black,rgb(15, 182, 248)); */
-  color: white;
-}
+  /* color: white; */ 
+/* } */
 
 .loginAndRegister {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Calibri", sans-serif;
+  font-size: 22px;
   border-radius: 10px;
-  float: right;
-  padding: 25px;
-  max-width: 28%;
-  margin-top: 5%;
-  margin-right: 17%;
-  max-height: 100%;
-  background-image: linear-gradient(black,black,rgb(15, 182, 248));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+	margin-right: 35%;
+	margin-left: 35%;
+  padding: 30px;
+  float: center;
+  
+  background-image: linear-gradient(pink,white,white);
   /* background-image: url("~@/assets/Soundblast.jpg") !important; */
-  color: white;
+  color: black;
 }
 
 .buttons {
