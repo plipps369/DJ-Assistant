@@ -68,11 +68,11 @@
       </div>
       </div>
 <div class="registerButtonLinks">
-    <button type="Submit" id="regButton" class="btn btn-success btn-lg btn-block">Register</button>
+    <button type="Submit" id="regButton" class="btn btn-danger btn-lg btn-block">Register</button>
       
    <br>
   
-      <router-link :to="{ name: 'login' }" tag="button" class="btn btn-primary btn-lg btn-block" id="haveAccount">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }" tag="button" class="btn btn-dark btn-lg btn-block" id="haveAccount">Have an account?</router-link>
       <br>
     </div>
       
@@ -137,8 +137,8 @@ export default {
 }
 
 .form-register{
-  margin-right: 25vw;
-  margin-left: 25vw;
+  margin-right: 15vw;
+  margin-left: 15vw;
   margin-top: -500px;
 }
 
