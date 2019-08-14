@@ -125,6 +125,7 @@ namespace DJAssistantAPI.Controllers
             else
             {
                 partySong.Played = true;
+                partySong.PlayOrder = _db.GetTotalPlayedSongsByPartyId(partySong.PartyId);
                 _db.UpdatePartySongItem(partySong);
             }
 
