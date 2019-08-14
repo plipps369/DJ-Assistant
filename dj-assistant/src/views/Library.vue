@@ -1,11 +1,15 @@
 <template>
     <div>
         <nav-header></nav-header>
-        <h1>Library</h1>
+        <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>LIBRARY</STRONG></h1>
         <h3>All Songs:</h3>
-        <ul>
+        <div class="libraryCard">
+        <div class="card" style="width: 28rem;">
+        <ul class="list-group list-group-flush" >
             <li v-for="song in songs" :key="song.id">{{song.title}} by {{song.artist}}</li>
         </ul>
+        </div>
+        </div>
     </div>
 </template>
 
@@ -46,5 +50,17 @@ export default {
 </script>
 
 <style>
+.libraryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  float: center;
 
+}
+
+ul {
+  list-style-type: none;
+}
 </style>
