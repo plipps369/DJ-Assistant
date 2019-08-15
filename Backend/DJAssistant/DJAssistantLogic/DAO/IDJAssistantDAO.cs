@@ -44,8 +44,11 @@ namespace DJAssistantLogic.DAO
         bool UpdatePartySongItem(PartySongItem item);
         bool DeletePartySongItem(int partySongId);
         PartySongItem GetPartySongItemById(int partySongId);
-        List<PartySongItem> GetPartySongItemByPartyId(int partyId);
+        List<PartySongItemWithDetails> GetPartySongItemWithDetailsByPartyId(int partyId);
         int GetTotalSongsRequestedByPartyId(int partyId);
+        int GetTotalPlayedSongsByPartyId(int partyId);
+        List<PartySongItemWithDetails> GetPartySongsPlayedByPartyName(string partyName);
+        List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName);
 
         #endregion
 
@@ -75,7 +78,23 @@ namespace DJAssistantLogic.DAO
         bool DeleteSongItem(int songId);
         SongItem GetSongItemById(int songId);
         List<SongItem> GetSongsByPartyId(int partyID);
+        List<SongItem> GetSongsByDJId(int dJId);
 
         #endregion
+
+        #region Playlist
+
+        int AddPlayList(PlaylistItem playlist);
+
+        PlaylistItem GetPlaylistItemById(int id);
+
+        List<PlaylistItem> GetPlaylistItemsByDJId(int dJId);
+
+        void AddSongPlayList(SongPlaylistItem songPlaylist);
+
+        List<SongItem> GetSongItemsInPlayListByPlaylistId(int id);
+
+        #endregion
+
     }
 }

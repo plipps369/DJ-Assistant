@@ -68,7 +68,7 @@ namespace DJAssistantAPI.Controllers
             List<PartyItem> parties = null;
             try
             {
-               parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
+                parties = _db.GetPartyItemsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id);
             }
             catch
             {
@@ -92,7 +92,7 @@ namespace DJAssistantAPI.Controllers
 
             }
 
-            if(party == null)
+            if (party == null)
             {
                 result = BadRequest(new { Message = "Party not found" });
             }
@@ -103,5 +103,33 @@ namespace DJAssistantAPI.Controllers
 
             return result;
         }
-    }
+
+        [HttpGet("PartySongs/{partyId}")]
+        [Authorize]
+        public ActionResult<IEnumerable<string>> GetPartySongs(int partyId)
+        {
+            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongItemWithDetailsByPartyId(partyId);
+            return Ok(partySongItems);
+        }
+
+       [HttpPost("MarkedAsPlayed/{partySongId}")]
+       [Authorize]
+        public IActionResult MarkedSongAsPlayedByParytSongId(int partySongId)
+        {
+            PartySongItem partySong = _db.GetPartySongItemById(partySongId);
+
+            if(partySong.Played == true)
+            {
+                return BadRequest(new { Message = "song was already played" });
+            }
+            else
+            {
+                partySong.Played = true;
+                partySong.PlayOrder = _db.GetTotalPlayedSongsByPartyId(partySong.PartyId);
+                _db.UpdatePartySongItem(partySong);
+            }
+
+            return Ok();
+        }
+    }    
 }

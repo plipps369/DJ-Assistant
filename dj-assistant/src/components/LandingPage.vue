@@ -2,35 +2,43 @@
   <b-card-group deck>
     <div id="landing-page">
       <div class="djAbout">
+        <!-- <h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
           beginning. Now even the most anti-social DJs can spin records from safely behind the speakers where
           they belong.
           <br />
-          <br />For party guests, simply go tap/click the "Guest" link in the navbar above and enter your party name
+          <br />
+          For party guests, simply go tap/click the "Guest" link in the navbar above and enter your party name
           to make a request!
           <br />
           <br />
-        </b-card-text>
+        </b-card-text> --> 
       </div>
 
       <div class="loginAndRegister">
-        If you're a DJ looking to simplify your request system, hit the register button below to create
+        <h1> Welcome to InterRUPPtions Unlimited </h1>
+      <p>Do you love being the life of the party but hate talking to people?</p>
+      <p> OF COURSE YOU DO!</p>
+      <p> It's 2019 and
+          face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
+          beginning. Now even the most anti-social DJs can spin records from safely behind the speakers where
+          they belong.</p>
+          <!-- If you're a DJ looking to simplify your request system, hit the register button below to create
         an account (or Log In if you already have one). When you're done with that you can create as many parties as you like and add songs to your
         own personal library, DRM free! Make sure to display your party name so your guests can connect and
-        make requests!
-        <br />
-        <br />
+        make requests! -->
+       
 
-        <div class="loginButton">
-          <router-link to="/login" tag="button" class="btn btn-lg btn-primary" id="newLogIn">Log In</router-link>
+        <div class="loginButton" v-if="!user">
+          <router-link to="/login" tag="button" class="btn btn-lg btn-danger" id="newLogIn">Log In</router-link>
         </div>
-        <div class="registerButton">
+        <div class="registerButton" v-if="!user">
           <router-link
             to="/register"
             tag="button"
-            class="btn btn-lg btn-primary"
+            class="btn btn-lg btn-dark"
             id="newRegister"
           >Register</router-link>
         </div>
@@ -40,11 +48,24 @@
 </template>
 
 <script>
+import auth from '../auth';
+
 export default {
-  name: "landing-page"
+  name: "landing-page",
+  data() {
+    return {
+     
+    }
+  },
+  computed: {
+    user: function () {
+      return auth.getUser();
+    }
+  }
 };
 </script>
 
+<<<<<<< HEAD
 <style >
 .djAbout {
   font-family: "Roboto Condensed", sans-serif;
@@ -59,18 +80,26 @@ export default {
   background-color: hsla(0, 0%, 0%, 0.7);
   color: white;
 }
+=======
+<style>
+>>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
 
 .loginAndRegister {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Calibri", sans-serif;
+  font-size: 22px;
   border-radius: 10px;
-  float: right;
-  padding: 25px;
-  max-width: 28%;
-  margin-top: 5%;
-  margin-right: 17%;
-  max-height: 100%;
-  background-color: hsla(0, 0%, 0%, 0.7);
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10%;
+  margin-left: 10%;
+  padding: 30px;
+  float: center;
+  
+  background-image: linear-gradient(red,white,white);
+  /* background-image: url("~@/assets/Soundblast.jpg") !important; */
+  color: black;
 }
 
 .buttons {
@@ -87,6 +116,10 @@ export default {
 }
 
 body {
+<<<<<<< HEAD
+=======
+   background-image: url("~@/assets/Soundblast.jpg") !important;
+>>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -95,7 +128,7 @@ body {
   height: auto;
 }
 
-#newLogIn {
+/* #newLogIn {
   -moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fbafe3;
   box-shadow: inset 0px 1px 0px 0px #fbafe3;
@@ -201,5 +234,5 @@ body {
 }
 #newRegister:active {
   top: 1px;
-}
+} */
 </style>
