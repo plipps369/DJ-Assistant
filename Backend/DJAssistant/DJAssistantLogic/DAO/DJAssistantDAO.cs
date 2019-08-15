@@ -48,18 +48,7 @@ namespace DJAssistantLogic.DAO
 
             return item.Id;
         }
-        public bool UpdateDJItem(DJItem item)
-        {
-            throw new NotImplementedException();
-        }
-        public bool DeleteDJItem(int DJId)
-        {
-            throw new NotImplementedException();
-        }
-        public DJItem GetDJItemById(int DJId)
-        {
-            throw new NotImplementedException();
-        }
+        
         public DJItem GetDJItemByEmail(string email)
         {
             DJItem user = null;
@@ -123,15 +112,6 @@ namespace DJAssistantLogic.DAO
             }
 
             return item.Id;
-        }
-
-        public bool UpdateGenreItem(GenreItem item)
-        {
-            throw new NotImplementedException();
-        }
-        public bool DeleteGenreItem(int genreId)
-        {
-            throw new NotImplementedException();
         }
  
         private GenreItem GetGenreItemFromReader(SqlDataReader reader)
@@ -243,10 +223,7 @@ namespace DJAssistantLogic.DAO
 
             return item.Id;
         }
-        public bool UpdatePartyItem(PartyItem item)
-        {
-            throw new NotImplementedException();
-        }
+
         public bool DeletePartyItem(int partyId)
         {
             bool isSuccessful = false;
@@ -267,6 +244,7 @@ namespace DJAssistantLogic.DAO
 
             return isSuccessful;
         }
+
         public PartyItem GetPartyItemById(int partyId)
         {
             PartyItem party = null;
@@ -284,11 +262,6 @@ namespace DJAssistantLogic.DAO
                     party = GetPartyItemFromReader(reader);
                 }
             }
-
-            //if (user == null)
-            //{
-            //    throw new Exception("User does not exist.");
-            //}
 
             return party;
         }
@@ -383,6 +356,7 @@ namespace DJAssistantLogic.DAO
 
             return item.Id;
         }
+
         public bool UpdatePartySongItem(PartySongItem item)
         {
             bool isSuccessful = false;
@@ -411,10 +385,6 @@ namespace DJAssistantLogic.DAO
 
             return isSuccessful;
         }
-        public bool DeletePartySongItem(int partySongId)
-        {
-            throw new NotImplementedException();
-        }
 
         public PartySongItem GetPartySongItemById(int partySongId)
         {
@@ -433,11 +403,6 @@ namespace DJAssistantLogic.DAO
                     partySong = GetParySongItemFromReader(reader);
                 }
             }
-
-            //if (user == null)
-            //{
-            //    throw new Exception("User does not exist.");
-            //}
 
             return partySong;
         }
@@ -478,6 +443,7 @@ namespace DJAssistantLogic.DAO
 
             return item;
         }
+
         public int GetTotalSongsRequestedByPartyId(int partyId)
         {
             int num = 0;
@@ -607,6 +573,7 @@ namespace DJAssistantLogic.DAO
 
             return;
         }
+
         public bool DeleteSongDJItem(SongDJItem item)
         {
             bool isSuccessful = false;
@@ -654,6 +621,7 @@ namespace DJAssistantLogic.DAO
 
             
         }
+
         public bool DeleteSongGenreItem(SongGenreItem item)
         {
             bool isSuccessful = false;
@@ -679,6 +647,7 @@ namespace DJAssistantLogic.DAO
         #endregion
 
         #region PartyGenre
+
         public void AddPartyGenreItem(PartyGenreItem partyGenre)
         {
             const string sql = "INSERT [Party_Genre] (" +
@@ -698,6 +667,7 @@ namespace DJAssistantLogic.DAO
                 cmd.ExecuteScalar();
             }
         }
+
         #endregion
 
         #region Song
@@ -729,14 +699,7 @@ namespace DJAssistantLogic.DAO
 
             return item.Id;
         }
-        public bool UpdateSongItem(SongItem item)
-        {
-            throw new NotImplementedException();
-        }
-        public bool DeleteSongItem(int songId)
-        {
-            throw new NotImplementedException();
-        }
+
         public SongItem GetSongItemById(int songId)
         {
             SongItem item = null;
@@ -754,11 +717,6 @@ namespace DJAssistantLogic.DAO
                     item = GetSongItemFromReader(reader);
                 }
             }
-
-            //if (user == null)
-            //{
-            //    throw new Exception("User does not exist.");
-            //}
 
             return item;
         }
@@ -870,6 +828,32 @@ namespace DJAssistantLogic.DAO
             return songs;
         }
 
+        public List<SongItem> GetSongsByDJEmail(string email)
+        {
+            List<SongItem> songs = new List<SongItem>();
+
+            const string sql = "select Song.Id, Song.Title, Song.Artist, Song.Length, Song.Explicit " +
+                               "from [Song] " +
+                               "join Song_DJ on Song.Id = Song_DJ.Song_id " +
+                               "join DJ on DJ.Id = Song_DJ.DJ_Id " +
+                               "where DJ.Email = @email;";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    songs.Add(GetSongItemFromReader(reader));
+                }
+            }
+
+            return songs;
+        }
+
         #endregion
 
         #region Playlist
@@ -896,11 +880,6 @@ namespace DJAssistantLogic.DAO
             }
 
             return item.Id;
-        }
-
-        public PlaylistItem GetPlaylistItemById(int id)
-        {
-            throw new Exception();
         }
 
         public List<PlaylistItem> GetPlaylistItemsByDJId(int dJId)

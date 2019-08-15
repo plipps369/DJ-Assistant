@@ -106,13 +106,35 @@ namespace DJAssistantAPI.Controllers
         [Authorize]
         public IActionResult CurrentDJ()
         {
-            return Ok(_db.GetDJItemByEmail(User.Identity.Name));
+            IActionResult result = null;
+
+            try
+            {
+                result = Ok(_db.GetDJItemByEmail(User.Identity.Name));
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Get DJ failed" });
+            }
+
+            return result;
         }
 
         [HttpGet("AllSongs")]
         [Authorize]
         public IActionResult AllSongs()
         {
+            IActionResult result = null;
+
+            try
+            {
+                result = Ok(_db.GetSongsByDJEmail(User.Identity.Name));
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "All songs failed." });
+            }
+
             return Ok(_db.GetSongsByDJId(_db.GetDJItemByEmail(User.Identity.Name).Id));
         }
     }

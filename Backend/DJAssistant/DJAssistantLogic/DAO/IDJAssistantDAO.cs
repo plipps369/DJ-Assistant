@@ -10,9 +10,7 @@ namespace DJAssistantLogic.DAO
         #region DJ
 
         int AddDJItem(DJItem item);
-        bool UpdateDJItem(DJItem item);
-        bool DeleteDJItem(int DJId);
-        DJItem GetDJItemById(int DJId);
+   
         DJItem GetDJItemByEmail(string email);
 
         #endregion
@@ -20,34 +18,45 @@ namespace DJAssistantLogic.DAO
         #region Genre
 
         int AddGenreItem(GenreItem item);
-        bool UpdateGenreItem(GenreItem item);
-        bool DeleteGenreItem(int genreId);
+ 
         GenreItem GetGenreItemById(int genreId);
+
         GenreItem GetGenreItemByName(string name);
+
+        List<GenreItem> GetGenreItems();
 
         #endregion
 
         #region Party
 
         int AddPartyItem(PartyItem item);
-        bool UpdatePartyItem(PartyItem item);
+
         bool DeletePartyItem(int partyId);
+
         PartyItem GetPartyItemById(int partyId);
-        PartyItem GetPartyByName(string name);
+
         List<PartyItem> GetPartyItemsByDJId(int DJId);
 
+        PartyItem GetPartyByName(string name);
+        
         #endregion
 
         #region PartySong
 
         int AddPartySongItem(PartySongItem item);
+
         bool UpdatePartySongItem(PartySongItem item);
-        bool DeletePartySongItem(int partySongId);
+      
         PartySongItem GetPartySongItemById(int partySongId);
+
         List<PartySongItemWithDetails> GetPartySongItemWithDetailsByPartyId(int partyId);
+
         int GetTotalSongsRequestedByPartyId(int partyId);
+
         int GetTotalPlayedSongsByPartyId(int partyId);
+
         List<PartySongItemWithDetails> GetPartySongsPlayedByPartyName(string partyName);
+
         List<PartySongItemWithDetails> GetPartySongsNotPlayedByPartyName(string partyName);
 
         #endregion
@@ -55,6 +64,7 @@ namespace DJAssistantLogic.DAO
         #region SongDJ
 
         void AddSongDJItem(SongDJItem item);
+
         bool DeleteSongDJItem(SongDJItem item);
 
         #endregion
@@ -62,31 +72,35 @@ namespace DJAssistantLogic.DAO
         #region SongGenre
 
         void AddSongGenreItem(SongGenreItem item);
+
         bool DeleteSongGenreItem(SongGenreItem item);
-        List<GenreItem> GetGenreItems();
+        
 
         #endregion
 
         #region PartyGenre
+
         void AddPartyGenreItem(PartyGenreItem partyGenre);
+        
         #endregion
 
         #region Song
 
         int AddSongItem(SongItem item);
-        bool UpdateSongItem(SongItem item);
-        bool DeleteSongItem(int songId);
+
         SongItem GetSongItemById(int songId);
+
         List<SongItem> GetSongsByPartyId(int partyID);
+
         List<SongItem> GetSongsByDJId(int dJId);
+
+        List<SongItem> GetSongsByDJEmail(string email);
 
         #endregion
 
         #region Playlist
 
         int AddPlayList(PlaylistItem playlist);
-
-        PlaylistItem GetPlaylistItemById(int id);
 
         List<PlaylistItem> GetPlaylistItemsByDJId(int dJId);
 
