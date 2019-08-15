@@ -65,7 +65,24 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
+<style >
+.djAbout {
+  font-family: "Roboto Condensed", sans-serif;
+  border-radius: 10px;
+  float: left;
+  padding: 25px;
+  max-width: 28%;
+  margin-left: 17%;
+  margin-right: 10%;
+  margin-top: 7%;
+  max-height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  color: white;
+}
+=======
 <style>
+>>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
 
 .loginAndRegister {
   font-family: "Calibri", sans-serif;
@@ -95,10 +112,14 @@ export default {
 
 #landing-page {
   margin-top: 5%;
+  background-image: url("~@/assets/guest_background.png");
 }
 
 body {
+<<<<<<< HEAD
+=======
    background-image: url("~@/assets/Soundblast.jpg") !important;
+>>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
