@@ -3,11 +3,7 @@
     <div>
       <nav-header></nav-header>
       <h1>{{songRequest.partyName}}</h1>
-      <div
-        class="alert alert-success song"
-        role="alert"
-        v-if="this.$route.query.songRequested"
-      >Song requested.</div>
+
       <h3>Request a Song</h3>
       <form @submit.prevent="requestSong" id="form">
         <div class="form-group">
@@ -22,6 +18,11 @@
         </div>
         <button type="Submit" class="btn btn-danger btn-lg btn-block" id="songSubmit">Submit Song</button>
       </form>
+      <div
+        class="alert alert-success song"
+        role="alert"
+        v-if="this.$route.query.songRequested"
+      >Song requested.</div>
       <div class="song">
         <h3>Next 5 Songs:</h3>
         <p v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>

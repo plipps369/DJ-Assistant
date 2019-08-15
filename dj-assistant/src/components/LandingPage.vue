@@ -1,8 +1,8 @@
 <template>
   <b-card-group deck>
     <div id="landing-page">
-      <div class="djAbout">
-        <!-- <h3 class="card-title">DJ ASSISTANT</h3>
+      <!-- <div class="djAbout">
+         <h3 class="card-title">DJ ASSISTANT</h3>
         <b-card-text>
           Do you love being the life of the party but hate talking to people? OF COURSE YOU DO! It's 2019 and
           face to face interaction is dead. Here at DJ Assistant, we've kept that in mind from the very
@@ -14,8 +14,8 @@
           to make a request!
           <br />
           <br />
-        </b-card-text> --> 
-      </div>
+        </b-card-text>
+      </div> -->
 
       <div class="loginAndRegister">
         <h1> Welcome to InterRUPPtions Unlimited </h1>

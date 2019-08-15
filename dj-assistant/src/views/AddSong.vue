@@ -168,7 +168,7 @@ export default {
 
 <style>
 #add-main {
-  margin-top: 55vh;
+  margin-top: 55%;
 }
 
 .form-radio {
