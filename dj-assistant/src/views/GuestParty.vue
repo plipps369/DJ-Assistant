@@ -8,6 +8,20 @@
         role="alert"
         v-if="this.$route.query.songRequested"
       >Song requested.</div>
+      <h3>Request a Song</h3>
+      <form @submit.prevent="requestSong" id="form">
+        <div class="form-group">
+          <select class="form-control" v-model="songRequest.songId">
+            Song Choices:
+            <option
+              v-for="song in songs"
+              :key="song.id"
+              :value="song.id"
+            >{{song.title}} by {{song.artist}}</option>
+          </select>
+        </div>
+        <button type="Submit" class="btn btn-danger btn-lg btn-block" id="songSubmit">Submit Song</button>
+      </form>
       <div class="song">
         <h3>Next 5 Songs:</h3>
         <p v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
@@ -18,20 +32,6 @@
         <p v-for="song in last5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
       </div>
     </div>
-    <h3>Request a Song</h3>
-    <form @submit.prevent="requestSong" id="form">
-      <div class="form-group">
-        <select class="form-control" v-model="songRequest.songId">
-          Song Choices:
-          <option
-            v-for="song in songs"
-            :key="song.id"
-            :value="song.id"
-          >{{song.title}} by: {{song.artist}}</option>
-        </select>
-      </div>
-      <button type="Submit" class="btn btn-danger btn-lg btn-block" id="songSubmit">Submit Song</button>
-    </form>
   </div>
 </template>
 

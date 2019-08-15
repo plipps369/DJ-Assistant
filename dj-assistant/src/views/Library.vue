@@ -7,6 +7,8 @@
     >
       <strong>LIBRARY</strong>
     </h1>
+    <br />
+    <router-link to="/add-song" id="button" tag="button" class="btn btn-md btn-danger">Add Song</router-link>
     <h3>All Songs:</h3>
     <div class="libraryCard">
       <div class="card" style="width: 28rem;">

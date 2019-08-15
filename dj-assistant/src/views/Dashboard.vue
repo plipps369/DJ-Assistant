@@ -4,7 +4,7 @@
     <div id="dashboard">
       <div id="dash-main">
         <h1 id="display-name">
-          <strong>{{user.displayName}}</strong>
+          <strong>DJ {{user.displayName}}</strong>
         </h1>
         <br />
         <div
@@ -20,12 +20,12 @@
           <div class="col-sm-3"></div>
           <!-- <b-card id="add-song" bg-variant="primary"> -->
           <div class="col-sm-6">
-            <router-link
+            <!-- <router-link
               to="/add-song"
               id="button"
               tag="button"
               class="btn btn-md btn-danger"
-            >Add Song</router-link>
+            >Add Song</router-link> -->
 
             <!-- </b-card> -->
 
@@ -35,7 +35,7 @@
               to="/create-party"
               id="button"
               tag="button"
-              class="btn btn-md btn-danger"
+              class="btn btn-lg btn-danger"
             >Create Party</router-link>
 
             <!-- </b-card> -->
@@ -45,7 +45,7 @@
               to="/library"
               id="button"
               tag="button"
-              class="btn btn-md btn-danger"
+              class="btn btn-lg btn-danger"
             >View Library</router-link>
           </div>
           <div class="col-sm-3"></div>
