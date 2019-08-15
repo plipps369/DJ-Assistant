@@ -1,11 +1,10 @@
 <template>
   <div class="navHeader">
-    
-
     <b-navbar toggleable="lg" type="dark" variant="primary" fixed="top">
       <img id="logo" src="@/assets/dj-logo-white.png" class="img-responsive" />
-       <h3><b-navbar-brand>DJ ASSISTANT</b-navbar-brand></h3>
-
+      <h3>
+        <b-navbar-brand>InterRUPPtions Unlimited</b-navbar-brand>
+      </h3>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -13,7 +12,7 @@
         <b-navbar-nav>
           <b-nav-item>
             <router-link :to="{name: 'home'}" class="nav-link">Home</router-link>
-            </b-nav-item>
+          </b-nav-item>
           <b-nav-item>
             <router-link :to="{name: 'dashboard'}" class="nav-link">Dashboard</router-link>
           </b-nav-item>
@@ -35,29 +34,26 @@
             <template slot="button-content">
               <em>user</em>
             </template>
-            
-            <b-dropdown-item  v-on:click="logout">Sign Out</b-dropdown-item>
+
+            <b-dropdown-item v-on:click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    
   </div>
 </template>
 
 
 
 <script>
-
 import auth from "../auth";
-
 
 export default {
   name: "nav-header",
   data() {
     return {
-      user: {},
-     };
+      user: {}
+    };
   },
   methods: {
     logout() {
@@ -65,7 +61,7 @@ export default {
       this.$router.push({
         name: "login",
         query: { logout: true }
-      })
+      });
     },
     getUser() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/DJ`, {
@@ -79,12 +75,11 @@ export default {
         .then(json => {
           this.user = json;
         });
-    },
+    }
   },
-  created(){
+  created() {
     //this.getUser();
   }
- 
 };
 </script>
 
@@ -94,10 +89,8 @@ export default {
 #logo {
   height: 3rem;
   margin-right: 1.5rem;
- 
 }
 #header-text {
- 
   font-size: 4rem;
   vertical-align: middle;
   color: #007bff;
@@ -105,6 +98,6 @@ export default {
 }
 
 .navHeader {
-   padding-bottom: 100px;
+  padding-bottom: 100px;
 }
 </style>

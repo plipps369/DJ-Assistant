@@ -18,7 +18,7 @@
       </div>
 
       <div class="loginAndRegister">
-        <h1> Welcome to DJ Assistant </h1>
+        <h1> Welcome to InterRUPPtions Unlimited </h1>
       <p>Do you love being the life of the party but hate talking to people?</p>
       <p> OF COURSE YOU DO!</p>
       <p> It's 2019 and

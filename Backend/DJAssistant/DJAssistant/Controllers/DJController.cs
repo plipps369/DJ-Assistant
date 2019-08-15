@@ -8,6 +8,7 @@ using DJAssistantLogic.DAO;
 using DJAssistantLogic.Models;
 using DJAssistantLogic.Models.Database;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DJAssistantAPI.Controllers
@@ -17,6 +18,7 @@ namespace DJAssistantAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    
     public class DJController : Controller
     {
 
@@ -77,6 +79,7 @@ namespace DJAssistantAPI.Controllers
         /// <param name="model">An object including the user's credentials.</param> 
         /// <returns></returns>
         [HttpPost("login")]
+        
         public IActionResult Login(DJLoginModel model)
         {
             // Assume the user is not authorized

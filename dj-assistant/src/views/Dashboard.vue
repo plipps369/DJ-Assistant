@@ -20,18 +20,33 @@
           <div class="col-sm-3"></div>
           <!-- <b-card id="add-song" bg-variant="primary"> -->
           <div class="col-sm-6">
-            <router-link to="/add-song" id="button" tag="button" class="btn btn-md btn-danger">Add Song</router-link>
-         
-          <!-- </b-card> -->
+            <router-link
+              to="/add-song"
+              id="button"
+              tag="button"
+              class="btn btn-md btn-danger"
+            >Add Song</router-link>
 
-          <!-- <b-card id="create-party" bg-variant="primary"> -->
-          
-            <router-link to="/create-party" id="button" tag="button" class="btn btn-md btn-danger">Create Party</router-link>
-          
-          <!-- </b-card> -->
-          <!-- <b-card id="library" bg-variant="primary"> -->
-          
-            <router-link to="/library" id="button" tag="button" class="btn btn-md btn-danger">View Library</router-link>
+            <!-- </b-card> -->
+
+            <!-- <b-card id="create-party" bg-variant="primary"> -->
+
+            <router-link
+              to="/create-party"
+              id="button"
+              tag="button"
+              class="btn btn-md btn-danger"
+            >Create Party</router-link>
+
+            <!-- </b-card> -->
+            <!-- <b-card id="library" bg-variant="primary"> -->
+
+            <router-link
+              to="/library"
+              id="button"
+              tag="button"
+              class="btn btn-md btn-danger"
+            >View Library</router-link>
           </div>
           <div class="col-sm-3"></div>
         </div>
@@ -121,8 +136,6 @@ export default {
 </script>
 
 <style>
-
-
 #button {
   margin-right: 2px;
   margin-bottom: 5%;

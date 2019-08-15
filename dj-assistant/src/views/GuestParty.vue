@@ -86,10 +86,8 @@ export default {
 
       this.songRequest.songId = null;
 
-    
       this.getNext5Songs();
       this.getLast5Songs();
-      
     },
     getSongsForRequest() {
       const partyName = this.$route.params.partyName;
