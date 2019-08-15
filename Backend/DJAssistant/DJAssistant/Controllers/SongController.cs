@@ -71,18 +71,20 @@ namespace DJAssistantAPI.Controllers
         [Authorize]
         public IActionResult AddSongToParty(PartySongModel model)
         {
+            IActionResult result = null;
             try
             {
                 PartySongItem songPartyItem = new PartySongItem();
                 songPartyItem.PartyId = model.PartyId;
                 songPartyItem.SongId = model.SongId;
                 _db.AddPartySongItem(songPartyItem);
+                result = Ok();
             }
             catch
             {
-                return BadRequest(new { Message = "Add song to party failed" });
+                result = BadRequest(new { Message = "Add song to party failed" });
             }
-            return Ok();
+            return result;
         }
     }
 }

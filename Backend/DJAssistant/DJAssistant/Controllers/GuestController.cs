@@ -20,6 +20,7 @@ namespace DJAssistantAPI.Controllers
         {
             _db = db;
         }
+
         [HttpGet("{partyName}")]
         public ActionResult<string> GetSongListForPartyByName(string partyName)
         {
@@ -40,8 +41,8 @@ namespace DJAssistantAPI.Controllers
         {
             IActionResult result = Unauthorized();
 
-            //try
-            //{
+            try
+            {
                 PartySongItem partySong = new PartySongItem();
                 PartyItem party = _db.GetPartyByName(songModel.PartyName);
                 partySong.PartyId = party.Id;
@@ -51,32 +52,44 @@ namespace DJAssistantAPI.Controllers
                 partySong.Id = _db.AddPartySongItem(partySong);
 
                 result =  Ok();
-            //}
-            //catch
-            //{
-            //    result = BadRequest(new { Message = "Request failed." });
-            //}
-
-                
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Request failed." });
+            }
             
-            
-
-
             return result;
         }
 
-        [HttpGet("lastFive/{partyName}")]
-        public ActionResult<string> GetLastFiveByPartyName(string partyName)
+        [HttpGet("PlayedSongs/{partyName}")]
+        public ActionResult<string> GetPlayedSongsByPartyName(string partyName)
         {
-            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongsPlayedByPartyName(partyName);
-            return Ok(partySongItems);
+            ActionResult<string> result = null;
+
+            try
+            {
+                result = Ok(_db.GetPartySongsPlayedByPartyName(partyName));
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Played Songs Failed" });
+            }
+            return result;
         }
 
-        [HttpGet("nextFive/{partyName}")]
-        public ActionResult<string> GetNextFiveByName(string partyName)
+        [HttpGet("NextSongs/{partyName}")]
+        public ActionResult<string> GetNextSongs(string partyName)
         {
-            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongsNotPlayedByPartyName(partyName);
-            return Ok(partySongItems);
+            ActionResult<string> result = null;
+            try
+            {
+                result = Ok(_db.GetPartySongsNotPlayedByPartyName(partyName));
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Next songs failed" });
+            }
+            return result;
         }
     }
 }

@@ -24,12 +24,12 @@
         v-if="this.$route.query.songRequested"
       >Song requested.</div>
       <div class="song">
-        <h3>Next 5 Songs:</h3>
+        <h3>Next Songs:</h3>
         <p v-for="song in next5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
       </div>
 
       <div class="song">
-        <h3>Last 5 Songs:</h3>
+        <h3>Played Songs:</h3>
         <p v-for="song in last5Songs" :key="song.id">{{song.title}} by {{song.artist}}</p>
       </div>
     </div>
@@ -116,7 +116,7 @@ export default {
     getNext5Songs() {
       const partyName = this.$route.params.partyName;
       fetch(
-        `${process.env.VUE_APP_REMOTE_API}/api/guest/nextFive/${partyName}`,
+        `${process.env.VUE_APP_REMOTE_API}/api/guest/NextSongs/${partyName}`,
         {
           method: "GET",
           headers: {
@@ -133,7 +133,7 @@ export default {
     getLast5Songs() {
       const partyName = this.$route.params.partyName;
       fetch(
-        `${process.env.VUE_APP_REMOTE_API}/api/guest/lastFive/${partyName}`,
+        `${process.env.VUE_APP_REMOTE_API}/api/guest/PlayedSongs/${partyName}`,
         {
           method: "GET",
           headers: {

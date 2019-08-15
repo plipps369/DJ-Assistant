@@ -482,7 +482,7 @@ namespace DJAssistantLogic.DAO
         {
             List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
-            const string sql = "Select top 5 * " +
+            const string sql = "Select * " +
                                "From [Party_Song] " +
                                "Join [Song] on Party_Song.Song_Id = Song.Id " +
                                "Join [Party] on Party_Song.Party_Id = Party.Id " +
@@ -509,7 +509,7 @@ namespace DJAssistantLogic.DAO
         {
             List<PartySongItemWithDetails> partySongs = new List<PartySongItemWithDetails>();
 
-            const string sql = "Select top 5 * " +
+            const string sql = "Select * " +
                                "From [Party_Song] " +
                                "Join [Song] on Party_Song.Song_Id = Song.Id " +
                                "Join [Party] on Party_Song.Party_Id = Party.Id " +

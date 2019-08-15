@@ -31,7 +31,6 @@ namespace DJAssistantAPI.Controllers
             {
                 PartyItem item = new PartyItem();
                 string email = User.Identity.Name;
-                //string email = "mm@gmail.com";
                 item.Description = model.Description;
                 item.DJId = _db.GetDJItemByEmail(email).Id;
                 item.Name = model.Name;
@@ -108,28 +107,45 @@ namespace DJAssistantAPI.Controllers
         [Authorize]
         public ActionResult<IEnumerable<string>> GetPartySongs(int partyId)
         {
-            List<PartySongItemWithDetails> partySongItems = _db.GetPartySongItemWithDetailsByPartyId(partyId);
-            return Ok(partySongItems);
+            ActionResult<IEnumerable<string>> result = null;
+            try
+            {
+                result = Ok(_db.GetPartySongItemWithDetailsByPartyId(partyId));
+            }
+            catch
+            {
+                result = BadRequest(new { Message = "Party Songs Failed" });
+            }
+            return result;
         }
 
        [HttpPost("MarkedAsPlayed/{partySongId}")]
        [Authorize]
         public IActionResult MarkedSongAsPlayedByParytSongId(int partySongId)
         {
-            PartySongItem partySong = _db.GetPartySongItemById(partySongId);
-
-            if(partySong.Played == true)
+            IActionResult result = null;
+            try
             {
-                return BadRequest(new { Message = "song was already played" });
+                PartySongItem partySong = _db.GetPartySongItemById(partySongId);
+
+                if (partySong.Played == true)
+                {
+                    result = BadRequest(new { Message = "song was already played" });
+                }
+                else
+                {
+                    partySong.Played = true;
+                    partySong.PlayOrder = _db.GetTotalPlayedSongsByPartyId(partySong.PartyId);
+                    _db.UpdatePartySongItem(partySong);
+                    result = Ok();
+                }
             }
-            else
+            catch
             {
-                partySong.Played = true;
-                partySong.PlayOrder = _db.GetTotalPlayedSongsByPartyId(partySong.PartyId);
-                _db.UpdatePartySongItem(partySong);
+                result = BadRequest(new { Message = "Failed to mark Song as played" });
             }
 
-            return Ok();
+            return result;
         }
     }    
 }
