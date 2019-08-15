@@ -65,7 +65,6 @@ export default {
 };
 </script>
 
-<<<<<<< HEAD
 <style >
 .djAbout {
   font-family: "Roboto Condensed", sans-serif;
@@ -80,9 +79,6 @@ export default {
   background-color: hsla(0, 0%, 0%, 0.7);
   color: white;
 }
-=======
-<style>
->>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
 
 .loginAndRegister {
   font-family: "Calibri", sans-serif;
@@ -116,10 +112,7 @@ export default {
 }
 
 body {
-<<<<<<< HEAD
-=======
    background-image: url("~@/assets/Soundblast.jpg") !important;
->>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

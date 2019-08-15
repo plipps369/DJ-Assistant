@@ -1,11 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="guest">
-        <nav-header></nav-header>
-        <h1>Guest Page</h1>
-        <h3>Search for a party</h3>
-        <input
-=======
   <div class="guestPage">
     <nav-header></nav-header>
     <h1
@@ -23,7 +16,6 @@
     <h3 class="h1-reponsive wow fadeInDown" data-wow-delay="0.3s">Please enter your party name:</h3>
     <div class="partyName">
       <input
->>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
         type="text"
         id="partyName"
         class="form-control"
@@ -60,7 +52,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
 .guest {
  background-image: url("~@/assets/guest_background.png") !important;
     background-position: center center;
@@ -72,7 +63,6 @@ export default {
 }
 
 
-=======
 .guestPage {
   margin-top: 75px;
 }
@@ -83,7 +73,6 @@ export default {
   margin-right: 25vw;
   margin-left: 25vw;
 }
->>>>>>> 5caa5ec4ea549472ce818f5c4de5855f6e9e88ab
 
 h3 {
   color: white;
